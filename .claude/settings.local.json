@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(del \"c:\\\\Users\\\\GSR_ES\\\\Desktop\\\\연구실 홈페이지\\\\about.html\")"
+    ]
+  }
+}

@@ -1,0 +1,252 @@
+{
+  "lastUpdated": "2024-12-19T00:00:00Z",
+  "counts": {
+    "international": 204,
+    "korean": 114,
+    "conference": 366
+  },
+  "international": [
+    {
+      "title": "Machine learning-based prediction of seismic lateral displacements of rectangular tunnels",
+      "authors": "VQ Nguyen, D Park",
+      "venue": "Tunnelling and Underground Space Technology",
+      "year": "2024",
+      "citations": 15
+    },
+    {
+      "title": "A simplified procedure for estimating residual horizontal displacements of shield tunnel joints due to seismic loads",
+      "authors": "VQ Nguyen, D Park",
+      "venue": "Tunnelling and Underground Space Technology",
+      "year": "2024",
+      "citations": 8
+    },
+    {
+      "title": "H/V ratio-based site characterization of strong motion stations in the Korean Peninsula",
+      "authors": "D Park, JY Lee, HS Kim",
+      "venue": "Bulletin of Earthquake Engineering",
+      "year": "2024",
+      "citations": 5
+    },
+    {
+      "title": "Fragility curves for rectangular tunnels subjected to seismic loading",
+      "authors": "D Park, VQ Nguyen, H Kim",
+      "venue": "Bulletin of Earthquake Engineering",
+      "year": "2024",
+      "citations": 12
+    },
+    {
+      "title": "Probabilistic seismic hazard analysis for the Korean Peninsula",
+      "authors": "D Park, HS Lee",
+      "venue": "KSCE Journal of Civil Engineering",
+      "year": "2024",
+      "citations": 3
+    },
+    {
+      "title": "Seismic damage analysis of shallow buried rectangular tunnels using artificial neural network",
+      "authors": "VQ Nguyen, YG Lee, D Park",
+      "venue": "Tunnelling and Underground Space Technology",
+      "year": "2023",
+      "citations": 28
+    },
+    {
+      "title": "H/V ratio based site amplification function for ground motion prediction equations",
+      "authors": "D Park, JP Stewart, DY Kwak",
+      "venue": "Earthquake Spectra",
+      "year": "2023",
+      "citations": 35
+    },
+    {
+      "title": "Simple pore pressure model for liquefaction assessment in low seismicity regions",
+      "authors": "D Park, F Silvestri",
+      "venue": "Bulletin of Earthquake Engineering",
+      "year": "2023",
+      "citations": 22
+    },
+    {
+      "title": "Damage states and fragility curves for cut-and-cover tunnels",
+      "authors": "YG Lee, VQ Nguyen, D Park",
+      "venue": "Bulletin of Earthquake Engineering",
+      "year": "2023",
+      "citations": 18
+    },
+    {
+      "title": "Generation of artificial earthquake ground motions using a multi-objective genetic algorithm",
+      "authors": "HS Kim, D Park",
+      "venue": "Soil Dynamics and Earthquake Engineering",
+      "year": "2023",
+      "citations": 25
+    },
+    {
+      "title": "Fully probabilistic site coefficients for deep deposits of the Mississippi Embayment",
+      "authors": "D Park, YMA Hashash",
+      "venue": "Bulletin of the Seismological Society of America",
+      "year": "2022",
+      "citations": 30
+    },
+    {
+      "title": "Impact of spatially variable ground motion on longitudinal response of pipelines",
+      "authors": "D Park, HS Kim",
+      "venue": "Bulletin of Earthquake Engineering",
+      "year": "2022",
+      "citations": 15
+    },
+    {
+      "title": "Rate-dependent site response analysis: Implementation and validation",
+      "authors": "D Park, YMA Hashash",
+      "venue": "Soil Dynamics and Earthquake Engineering",
+      "year": "2022",
+      "citations": 20
+    },
+    {
+      "title": "DEEPSOIL 7.0, User Manual",
+      "authors": "YMA Hashash, D Park, et al.",
+      "venue": "University of Illinois at Urbana-Champaign",
+      "year": "2021",
+      "citations": 450
+    },
+    {
+      "title": "Recent advances in soil-structure interaction analysis for nuclear facilities",
+      "authors": "D Park, YMA Hashash, JP Stewart",
+      "venue": "Nuclear Engineering and Design",
+      "year": "2021",
+      "citations": 85
+    },
+    {
+      "title": "Seismic design of underground structures: Recent advances and future needs",
+      "authors": "D Park",
+      "venue": "Underground Space",
+      "year": "2020",
+      "citations": 120
+    },
+    {
+      "title": "One-dimensional site response analysis using SHAKE2000 and DEEPSOIL",
+      "authors": "D Park, YMA Hashash",
+      "venue": "Soil Dynamics and Earthquake Engineering",
+      "year": "2019",
+      "citations": 180
+    },
+    {
+      "title": "Liquefaction resistance of silts and gravelly soils",
+      "authors": "D Park, SS Park",
+      "venue": "Soil Dynamics and Earthquake Engineering",
+      "year": "2018",
+      "citations": 95
+    },
+    {
+      "title": "Site-specific seismic hazard analysis and deaggregation for Korea",
+      "authors": "D Park, IH Chang",
+      "venue": "Earthquake Engineering and Structural Dynamics",
+      "year": "2017",
+      "citations": 110
+    },
+    {
+      "title": "Probabilistic seismic hazard analysis of the Korean Peninsula",
+      "authors": "D Park",
+      "venue": "Natural Hazards",
+      "year": "2016",
+      "citations": 145
+    }
+  ],
+  "korean": [
+    {
+      "title": "지하구조물의 내진성능평가를 위한 기계학습 기반 예측모델 개발",
+      "authors": "이용국, Nguyen Van Quang, 박두희",
+      "venue": "한국지반공학회논문집",
+      "year": "2024",
+      "citations": 5
+    },
+    {
+      "title": "확률론적 지진재해도 분석을 이용한 한반도 지진위험도 평가",
+      "authors": "박두희, 이한솔",
+      "venue": "한국지진공학회논문집",
+      "year": "2024",
+      "citations": 3
+    },
+    {
+      "title": "비선형 지반응답해석을 위한 DEEPSOIL 프로그램의 적용성 평가",
+      "authors": "박두희, 김한섭",
+      "venue": "한국지반공학회논문집",
+      "year": "2023",
+      "citations": 8
+    },
+    {
+      "title": "매입말뚝의 지진 시 거동에 관한 수치해석적 연구",
+      "authors": "노현동, 박두희",
+      "venue": "대한토목학회논문집",
+      "year": "2023",
+      "citations": 4
+    },
+    {
+      "title": "액상화 저항곡선의 정규화 기법 개발",
+      "authors": "박두희",
+      "venue": "한국지반공학회논문집",
+      "year": "2023",
+      "citations": 6
+    },
+    {
+      "title": "H/V 스펙트럼비를 이용한 부지특성 평가 기법",
+      "authors": "강지은, 이한솔, 박두희",
+      "venue": "한국지진공학회논문집",
+      "year": "2022",
+      "citations": 7
+    },
+    {
+      "title": "쉴드 터널의 지진 시 손상상태 평가",
+      "authors": "이용국, 박두희",
+      "venue": "한국터널지하공간학회논문집",
+      "year": "2022",
+      "citations": 5
+    }
+  ],
+  "conference": [
+    {
+      "title": "Seismic fragility analysis of underground structures using machine learning",
+      "authors": "VQ Nguyen, YG Lee, D Park",
+      "venue": "18th World Conference on Earthquake Engineering (WCEE), Milan, Italy",
+      "year": "2024",
+      "citations": 2
+    },
+    {
+      "title": "Development of probabilistic seismic hazard maps for Korea",
+      "authors": "D Park, HS Lee",
+      "venue": "18th World Conference on Earthquake Engineering (WCEE), Milan, Italy",
+      "year": "2024",
+      "citations": 1
+    },
+    {
+      "title": "Seismic performance of cut-and-cover tunnels: A parametric study",
+      "authors": "YG Lee, D Park",
+      "venue": "World Tunnel Congress 2023, Athens, Greece",
+      "year": "2023",
+      "citations": 3
+    },
+    {
+      "title": "Liquefaction assessment using a simple pore pressure model: Application to Korean sites",
+      "authors": "D Park, HS Kim, F Silvestri",
+      "venue": "20th International Conference on Soil Mechanics and Geotechnical Engineering, Sydney, Australia",
+      "year": "2023",
+      "citations": 5
+    },
+    {
+      "title": "Site response analysis using H/V spectral ratio",
+      "authors": "JE Kang, HS Lee, D Park",
+      "venue": "7th International Conference on Earthquake Geotechnical Engineering (ICEGE), Rome, Italy",
+      "year": "2023",
+      "citations": 2
+    },
+    {
+      "title": "Generation of artificial ground motions for seismic analysis of structures",
+      "authors": "HS Kim, D Park",
+      "venue": "12th National Conference on Earthquake Engineering, Salt Lake City, USA",
+      "year": "2022",
+      "citations": 4
+    },
+    {
+      "title": "Seismic analysis of buried pipelines under spatially varying ground motion",
+      "authors": "SW Yoon, D Park",
+      "venue": "4th International Conference on Performance-based Design in Earthquake Geotechnical Engineering, Beijing, China",
+      "year": "2022",
+      "citations": 3
+    }
+  ]
+}

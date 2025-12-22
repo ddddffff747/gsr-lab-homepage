@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publications | GSR Lab</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="images/HYU_symbol_basic.png" alt="Hanyang University" class="logo-hyu">
+                <div class="logo-text-wrapper">
+                    <span class="logo-text">GSR</span>
+                    <span class="logo-sub">Geo System Research</span>
+                </div>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="professor.html" class="nav-link">Professor</a></li>
+                <li class="nav-dropdown">
+                    <a href="members.html" class="nav-link">Members <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="members.html#postdoc">Research Professor</a></li>
+                        <li><a href="members.html#phd">Ph.D. Student</a></li>
+                        <li><a href="members.html#ms">Master Student</a></li>
+                        <li><a href="members.html#alumni">Alumni</a></li>
+                    </ul>
+                </li>
+                <li><a href="research.html" class="nav-link">Research & Project</a></li>
+                <li><a href="publications.html" class="nav-link active">Publications</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Publications Hero with Stats -->
+    <section class="pub-hero">
+        <div class="pub-hero-bg">
+            <canvas id="pubCanvas"></canvas>
+        </div>
+        <div class="pub-hero-content">
+            <div class="pub-stats-hero">
+                <div class="pub-stat-hero-item">
+                    <i class="fas fa-globe"></i>
+                    <span class="pub-stat-hero-number" id="international-count" data-target="0">0</span>
+                    <span class="pub-stat-hero-label">International Journal</span>
+                </div>
+                <div class="pub-stat-hero-item">
+                    <i class="fas fa-flag"></i>
+                    <span class="pub-stat-hero-number" id="korean-count" data-target="0">0</span>
+                    <span class="pub-stat-hero-label">Korean Journal</span>
+                </div>
+                <div class="pub-stat-hero-item">
+                    <i class="fas fa-users"></i>
+                    <span class="pub-stat-hero-number" id="conference-count" data-target="0">0</span>
+                    <span class="pub-stat-hero-label">Conference</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filter Tabs -->
+    <section class="section publications-section">
+        <div class="container">
+            <div class="pub-filters-new">
+                <button class="filter-btn-new active" data-filter="international">International Journal Papers</button>
+                <button class="filter-btn-new" data-filter="korean">Korean Journal Papers</button>
+                <button class="filter-btn-new" data-filter="conference">International Conference Papers</button>
+            </div>
+
+            <!-- International Journal Papers -->
+            <div class="pub-category" id="international-papers">
+                <div class="year-filter-container" id="international-year-filter"></div>
+                <div class="pub-list-container">
+                    <div class="pub-loading"><i class="fas fa-spinner fa-spin"></i> Loading publications...</div>
+                </div>
+            </div>
+
+            <!-- Korean Journal Papers -->
+            <div class="pub-category" id="korean-papers" style="display: none;">
+                <div class="year-filter-container" id="korean-year-filter"></div>
+                <div class="pub-list-container">
+                    <div class="pub-loading"><i class="fas fa-spinner fa-spin"></i> Loading publications...</div>
+                </div>
+            </div>
+
+            <!-- International Conference Papers -->
+            <div class="pub-category" id="conference-papers" style="display: none;">
+                <div class="year-filter-container" id="conference-year-filter"></div>
+                <div class="pub-list-container">
+                    <div class="pub-loading"><i class="fas fa-spinner fa-spin"></i> Loading publications...</div>
+                </div>
+            </div>
+
+            <div class="pub-note">
+                <p><i class="fas fa-info-circle"></i> For a complete list of publications, please visit <a href="https://scholar.google.co.kr/citations?user=s55YrBYAAAAJ&hl=ko" target="_blank">Google Scholar</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-text">GSR</span>
+                    <span class="logo-sub">Geo System Research</span>
+                </div>
+                <div class="footer-info">
+                    <p>Department of Civil and Environmental Engineering</p>
+                    <p>Hanyang University, Seoul, Korea</p>
+                </div>
+                <div class="footer-links">
+                    <a href="professor.html">Professor</a>
+                    <a href="members.html">Members</a>
+                    <a href="research.html">Research</a>
+                    <a href="publications.html">Publications</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Geo System Research Lab. Hanyang University. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Publication data based on Google Scholar
+        const fallbackData = {
+            counts: { international: 68, korean: 114, conference: 366 },
+            international: [
+                // 2025
+                { title: "Rapid damage state classification for underground box tunnels using machine learning", authors: "VQ Nguyen, HD Nguyen, F Petrone, D Park", venue: "Structure and Infrastructure Engineering", year: "2025", citations: 9 },
+                { title: "Assessment of liquefaction potential using simplified method and one-dimensional effective stress ground response analysis during 2017 Pohang earthquake in South Korea", authors: "YG Lee, U Pervaiz, D Park, B Kim, JT Han", venue: "Soil Dynamics and Earthquake Engineering", year: "2025", citations: 3 },
+                { title: "Numerical Estimation of Seismic Earth Pressure on Walls of Basements Underlain by Bedrock", authors: "C Lee, D Park, YG Lee", venue: "Earthquake Engineering & Structural Dynamics", year: "2025", citations: 0 },
+                { title: "Sensitivity Analysis of Numerical Coherency Model for Rock Sites", authors: "D Lee, Y Lee, HS Kim, JS Park, D Park", venue: "Applied Sciences", year: "2025", citations: 1 },
+                // 2024
+                { title: "Novel method to estimate horizontal variability of shear wave velocity through multichannel analysis of surface waves", authors: "YH Chang, CC Tsai, L Ge, D Park", venue: "Engineering Geology", year: "2024", citations: 4 },
+                { title: "Spatial coherency analysis of seismic motions from a hard rock site dense array in Busan, Korea", authors: "Y Lee, D Lee, HS Kim, JS Park, DY Jung, J Kim, DY Kim, Y Lee, D Park", venue: "Bulletin of Earthquake Engineering", year: "2024", citations: 3 },
+                { title: "Assessments of Liquefaction Triggering Using In Situ and Laboratory Tests in Pohang, South Korea", authors: "Y Cho, JT Han, YW Choo, J Lee, J Kim, K Kim, K Park, JH Kim, HJ Park, et al.", venue: "Journal of Geotechnical and Geoenvironmental Engineering", year: "2024", citations: 2 },
+                { title: "Re-evaluation of One-Dimensional Site Response Methods Using Vs Adjusted Borehole Arrays", authors: "PH Kuan, CC Tsai, D Park", venue: "KSCE Journal of Civil Engineering", year: "2024", citations: 0 },
+                { title: "Predicting blast-induced damage and dynamic response of drill-and-blast tunnel using three-dimensional finite element analysis", authors: "JU Rehman, D Park, JK Ahn", venue: "Applied Sciences", year: "2024", citations: 8 },
+                { title: "Probabilistic assessment of seismic performance of slopes considering the sensitivity of sliding surface to input motion", authors: "MI Khalid, J Fei, D Lee, D Park, X Chen", venue: "Soil Dynamics and Earthquake Engineering", year: "2024", citations: 6 },
+                { title: "Seismic Performance Management of Aged Road Facilities in Korea: Part 1—Fragility Curves", authors: "S Shin, I Kim, KI Song, D Park, B Kim, H An, KJ Hong", venue: "KSCE Journal of Civil Engineering", year: "2024", citations: 1 },
+                { title: "Evaluation of modified frequency dependent equivalent linear method for deconvolution site response analysis", authors: "SC Chen, CC Tsai, D Park", venue: "Journal of Earthquake Engineering", year: "2024", citations: 3 },
+                { title: "Geotechnical data based seismic microzonation in Seoul using region-specific and code-based site amplification models", authors: "Y Lee, YG Lee, D Park", venue: "Bulletin of Earthquake Engineering", year: "2024", citations: 8 },
+                // 2023
+                { title: "Estimation of VS30 using shallow depth time-averaged shear wave velocity of Rawalpindi–Islamabad, Pakistan", authors: "MB Adeel, ZA Nizamani, M Aaqib, S Khan, JU Rehman, B Bhusal, D Park", venue: "Geomatics, Natural Hazards and Risk", year: "2023", citations: 10 },
+                { title: "Selection of efficient earthquake intensity measures for evaluating seismic fragility of concrete face rockfill dam", authors: "MI Khalid, D Park, J Fei, VQ Nguyen, DD Nguyen, X Chen", venue: "Computers and Geotechnics", year: "2023", citations: 29 },
+                { title: "Seismic damage evaluation of double-box metro tunnel accounting for soil stiffness using three-dimensional finite element analysis", authors: "VQ Nguyen, YG Lee, D Park", venue: "Structures", year: "2023", citations: 12 },
+                { title: "Site amplification prediction model of shallow bedrock sites based on machine learning models", authors: "YG Lee, SJ Kim, Z Achmet, OS Kwon, D Park, L Di Sarno", venue: "Soil Dynamics and Earthquake Engineering", year: "2023", citations: 14 },
+                // 2022
+                { title: "Development of site classification system and seismic site coefficients for Korea", authors: "M Aaqib, D Park, YG Lee, U Pervaiz", venue: "Journal of Earthquake Engineering", year: "2022", citations: 10 },
+                { title: "Novel hybrid MFO-XGBoost model for predicting the racking ratio of the rectangular tunnels subjected to seismic loading", authors: "VQ Nguyen, VL Tran, DD Nguyen, S Sadiq, D Park", venue: "Transportation Geotechnics", year: "2022", citations: 55 },
+                { title: "Seismic fragility assessment for cantilever retaining walls with various backfill slopes in South Korea", authors: "H Seo, YJ Lee, D Park, B Kim", venue: "Soil Dynamics and Earthquake Engineering", year: "2022", citations: 22 },
+                { title: "Evaluation of indirect-heated microwave thermal desorption treatment on engineering properties of lubricant-contaminated soil", authors: "D Lee, T Koh, D Park", venue: "Applied Sciences", year: "2022", citations: 3 },
+                { title: "Assessment of heavy metal and oil-contaminated silty sand treatment by electrical resistance heating method", authors: "C Kim, T Koh, D Lee, D Park", venue: "Applied Sciences", year: "2022", citations: 5 },
+                { title: "Influence of horizontally variable soil properties on nonlinear seismic site response and ground motion coherency", authors: "YH Chang, CC Tsai, L Ge, D Park", venue: "Earthquake Engineering & Structural Dynamics", year: "2022", citations: 20 },
+                { title: "Analysis of surface settlement troughs induced by twin shield tunnels in soil: A case study", authors: "CY Ahn, D Park, SW Moon", venue: "Geomechanics & Engineering", year: "2022", citations: 12 },
+                { title: "Numerical response of pile foundations in granular soils subjected to lateral load", authors: "MB Adeel, M Aaqib, U Pervaiz, JU Rehman, D Park", venue: "Geomechanics & Engineering", year: "2022", citations: 7 },
+                // 2021
+                { title: "Effect of intra-layer vs fluctuation on linear seismic site response", authors: "YH Chang, CC Tsai, CC Huang, D Park", venue: "KSCE Journal of Civil Engineering", year: "2021", citations: 5 },
+                { title: "Testing performance of pore pressure models implemented in one-dimensional site response analysis program against centrifuge test data measured in mildly sloping ground", authors: "U Pervaiz, D Park, Y Hashash, G Xing", venue: "Soil Dynamics and Earthquake Engineering", year: "2021", citations: 10 },
+                { title: "Simulation-based site amplification model for shallow bedrock sites in Korea", authors: "M Aaqib, D Park, MB Adeel, YMA Hashash, O Ilhan", venue: "Earthquake Spectra", year: "2021", citations: 29 },
+                { title: "Effect of characteristics of ground motion on seismically induced sliding surface of slopes", authors: "MI Khalid, Y Lee, Y Lee, HS Kim, D Park", venue: "Applied Sciences", year: "2021", citations: 4 },
+                { title: "Testing ground‐motion prediction equations against moderate magnitude earthquake data recorded in Korea", authors: "ZA Nizamani, D Park", venue: "Bulletin of the Seismological Society of America", year: "2021", citations: 15 },
+                { title: "Development of Simulation Based p-Multipliers for Laterally Loaded Pile Groups in Granular Soil Using 3D Nonlinear Finite Element Model", authors: "MB Adeel, MA Jan, M Aaqib, D Park", venue: "Applied Sciences", year: "2021", citations: 19 },
+                // 2020
+                { title: "Estimation of distribution factor for peak penetration resistance prediction of spudcan foundations in loose to medium-dense sand overlying clay", authors: "MA Jan, MB Adeel, U Pervaiz, D Park", venue: "Applied Sciences", year: "2020", citations: 5 },
+                { title: "A site-specific response analysis: a case study in Hanoi, Vietnam", authors: "VQ Nguyen, M Aaqib, DD Nguyen, NV Luat, D Park", venue: "Applied Sciences", year: "2020", citations: 13 },
+                { title: "Estimation of seismically induced longitudinal strain in pipelines due to curvature and axial deformations", authors: "SW Yoon, SJ Kim, D Park", venue: "KSCE Journal of Civil Engineering", year: "2020", citations: 8 },
+                { title: "Mitigation method of rockfall hazard on rock slope using large-scale fields and numerical simulations", authors: "J Yoon, H Ban, Y Hwang, D Park", venue: "Advances in Civil Engineering", year: "2020", citations: 6 },
+                { title: "Numerical simulation of damage evolution of Daikai station during 1995 Kobe earthquake", authors: "VQ Nguyen, ZA Nizamani, D Park, OS Kwon", venue: "Engineering Structures", year: "2020", citations: 45 },
+                { title: "Deformation characteristics of tunnel bottom after construction under geological conditions of long-term deformation", authors: "NG Kim, D Park, HS Jung, KI Min", venue: "Geomechanics and Engineering", year: "2020", citations: 8 },
+                // 2019
+                { title: "Estimation of seismically induced crest settlement of earth core rock fill dams", authors: "GC Park, VQ Nguyen, JH Kim, D Park, BH Choi", venue: "Applied Sciences", year: "2019", citations: 12 },
+                { title: "Seismic damage analysis of box metro tunnels accounting for aspect ratio and shear failure", authors: "DD Nguyen, TH Lee, D Park", venue: "Applied Sciences", year: "2019", citations: 35 },
+                { title: "Effect of Flexibility Ratio on Seismic Response of Cut-and-Cover Box Tunnel", authors: "S Sadiq, VQ Nguyen, H Jung, D Park", venue: "Advances in Civil Engineering", year: "2019", citations: 28 },
+                { title: "Multi-platform Simulation of Daikai Subway Tunnel Considering Soil-Structure Interaction during the 1995 Kobe Earthquake", authors: "MA Sayed, OS Kwon, D Park, VQ Nguyen", venue: "Soil Dynamics and Earthquake Engineering", year: "2019", citations: 22 },
+                { title: "Seismic vulnerability assessment of rectangular cut-and-cover subway tunnels", authors: "DD Nguyen, D Park, S Sadiq, VQ Nguyen, TH Lee", venue: "Tunnelling and Underground Space Technology", year: "2019", citations: 85 },
+                // 2018
+                { title: "Estimation of Drained Shear Strength of Granular Soil from Shear Wave Velocity and Confining Stress", authors: "JK Yoo, D Park, CDP Baxter", venue: "Journal of Geotechnical and Geoenvironmental Engineering", year: "2018", citations: 25 },
+                { title: "Seismic response of circular tunnels in jointed rock", authors: "JK Yoo, JS Park, D Park", venue: "KSCE Journal of Civil Engineering", year: "2018", citations: 18 },
+                // 2017
+                { title: "Supplementing Vs30 with H/V Spectral Ratios for Predicting Site Effects", authors: "DY Kwak, JP Stewart, SJ Mandokhail, D Park", venue: "Bulletin of Seismological Society of America", year: "2017", citations: 85 },
+                { title: "Prediction of near-field wave attenuation due to a spherical blast source", authors: "JK Ahn, D Park", venue: "Rock Mechanics and Rock Engineering", year: "2017", citations: 45 },
+                { title: "Detection of cavities around concrete sewage pipelines using impact-echo method", authors: "JM Kang, SM Song, D Park, CH Choi", venue: "Tunnelling and Underground Space Technology", year: "2017", citations: 38 },
+                { title: "Vertical bearing capacity of bucket foundation in sand overlying clay", authors: "JS Park, D Park", venue: "Ocean Engineering", year: "2017", citations: 32 },
+                { title: "Development of normalized liquefaction resistance curve for clean sands", authors: "SJ Mandokhail, D Park, JK Yoo", venue: "Bulletin of Earthquake Engineering", year: "2017", citations: 28 },
+                { title: "USGS hazard map compatible depth-dependent seismic site coefficients for the Upper Mississippi Embayment", authors: "SW Moon, YMA Hashash, D Park", venue: "KSCE Journal of Civil Engineering", year: "2017", citations: 15 },
+                // 2016
+                { title: "Vertical bearing capacity of bucket foundations in sand", authors: "JS Park, D Park, JK Yoo", venue: "Ocean Engineering", year: "2016", citations: 42 },
+                { title: "Damage analysis of cut-and-cover tunnel structures under seismic loading", authors: "TH Lee, D Park, DD Nguyen", venue: "Bulletin of Earthquake Engineering", year: "2016", citations: 120 },
+                // 2015
+                { title: "Prediction of seismic displacement of dry mountain slopes composed of a soft thin uniform layer", authors: "JH Lee, JK Ahn, D Park", venue: "Soil Dynamics and Earthquake Engineering", year: "2015", citations: 35 },
+                { title: "Pore pressure model based on accumulated stress", authors: "T Park, D Park, JK Ahn", venue: "Bulletin of Earthquake Engineering", year: "2015", citations: 28 },
+                // 2014
+                { title: "Selection of the optimal frequencies of viscous damping formulation in nonlinear time-domain site response analysis", authors: "CC Tsai, D Park, CW Chen", venue: "Soil Dynamics and Earthquake Engineering", year: "2014", citations: 45 },
+                // 2013
+                { title: "Computational coupled method for multiscale and phase analysis", authors: "M Tak, D Park, T Park", venue: "Journal of Engineering Materials and Technology, ASME", year: "2013", citations: 12 },
+                { title: "Development of a loading platen containing a cylindrical roller bearing to reduce frictional constraint at the boundary", authors: "M Sagong, S Kim, D Park", venue: "International Journal of Rock Mechanics and Mining Sciences", year: "2013", citations: 18 },
+                // 2012
+                { title: "Development of probabilistic seismic site coefficients of Korea", authors: "D Park, DY Kwak, CG Jeong, T Park", venue: "Soil Dynamics and Earthquake Engineering", year: "2012", citations: 55 },
+                // 2011
+                { title: "Experimental and numerical analysis of an opening in a jointed rock mass", authors: "M Sagong, D Park, J Yu, JS Lee", venue: "International Journal of Rock Mechanics and Mining Sciences", year: "2011", citations: 42 },
+                // 2010
+                { title: "Development of generalised formula for dynamic active earth pressure", authors: "WC Kim, D Park, BJ Kim", venue: "Geotechnique", year: "2010", citations: 65 },
+                // 2009
+                { title: "Simulation of tunnel response under spatially varying ground motion", authors: "D Park, M Sagong, DY Kwak, CG Jeong", venue: "Soil Dynamics and Earthquake Engineering", year: "2009", citations: 88 },
+                { title: "Evaluation of liquefaction potential of port structures with earthquake magnitude adjustment", authors: "D Park, DY Kwak, CK Cho, BS Chung", venue: "Journal of Coastal Engineering", year: "2009", citations: 25 },
+                // 2008
+                { title: "Rate-dependent soil behavior in seismic site response analysis", authors: "D Park, YMA Hashash", venue: "Canadian Geotechnical Journal", year: "2008", citations: 125 },
+                { title: "Soil-Column Depth-Dependent Seismic Site Coefficients and Hazard Maps for the Upper Mississippi Embayment", authors: "YMA Hashash, CC Tsai, C Phillips, D Park", venue: "Bulletin of Seismological Society of America", year: "2008", citations: 95 },
+                // 2005
+                { title: "Evaluation of seismic site factors in the Mississippi Embayment. I. Estimation of dynamic properties", authors: "D Park, YMA Hashash", venue: "Soil Dynamics and Earthquake Engineering", year: "2005", citations: 180 },
+                { title: "Evaluation of seismic site factors in the Mississippi Embayment. II. Probabilistic seismic hazard analysis with nonlinear site effects", authors: "D Park, YMA Hashash", venue: "Soil Dynamics and Earthquake Engineering", year: "2005", citations: 145 },
+                { title: "Ovaling deformations of circular tunnels under seismic loading, an update on seismic design and analysis of underground structures", authors: "YMA Hashash, D Park, JIC Yao", venue: "Tunnelling and Underground Space Technology", year: "2005", citations: 420 },
+                // 2004
+                { title: "Soil damping formulation in nonlinear time domain site response analysis", authors: "D Park, YMA Hashash", venue: "Journal of Earthquake Engineering", year: "2004", citations: 285 },
+                // 2002
+                { title: "Viscous damping formulation and high frequency motion propagation in non-linear site response analysis", authors: "YMA Hashash, D Park", venue: "Soil Dynamics and Earthquake Engineering", year: "2002", citations: 310 },
+                // 2001
+                { title: "Non-linear one-dimensional seismic ground motion propagation in the Mississippi embayment", authors: "YMA Hashash, D Park", venue: "Engineering Geology", year: "2001", citations: 245 }
+            ],
+            korean: [
+                { title: "Seismic Microzonation of Seoul Based on Integrated Analysis of Borehole and Geophysical Data", authors: "Y Lee, D Park, J Yoo", venue: "Journal of the Korean GEO-environmental Society", year: "2025", citations: 0 },
+                { title: "Predicting Single-hole Blast-induced Fracture Zone Using Finite Element Analysis", authors: "JU Rehman, D Park", venue: "한국지반환경공학회 논문집", year: "2024", citations: 0 },
+                { title: "Parametric Study on Seismic Earth Pressure Through Dynamic Numerical Analyses of Basements", authors: "DH Park, CH Lee", venue: "Journal of the Korean Geotechnical Society", year: "2024", citations: 2 },
+                { title: "Seismic performance evaluation of existing road tunnels based on revised seismic design code", authors: "GP Lee, DH Park, JE Kang", venue: "Journal of Korean Tunnelling and Underground Space Association", year: "2023", citations: 0 },
+                { title: "Development of Modified Flexibility Ratio-Racking Ratio Relationship of Box Tunnels Subjected to Earthquake Loading Considering Rocking", authors: "D Park, VQ Nguyen, G Lee, Y Lee", venue: "한국지반환경공학회 논문집", year: "2023", citations: 0 },
+                { title: "Determining of Ground Condition Criteria for Dam Reinforced RIM Grouting", authors: "K Han, D Lee, D Park", venue: "KSCE Journal of Civil and Environmental Engineering Research", year: "2022", citations: 0 },
+                { title: "Study on Asymmetric Settlement Trough induced by the 2nd Tunneling of Twin Shield Tunnels in Clay", authors: "CY Ahn, D Park", venue: "Journal of the Korean Geotechnical Society", year: "2021", citations: 2 },
+                { title: "Stability evaluation of existing subway structure by adjacent excavation in urban tunnelling", authors: "S Han, D Lee, D Park", venue: "Journal of Korean Tunnelling and Underground Space Association", year: "2021", citations: 2 },
+                { title: "Case study on design and construction for cross-connection tunnel using large steel pipe thrust method in soil twin shield tunnels underneath airport", authors: "CY Ahn, D Park", venue: "Journal of Korean Tunnelling and Underground Space Association", year: "2021", citations: 1 },
+                { title: "Dynamic Factor of Safety Calculation of Slope by Nonlinear Response History Analysis", authors: "Y Lee, HS Kim, YT Ju, D Kim, HJ Park, D Park", venue: "Journal of the Korean Geotechnical Society", year: "2021", citations: 5 },
+                { title: "Investigation of effect of input ground motion on the failure surface of mountain slopes", authors: "MI Khalid, U Pervaiz, D Park", venue: "한국지반환경공학회 논문집", year: "2021", citations: 4 },
+                { title: "Seismic fragility evaluation of inverted T-type wall with a backfill slope considering site conditions", authors: "H Seo, B Kim, D Park", venue: "KSCE Journal of Civil and Environmental Engineering Research", year: "2021", citations: 11 },
+                { title: "Evaluation of the behavioral characteristics of soil nail using high-strength steel pipe through field test", authors: "J Park, D Park, J Lee, K Jung", venue: "Journal of the Korean GEO-environmental Society", year: "2021", citations: 2 },
+                { title: "Investigation of Spudcan Penetration Resistance in Layered Soil Deposits", authors: "MA Jan, ZA Nizamani, D Park", venue: "한국지반환경공학회 논문집", year: "2021", citations: 0 },
+                { title: "Evaluation of the influence of shear strength correction through a comparative study of nonlinear site response models", authors: "M Aaqib, D Park, H Kim, MB Adeel, ZA Nizamani", venue: "Journal of the Korean Geotechnical Society", year: "2020", citations: 3 },
+                { title: "Evaluation of liquefaction triggering for the Pohang area based on SPT and CPT tests", authors: "YJ Kim, KW Ko, BM Kim, DH Park, KS Kim, JT Han, DS Kim", venue: "Journal of the Korean Geotechnical Society", year: "2020", citations: 8 },
+                // 2018
+                { title: "박스형 터널의 지진 취약도 평가", authors: "박두희, DD Nguyen, TH Lee, VQ Nguyen", venue: "한국지반공학회 논문집", year: "2018", citations: 0 },
+                { title: "콘크리트 표면차수벽형 석괴댐의 지진 취약도 평가", authors: "백종민, 박두희, 윤진남, 최병한", venue: "한국지반신소재공학회 논문집", year: "2018", citations: 0 },
+                { title: "지진 시 필댐의 침하량과 지반진동 변수 간의 상관관계 분석", authors: "백종민, 박두희, 윤진남, 최병한", venue: "한국지반신소재공학회 논문집", year: "2018", citations: 0 },
+                { title: "지하층-지반 운동학적 상호작용을 고려한 고층 구조물 기초저면의 설계지반운동 산정", authors: "S Sadiq, 윤지남, 김주형, 박두희", venue: "한국지반환경공학회 논문집", year: "2018", citations: 0 },
+                // 2017
+                { title: "Nonlinear seismic analysis of U-shaped cantilever retaining structures", authors: "S Sadiq, 박두희, 유진권, 윤지남", venue: "한국지반환경공학회 논문집", year: "2017", citations: 0 },
+                { title: "파쇄영역에 따른 발파진동 전파특성", authors: "안재광, 박두희, 박기천, 윤지남", venue: "한국터널및지하공간학회 논문집", year: "2017", citations: 0 },
+                { title: "버킷기초의 강성 산정", authors: "박정선, 박두희, 윤세웅, 장화섭", venue: "한국지반환경공학회 논문집", year: "2017", citations: 0 },
+                { title: "하수관로 건전도와 도로함몰 발생 상관관계 분석", authors: "김진영, 강재모, 최창호, 박두희", venue: "한국지반환경공학회 논문집", year: "2017", citations: 0 },
+                { title: "모래와 점토 단일지반에서의 스퍼드캔 관입/추출 거동 평가", authors: "유진권, 박두희, 강재모", venue: "한국지반공학회 논문집", year: "2017", citations: 0 },
+                // 2016
+                { title: "유한요소해석을 통한 다층지반에서의 버킷기초 수직지지력 산정", authors: "박정선, 박두희, 윤세웅, SJ Mandokhail", venue: "한국지반공학회 논문집", year: "2016", citations: 0 },
+                { title: "반복단순전단시험에 기반한 조립토의 설계 액상화 저항 곡선 개발", authors: "SJ Mandokhail, 박두희, 김한섭, 박기천", venue: "한국지반공학회 논문집", year: "2016", citations: 0 },
+                { title: "비탄성 지진 해석을 통한 박스 터널의 손상 상태 및 손상 지수 규명", authors: "박두희, 이태형, 김한섭, 박정선", venue: "한국터널지하공간학회 논문집", year: "2016", citations: 0 },
+                // 2015
+                { title: "전단파 속도를 통한 모래의 전단강도 예측", authors: "유진권, 박두희", venue: "한국지반공학회 논문집", year: "2015", citations: 0 },
+                { title: "사질토 지반에 설치된 버킷기초 및 얕은기초의 수직지지력 산정", authors: "박정선, 박두희, 지성현, 김동준", venue: "한국지반환경공학회 논문집", year: "2015", citations: 0 },
+                { title: "지진파 입사방향에 따른 매설관 종방향 응답특성 규명", authors: "곽형주, 박두희, 이장근, 강재모", venue: "한국지반환경공학회 논문집", year: "2015", citations: 0 },
+                { title: "사질토 지반에 설치된 버킷기초의 수직 하중전이 특성", authors: "박정선, 박두희, 윤세웅, 장화섭", venue: "한국지반공학회 논문집", year: "2015", citations: 0 },
+                { title: "지진 시 산사면의 영구변위 추정식 개발", authors: "이종후, 박두희, 안재광, 박인준", venue: "한국지반공학회 논문집", year: "2015", citations: 0 },
+                { title: "수치해석을 통한 진동감쇠식 맞춤형 암반의 감쇠비 산정", authors: "김낙영, 류재하, 안재광, 박두희, 손무락, 황영철", venue: "한국지반공학회 논문집", year: "2015", citations: 0 },
+                // 2014
+                { title: "최소토피고 미확보 구간에 시공한 파형강판 암거의 변형 특성", authors: "김명일, 박두희", venue: "한국지반환경공학회 논문집", year: "2014", citations: 0 },
+                { title: "벤더엘리먼트와 삼축시험을 통한 모래의 전단강도 및 포아송비의 특성 규명", authors: "유진권, 박두희", venue: "한국지반공학회 논문집", year: "2014", citations: 0 },
+                { title: "탄성파를 통한 시료성형방법에 따른 모래 전단거동특성 평가", authors: "유진권, 박두희", venue: "한국지반환경공학회 논문집", year: "2014", citations: 0 },
+                { title: "터널 굴착 발파하중 시간이력 생성", authors: "안재광, 박두희, 신영완, 박인준", venue: "한국터널공학회 논문집", year: "2014", citations: 0 },
+                // 2013
+                { title: "운영 중인 도로 터널의 내진 성능 평가", authors: "안재광, 박두희, 김동규, 김광염", venue: "한국터널지하공간학회 논문집", year: "2013", citations: 0 },
+                { title: "산사면의 지진동 증폭 특성", authors: "박두희, 김태균, 안재광, 박인준", venue: "한국방재학회 논문집", year: "2013", citations: 0 },
+                { title: "점토 함유량에 따른 점토질 모래의 투수 및 압밀 특성 평가", authors: "김광균, 박두희, 유진권, 이장근", venue: "한국지반공학회 논문집", year: "2013", citations: 0 },
+                // 2012
+                { title: "응력 기반 간극수압 모델 개발", authors: "박두희, 안재광, 김진만", venue: "한국지반공학회 논문집", year: "2012", citations: 0 },
+                // 2011
+                { title: "Impulse 함수 기반 목표응답스펙트럼 맞춤형 지진파 보정 알고리즘의 적용성 평가", authors: "김현관, 박두희", venue: "한국지반환경공학회 논문집", year: "2011", citations: 0 },
+                // 2010
+                { title: "시간영역 인공지진파 생성", authors: "김현관, 정창균, 박두희", venue: "LHI Journal of Land, Housing and Urban Affairs", year: "2010", citations: 0 },
+                { title: "터널 횡방향 지진해석 Part I: 응답변위법을 통한 터널의 지진응답 예측", authors: "박두희, 신종호, 윤세웅", venue: "한국지반공학회 논문집", year: "2010", citations: 0 },
+                { title: "터널 횡방향 지진해석 Part II: 동적해석을 통한 터널의 지진응답 예측", authors: "박두희, 신종호, 윤세웅", venue: "한국지반공학회 논문집", year: "2010", citations: 0 },
+                { title: "수정된 등가선형해석기법의 정확성 평가", authors: "정창균, 곽동엽, 박두희, 김광균", venue: "한국지반환경공학회 논문집", year: "2010", citations: 0 },
+                { title: "Fourier Spectrum Based Algorithm for Selecting Optimum Frequencies of Viscous Damping Formulation", authors: "박두희, 이현우, 정창균", venue: "International Journal of Geo-Engineering", year: "2010", citations: 0 },
+                { title: "단일심정 지열히트펌프의 수치적 모델링 Part I: 수치해석 모델 검증", authors: "박두희, 김광균, 곽동엽, 장재훈, 박시삼", venue: "한국지반공학회 논문집", year: "2010", citations: 0 },
+                { title: "단일심정 지열히트펌프의 수치적 모델링 Part II: 단일심정 지열히트펌프의 성능평가를 위한 매개변수 연구", authors: "박두희, 김광균, 곽동엽, 장재훈, 박시삼", venue: "한국지반공학회 논문집", year: "2010", citations: 0 },
+                // 2009
+                { title: "新 확률론적 지진재해분석 및 국내 지진계수 개발 Part I: 新 확률론적 지진재해분석 기법 적용 및 검증", authors: "박두희, 곽동엽, 정창균", venue: "한국지반환경공학회 논문집", year: "2009", citations: 0 },
+                { title: "新 확률론적 지진재해분석 및 국내 지진계수 개발 Part II: 확률론적 지진계수 도출", authors: "박두희, 곽동엽, 정창균", venue: "한국지반환경공학회 논문집", year: "2009", citations: 0 },
+                { title: "국내 확률론적 지진계수 생성", authors: "곽동엽, 정창균, 박두희, 이홍성", venue: "한국지반공학회 논문집", year: "2009", citations: 0 },
+                { title: "간편예측법과 유효응력 지반응답해석을 통한 액상화 예측", authors: "곽동엽, 박두희", venue: "한국지반공학회 논문집", year: "2009", citations: 0 },
+                { title: "新 유사정적 사면안정해석 기법 개발", authors: "윤세웅, 박두희, 이승호, 황영철", venue: "한국지반환경공학회 논문집", year: "2009", citations: 0 },
+                // 2008
+                { title: "주파수 의존성을 고려한 등가선형해석기법의 검증", authors: "정창균, 곽동엽, 박두희", venue: "한국지반공학회 논문집", year: "2008", citations: 0 },
+                { title: "공간적으로 변이하는 지진파에 대한 터널의 응답 예측", authors: "김인태, 한정우, 윤세웅, 박두희", venue: "한국지반환경공학회 논문집", year: "2008", citations: 0 },
+                { title: "국내 지반에서의 비선형 부지효과 예측", authors: "이홍성, 윤세웅, 박두희, 김인태", venue: "한국지반공학회 논문집", year: "2008", citations: 0 },
+                // 2006
+                { title: "하중의 주파수에 의하여 지배받은 흙의 동적 거동이 부지증폭현상에 미치는 영향", authors: "박두희, YMA Hashash, 이현우, 김재연", venue: "한국지반공학회 논문집", year: "2006", citations: 0 }
+            ],
+            conference: [
+                { title: "Estimation of Newmark displacement of homogeneous soil slopes from static factor of safety and ground motion parameters", authors: "D Park, S Kwon, CY Kim, J Choi", venue: "Japanese Geotechnical Society Special Publication", year: "2024", citations: 0 },
+                { title: "Deep neural network based approach for site amplification prediction of shallow bedrock sites", authors: "Y Lee, D Lee, J Kang, D Park", venue: "Smart Geotechnics for Smart Societies", year: "2023", citations: 0 },
+                { title: "Optimal earthquake intensity measures for probabilistic seismic demand models of rectangular tunnels", authors: "VQ Nguyen, H Roh, D Park", venue: "Smart Geotechnics for Smart Societies", year: "2023", citations: 1 },
+                { title: "A proposed seismic velocity profile database model", authors: "S Sadiq, O Ilhan, SK Ahdi, Y Bozorgnia, Y Hashash, DY Kwak, D Park, et al.", venue: "Seismological Research Letters", year: "2023", citations: 9 },
+                { title: "Prediction of Site Amplification of Shallow Bedrock Sites Using Deep Neural Network Model", authors: "D Park, Y Lee, H Roh, J Kang", venue: "Conference on Performance-based Design in Earthquake Geotechnical Engineering", year: "2022", citations: 0 },
+                { title: "Status of the United States community shear-wave velocity profile database", authors: "SK Ahdi, P Zimmaro, DY Kwak, T Gospe, A Yong, S Sadiq, O Ilhan, et al.", venue: "Proc. 6th IASPEI/IAEE International Symposium", year: "2021", citations: 0 },
+                { title: "Seismic interaction of tall building and underground level", authors: "S Shamsher, D Park, YG Lee", venue: "16th Asian Regional Conference on Soil Mechanics and Geotechnical Engineering", year: "2020", citations: 0 },
+                // 2018
+                { title: "Development of a United States Community Shear Wave Velocity Profile Database", authors: "S Ahdi, S Sadiq, O Ilhan, Y Bozorgnia, Y Hashash, D Kwak, D Park, A Yong, J Stewart", venue: "Geotechnical Special Publication GSP 291", year: "2018", citations: 0 },
+                { title: "Importance of implied strength correction for 1D site response at shallow sites at a moderate to low seismicity region", authors: "M Aaqib, S Sadiq, D Park, Y Hashash, M Pehlivan", venue: "Geotechnical Special Publication GSP 291", year: "2018", citations: 0 },
+                // 2017
+                { title: "CRR versus N curve for liquefaction assessment of clean sands", authors: "SJ Mandokhail, JK Yoo, D Park", venue: "3rd Performance Based Design in Earthquake Geotechnical Engineering", year: "2017", citations: 0 },
+                { title: "Capacity of bucket foundation on sand over clay layers", authors: "D Park, JS Park", venue: "19th International Conference on Soil Mechanics and Geotechnical Engineering", year: "2017", citations: 0 },
+                { title: "Seismic site response of shallow sites in moderate seismicity regions", authors: "M Pehlivan, D Park, S Sadiq, YMA Hashash", venue: "19th International Conference on Soil Mechanics and Geotechnical Engineering", year: "2017", citations: 0 },
+                { title: "Investigation of mechanism of ground sinking through 3-D GPR surveys and laboratory model tests", authors: "H Chae, D Park, B Chun", venue: "19th International Conference on Soil Mechanics and Geotechnical Engineering", year: "2017", citations: 0 },
+                // 2016
+                { title: "Estimation of damping ratio of rock mass for numerical simulation of blast induced vibration propagation", authors: "JK Ahn, D Park, JK Yoo", venue: "15th Asian Regional Conference on Soil Mechanics and Geotechnical Engineering", year: "2016", citations: 0 },
+                { title: "Collapse mechanism of cut-and-cover tunnels under seismic loading", authors: "D Park, TH Lee, DD Nguyen, J Park", venue: "15th Asian Regional Conference on Soil Mechanics and Geotechnical Engineering", year: "2016", citations: 0 },
+                // 2015
+                { title: "Damage stated of cut-and-cover tunnels under seismic excitation", authors: "D Park, TH Lee, JM Kim", venue: "6th International Conference on Earthquake Geotechnical Engineering", year: "2015", citations: 0 },
+                { title: "Numerical modeling of skirted foundation in alternating layers of sand and clay", authors: "JS Park, D Park, HS Jang, SW Yoon", venue: "25th International Offshore and Polar Engineering Conference", year: "2015", citations: 0 },
+                // 2014
+                { title: "Seismic displacement on mountain slopes", authors: "J Lee, JK Ahn, D Park, J Kim", venue: "5th Asia Conference on Earthquake Engineering", year: "2014", citations: 0 },
+                { title: "Effect of spatial variability of shear wave velocity on seismic response of soil deposits", authors: "Y Lee, D Park, CC Tsai, SJ Mandokhail", venue: "5th Asia Conference on Earthquake Engineering", year: "2014", citations: 0 },
+                { title: "Effect of Relative Density of Sand on the Penetration Characteristics of Suction Pile", authors: "JS Park, JH Lee, D Park, H Ban, YS Han", venue: "24th International Offshore and Polar Engineering Conference", year: "2014", citations: 0 },
+                // 2012
+                { title: "Influence of Rock Joints on Seismic Response of Tunnels", authors: "D Park, JK Yoo, KK Kim", venue: "World Tunnel Congress 2012", year: "2012", citations: 0 },
+                // 2011
+                { title: "Probabilistic Seismic Site Coefficients of Korea", authors: "DY Kwak, D Park, HK Kim", venue: "14th Asian Regional Conference on Soil Mechanics and Geotechnical Engineering", year: "2011", citations: 0 },
+                { title: "Numerical Simulation of Standing Column Well Geothermal Heat Pump", authors: "D Park, JS Park, SS Park", venue: "14th Asian Regional Conference on Soil Mechanics and Geotechnical Engineering", year: "2011", citations: 0 },
+                { title: "Soil Response in Frequency Dependent Equivalent Linear Analysis", authors: "HK Kim, DH Park, CG Jeong", venue: "21st International Offshore and Polar Engineering Conference", year: "2011", citations: 0 },
+                // 2010
+                { title: "Parametric Study for Evaluation of Design Parameters of Standing Column Well", authors: "DY Kwak, DH Park, JH Jang, SM Na, SS Park", venue: "World Geothermal Congress", year: "2010", citations: 0 },
+                { title: "Numerical Simulation of Standing Column Well", authors: "D Park, DY Kwak, GG Kim, SS Park, SM Na", venue: "World Geothermal Congress", year: "2010", citations: 0 },
+                // 2009
+                { title: "Rate and Frequency-Dependent Equivalent Linear Site Response Analysis Algorithms", authors: "D Park, CG Jeong, DY Kwak", venue: "2nd Japan-Korea Geotechnical Workshop", year: "2009", citations: 0 },
+                { title: "Evaluation of dispersion of calculated seismic site responses through Round Robin Test in Korea", authors: "D Park, JM Kim, DS Kim, CG Sun, SR Kim", venue: "17th International Conference on Soil Mechanics and Geotechnical Engineering", year: "2009", citations: 0 },
+                // 2008
+                { title: "Development of novel method of seismic slope stability analysis", authors: "SW Yoon, DH Park, SH Lee, YC Hwang", venue: "1st Korea-Japan Joint Symposium for Slope Failure Disaster Mitigation", year: "2008", citations: 0 },
+                { title: "Comparison of Frequency Dependent Equivalent Linear Analysis Methods", authors: "DY Kwak, CG Jeong, D Park, SS Park", venue: "14th World Conference on Earthquake Engineering", year: "2008", citations: 0 },
+                { title: "Simulation of rate dependent soil behavior in one-dimensional seismic wave propagation", authors: "CG Jeong, DH Park, YMA Hashash", venue: "15th International Congress on Sound and Vibration", year: "2008", citations: 0 },
+                { title: "Influence of rate dependent soil behavior on propagated ground motion", authors: "DY Kwak, JK Ahn, DH Park, YMA Hashash", venue: "Geotechnical Earthquake Engineering and Soil Dynamics IV", year: "2008", citations: 0 },
+                { title: "Tunnel response under spatially varying ground motion", authors: "D Park, JW Han, DY Kwak", venue: "Geotechnical Earthquake Engineering and Soil Dynamics IV", year: "2008", citations: 0 },
+                // 2007
+                { title: "Nonlinear site response analysis in deep soft clay deposits in Korea", authors: "D Park, JY Kim, HW Lee, YS Byun, BS Chun", venue: "13th Asian Regional Conference on Soil Mechanics and Geotechnical Engineering", year: "2007", citations: 0 },
+                { title: "Generation of spatially variable ground motions for seismic analysis of undersea tunnel", authors: "D Park, JW Han, BM Kim", venue: "Chinese Journal of Rock Mechanics and Engineering", year: "2007", citations: 0 },
+                { title: "Generation of spatially variable ground motions for seismic analysis of undersea tunnel", authors: "D Park, YMA Hashash, CY Song, JY Kim", venue: "13th World Conference on Earthquake Engineering", year: "2007", citations: 0 },
+                { title: "Development of a New Equivalent Linear Algorithm with Rate Dependent Soil Model", authors: "D Park, YMA Hashash, JY Song, JY Kim, HW Lee", venue: "17th International Offshore and Polar Engineering Conference", year: "2007", citations: 0 },
+                { title: "Seismic Site Effects for Weak Deposits in Korea", authors: "D Park, JY Kim, HW Lee, BS Chun, CH Jung", venue: "17th International Offshore and Polar Engineering Conference", year: "2007", citations: 0 },
+                { title: "Development of Representative Ground Motions for Seismic Analysis of Nuclear Plants in Korea", authors: "D Park, SC Lee, HW Lee, JW Han", venue: "19th International Conference on Structural Mechanics in Reactor Technology", year: "2007", citations: 0 },
+                // 2004
+                { title: "Probabilistic seismic hazard analysis with nonlinear site effects in the Mississippi Embayment", authors: "D Park, YMA Hashash", venue: "13th World Conference on Earthquake Engineering", year: "2004", citations: 0 },
+                { title: "Nonlinear seismic site response of deep deposits in West Tennessee", authors: "D Park, S Pezeshk, YMA Hashash", venue: "4th Seismic Conference and Workshop on Bridges and Highways", year: "2004", citations: 0 },
+                { title: "Estimation of small damping properties in the Mississippi Embayment", authors: "D Park, YMA Hashash", venue: "11th International Conference on Soil Dynamics & Earthquake Engineering", year: "2004", citations: 0 },
+                // 2002
+                { title: "Seismic site response of deep soil deposits and relationship to response of longitudinal structures", authors: "YMA Hashash, D Park", venue: "4th US-Japan-China Symposium on Lifeline Earthquake Engineering", year: "2002", citations: 0 },
+                { title: "Site response analysis in the Mississippi Embayment", authors: "YMA Hashash, D Park", venue: "US-Japan seminar on seismic disaster mitigation in urban area by geotechnical engineering", year: "2002", citations: 0 },
+                { title: "Site response analysis of deep deposits", authors: "D Park, YMA Hashash", venue: "7th National Conference on Earthquake Engineering", year: "2002", citations: 0 },
+                // 2000
+                { title: "Non-linear site response analysis for deep deposits in New Madrid Seismic Zone", authors: "YMA Hashash, D Park", venue: "4th International Conference on Recent Advances in Geotechnical Earthquake Engineering and Soil Dynamics", year: "2000", citations: 0 }
+            ]
+        };
+
+        // Store publication data globally for filtering
+        let publicationData = {};
+
+        // Load publications from JSON or use fallback
+        async function loadPublications() {
+            let data = fallbackData;
+
+            try {
+                const response = await fetch('publications-data.json');
+                if (response.ok) {
+                    data = await response.json();
+                }
+            } catch (error) {
+                console.log('Using fallback data (local file access)');
+            }
+
+            // Store data globally
+            publicationData = data;
+
+            // Update stats counts from actual data arrays
+            const intCountEl = document.getElementById('international-count');
+            const korCountEl = document.getElementById('korean-count');
+            const confCountEl = document.getElementById('conference-count');
+
+            if (intCountEl && data.international) {
+                intCountEl.setAttribute('data-target', data.international.length);
+            }
+            if (korCountEl && data.korean) {
+                korCountEl.setAttribute('data-target', data.korean.length);
+            }
+            if (confCountEl && data.conference) {
+                confCountEl.setAttribute('data-target', data.conference.length);
+            }
+
+            // Create year filters and render publications
+            createYearFilter('international', data.international, 'international-year-filter');
+            createYearFilter('korean', data.korean, 'korean-year-filter');
+            createYearFilter('conference', data.conference, 'conference-year-filter');
+
+            renderPublications('international', data.international, 'international-papers', 'all');
+            renderPublications('korean', data.korean, 'korean-papers', 'all');
+            renderPublications('conference', data.conference, 'conference-papers', 'all');
+        }
+
+        function createYearFilter(type, publications, filterContainerId) {
+            const filterContainer = document.getElementById(filterContainerId);
+            if (!filterContainer || !publications) return;
+
+            // Count publications by year
+            const yearCounts = {};
+            let totalCount = publications.length;
+
+            publications.forEach(pub => {
+                const year = parseInt(pub.year) || 0;
+                if (!yearCounts[year]) yearCounts[year] = 0;
+                yearCounts[year]++;
+            });
+
+            // Get all years sorted descending (newest first)
+            const allYears = Object.keys(yearCounts).sort((a, b) => b - a);
+
+            // Create filter buttons
+            let html = '<div class="year-filter-buttons">';
+
+            // All button
+            html += `<button class="year-filter-btn active" data-type="${type}" data-year="all">All <span class="year-count">(${totalCount})</span></button>`;
+
+            // All year buttons (newest first)
+            allYears.forEach(year => {
+                const count = yearCounts[year] || 0;
+                html += `<button class="year-filter-btn" data-type="${type}" data-year="${year}">${year} <span class="year-count">(${count})</span></button>`;
+            });
+
+            html += '</div>';
+            filterContainer.innerHTML = html;
+
+            // Add event listeners
+            filterContainer.querySelectorAll('.year-filter-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterContainer.querySelectorAll('.year-filter-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+
+                    const selectedYear = btn.getAttribute('data-year');
+                    const containerId = type + '-papers';
+
+                    renderPublications(type, publicationData[type], containerId, selectedYear);
+                });
+            });
+        }
+
+        function renderPublications(type, publications, containerId, yearFilter = 'all') {
+            const container = document.getElementById(containerId);
+            if (!container || !publications) return;
+
+            const listContainer = container.querySelector('.pub-list-container');
+            if (!listContainer) return;
+
+            // Filter publications by year if needed
+            let filteredPubs = publications;
+            if (yearFilter !== 'all') {
+                filteredPubs = publications.filter(pub => pub.year === yearFilter.toString());
+            }
+
+            // Sort by year ascending (oldest first) for numbering - oldest = 1, newest = max
+            const sortedPubs = [...filteredPubs].sort((a, b) => {
+                const yearA = parseInt(a.year) || 0;
+                const yearB = parseInt(b.year) || 0;
+                return yearA - yearB;
+            });
+
+            // Create numbering map (oldest = 1, newest = max)
+            const numberMap = new Map();
+            sortedPubs.forEach((pub, index) => {
+                numberMap.set(pub.title, index + 1);
+            });
+
+            // Group by year for display (descending - newest first)
+            const byYear = {};
+            filteredPubs.forEach(pub => {
+                const year = pub.year || 'Unknown';
+                if (!byYear[year]) byYear[year] = [];
+                byYear[year].push(pub);
+            });
+
+            // Sort years descending for display
+            const years = Object.keys(byYear).sort((a, b) => b - a);
+
+            let html = '';
+            if (filteredPubs.length === 0) {
+                html = '<div class="no-publications">No publications found for this year.</div>';
+            } else {
+                years.forEach(year => {
+                    html += `<div class="pub-year-section"><h2 class="pub-year-title">${year}</h2>`;
+
+                    // Sort publications within year by their number descending (highest first)
+                    const yearPubs = byYear[year].sort((a, b) => {
+                        return numberMap.get(b.title) - numberMap.get(a.title);
+                    });
+
+                    yearPubs.forEach(pub => {
+                        const typeLabel = type === 'international' ? 'SCI' :
+                                         type === 'korean' ? 'KCI' : 'Conf';
+                        const typeClass = type === 'international' ? 'journal' :
+                                         type === 'korean' ? 'korean' : 'conference';
+                        const pubNumber = numberMap.get(pub.title);
+
+                        html += `
+                            <div class="pub-item" data-type="${type}">
+                                <div class="pub-number">${pubNumber}</div>
+                                <div class="pub-type ${typeClass}">${typeLabel}</div>
+                                <div class="pub-content">
+                                    <h4>${pub.title}</h4>
+                                    <p class="pub-authors">${pub.authors}</p>
+                                    <p class="pub-venue">${pub.venue}</p>
+                                </div>
+                            </div>
+                        `;
+                    });
+
+                    html += '</div>';
+                });
+            }
+
+            listContainer.innerHTML = html;
+        }
+
+        // Initialize
+        loadPublications();
+
+        // Publication category filter
+        const filterBtnsNew = document.querySelectorAll('.filter-btn-new');
+        const pubCategories = document.querySelectorAll('.pub-category');
+
+        filterBtnsNew.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtnsNew.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.getAttribute('data-filter');
+
+                pubCategories.forEach(category => {
+                    category.style.display = 'none';
+                });
+
+                document.getElementById(filter + '-papers').style.display = 'block';
+            });
+        });
+
+        // Animate publication stats
+        const pubStatNumbers = document.querySelectorAll('.pub-stat-hero-number');
+        let pubAnimated = false;
+
+        const animatePubStats = () => {
+            pubStatNumbers.forEach(number => {
+                const target = parseInt(number.getAttribute('data-target'));
+                const duration = 2000;
+                const increment = target / (duration / 16);
+                let current = 0;
+
+                const updateNumber = () => {
+                    current += increment;
+                    if (current < target) {
+                        number.textContent = Math.floor(current);
+                        requestAnimationFrame(updateNumber);
+                    } else {
+                        number.textContent = target;
+                    }
+                };
+
+                updateNumber();
+            });
+        };
+
+        // Start animation when hero is visible
+        const pubHero = document.querySelector('.pub-hero');
+        if (pubHero) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !pubAnimated) {
+                        animatePubStats();
+                        pubAnimated = true;
+                    }
+                });
+            }, { threshold: 0.5 });
+            observer.observe(pubHero);
+        }
+
+        // Simple network animation for publications hero
+        const pubCanvas = document.getElementById('pubCanvas');
+        if (pubCanvas) {
+            const ctx = pubCanvas.getContext('2d');
+            let particles = [];
+            let animationId;
+
+            function resizeCanvas() {
+                pubCanvas.width = pubCanvas.parentElement.offsetWidth;
+                pubCanvas.height = pubCanvas.parentElement.offsetHeight;
+            }
+
+            function createParticles() {
+                particles = [];
+                const count = Math.floor((pubCanvas.width * pubCanvas.height) / 20000);
+                for (let i = 0; i < count; i++) {
+                    particles.push({
+                        x: Math.random() * pubCanvas.width,
+                        y: Math.random() * pubCanvas.height,
+                        vx: (Math.random() - 0.5) * 0.5,
+                        vy: (Math.random() - 0.5) * 0.5,
+                        radius: Math.random() * 2 + 1
+                    });
+                }
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, pubCanvas.width, pubCanvas.height);
+
+                // Draw connections
+                for (let i = 0; i < particles.length; i++) {
+                    for (let j = i + 1; j < particles.length; j++) {
+                        const dx = particles[i].x - particles[j].x;
+                        const dy = particles[i].y - particles[j].y;
+                        const dist = Math.sqrt(dx * dx + dy * dy);
+
+                        if (dist < 150) {
+                            ctx.beginPath();
+                            ctx.moveTo(particles[i].x, particles[i].y);
+                            ctx.lineTo(particles[j].x, particles[j].y);
+                            ctx.strokeStyle = `rgba(0, 191, 255, ${(1 - dist / 150) * 0.3})`;
+                            ctx.stroke();
+                        }
+                    }
+                }
+
+                // Draw and update particles
+                particles.forEach(p => {
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                    ctx.fillStyle = 'rgba(0, 191, 255, 0.6)';
+                    ctx.fill();
+
+                    p.x += p.vx;
+                    p.y += p.vy;
+
+                    if (p.x < 0 || p.x > pubCanvas.width) p.vx *= -1;
+                    if (p.y < 0 || p.y > pubCanvas.height) p.vy *= -1;
+                });
+
+                animationId = requestAnimationFrame(animate);
+            }
+
+            resizeCanvas();
+            createParticles();
+            animate();
+
+            window.addEventListener('resize', () => {
+                resizeCanvas();
+                createParticles();
+            });
+        }
+    </script>
+</body>
+</html>
