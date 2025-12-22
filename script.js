@@ -509,18 +509,18 @@ class GeotechnicalAnimation {
         const scale = this.scale || 1;
         const sizeScale = size / 210;
 
-        // 축을 중앙에 배치 (y + 10 위치)
-        const axisY = y + 10 * sizeScale;
+        // 축을 중앙에 배치
+        const axisY = y + 5 * sizeScale;
 
-        // Draw spectrum curve - 축 중앙 기준으로 위아래로 진동
+        // Draw spectrum curve - 크기를 키워서 박스를 더 채움
         ctx.beginPath();
-        ctx.moveTo(x - 40 * sizeScale, axisY);
+        ctx.moveTo(x - 75 * sizeScale, axisY);
 
         for (let i = 0; i <= 100; i++) {
             const t = i / 100;
-            const curveX = x - 40 * sizeScale + t * 80 * sizeScale;
-            // 감쇠 진동 - 크기를 줄여서 박스 안에 유지
-            const amplitude = Math.exp(-t * 2) * Math.sin(t * 10 + this.time * 0.05) * 35 * sizeScale;
+            const curveX = x - 75 * sizeScale + t * 150 * sizeScale;
+            // 감쇠 진동 - 크기를 키움
+            const amplitude = Math.exp(-t * 2) * Math.sin(t * 10 + this.time * 0.05) * 60 * sizeScale;
             const curveY = axisY - amplitude;
             ctx.lineTo(curveX, curveY);
         }
@@ -529,14 +529,14 @@ class GeotechnicalAnimation {
         ctx.lineWidth = Math.max(2, 2.5 * scale);
         ctx.stroke();
 
-        // Axes - 중앙에 배치
+        // Axes - 중앙에 배치, 크기 키움
         ctx.beginPath();
         // X축 (중앙)
-        ctx.moveTo(x - 42 * sizeScale, axisY);
-        ctx.lineTo(x + 42 * sizeScale, axisY);
+        ctx.moveTo(x - 78 * sizeScale, axisY);
+        ctx.lineTo(x + 78 * sizeScale, axisY);
         // Y축
-        ctx.moveTo(x - 42 * sizeScale, y + 40 * sizeScale);
-        ctx.lineTo(x - 42 * sizeScale, y - 40 * sizeScale);
+        ctx.moveTo(x - 78 * sizeScale, y + 70 * sizeScale);
+        ctx.lineTo(x - 78 * sizeScale, y - 70 * sizeScale);
         ctx.strokeStyle = 'rgba(255, 255, 255, 0.4)';
         ctx.lineWidth = Math.max(1, 1.5 * scale);
         ctx.stroke();
@@ -692,19 +692,19 @@ class GeotechnicalAnimation {
         ctx.fillStyle = 'rgba(0, 50, 80, 0.8)';
         ctx.fill();
 
-        // Accuracy percentage text
-        const mainFontSize = Math.max(18, Math.round(34 * scale));
+        // Accuracy percentage text - 크기 줄임
+        const mainFontSize = Math.min(28, Math.max(16, Math.round(20 * scale)));
         ctx.fillStyle = 'rgba(50, 255, 150, 1)';
         ctx.font = `bold ${mainFontSize}px Orbitron`;
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         ctx.fillText(Math.round(accuracy * 100) + '%', centerX, centerY);
 
-        // "Accuracy" label below the circle
-        const labelFontSize = Math.max(11, Math.round(18 * scale));
+        // "Accuracy" label below the circle - 크기 줄임
+        const labelFontSize = Math.min(14, Math.max(10, Math.round(12 * scale)));
         ctx.fillStyle = 'rgba(50, 255, 150, 0.9)';
         ctx.font = `bold ${labelFontSize}px Orbitron`;
-        ctx.fillText('Accuracy', centerX, centerY + outerRadius + 20 * scale);
+        ctx.fillText('Accuracy', centerX, centerY + outerRadius + 15 * scale);
         ctx.textBaseline = 'alphabetic';
         ctx.textAlign = 'left';
 
@@ -760,15 +760,15 @@ class GeotechnicalAnimation {
         ctx.fill();
         ctx.stroke();
 
-        // Draw text lines - 글자 크기를 박스에 맞게 제한
-        // 스케일이 커져도 글자가 너무 커지지 않도록 제한
-        const fontSize = Math.min(14, Math.max(9, Math.round(10 * scale)));
+        // Draw text lines - 글자 크기를 박스에 맞게 조정
+        // 살짝 키움
+        const fontSize = Math.min(16, Math.max(11, Math.round(12 * scale)));
         ctx.font = `${fontSize}px Roboto`;
         ctx.textAlign = 'left';
-        const lineHeight = Math.min(20, Math.max(14, 16 * scale));
+        const lineHeight = Math.min(22, Math.max(16, 18 * scale));
         // 텍스트 시작 위치 - 박스 내부에 여백을 두고 시작
-        const textStartX = centerX - boxWidth / 2 + 10;
-        const textStartY = startY + 20;
+        const textStartX = centerX - boxWidth / 2 + 12;
+        const textStartY = startY + 22;
 
         for (let i = 0; i <= currentLineIndex && i < lines.length; i++) {
             const line = lines[i];
