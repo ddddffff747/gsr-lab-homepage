@@ -248,10 +248,11 @@ class GeotechnicalAnimation {
         // 레이어 구성 (7개 레이어)
         const layers = [4, 6, 10, 12, 10, 6, 4];
 
-        // Neural Network 위치 및 크기 (1024px 기준값 * scale)
-        const baseNetworkWidth = 280;  // 1024px에서의 네트워크 너비
-        const baseNodeRadius = 10;     // 1024px에서의 노드 반지름
-        const baseLayerHeight = 300;   // 1024px에서의 레이어 높이
+        // Neural Network 위치 및 크기 (1024px 기준값 * scale * 0.9 축소)
+        const sizeMultiplier = 0.9;  // 0.9배 축소
+        const baseNetworkWidth = 280 * sizeMultiplier;  // 1024px에서의 네트워크 너비
+        const baseNodeRadius = 10 * sizeMultiplier;     // 1024px에서의 노드 반지름
+        const baseLayerHeight = 300 * sizeMultiplier;   // 1024px에서의 레이어 높이
 
         const networkWidth = baseNetworkWidth * scale;
         const nodeRadius = baseNodeRadius * scale;
@@ -260,11 +261,14 @@ class GeotechnicalAnimation {
         const centerX = layout.networkCenterX;
         const startX = centerX - networkWidth / 2;
         const endX = centerX + networkWidth / 2;
-        const startY = layout.contentTop + (layout.contentHeight - layerHeight) / 2;
+        // 세로 중앙 정렬 - 다른 섹션과 같은 centerY 사용
+        const centerY = layout.contentTop + layout.contentHeight * 0.45;
+        const startY = centerY - layerHeight / 2;
 
         this.neuralNetwork.nodes = [];
         this.neuralNetwork.connections = [];
-        this.neuralNetwork.layerHeight = layerHeight; // Store for use in output prediction alignment
+        this.neuralNetwork.layerHeight = layerHeight;
+        this.neuralNetwork.centerY = centerY; // 세로 중앙 위치 저장 (다른 섹션과 정렬용)
 
         // Create nodes for each layer
         layers.forEach((nodeCount, layerIndex) => {
@@ -692,19 +696,19 @@ class GeotechnicalAnimation {
         ctx.fillStyle = 'rgba(0, 50, 80, 0.8)';
         ctx.fill();
 
-        // Accuracy percentage text - 크기 줄임
-        const mainFontSize = Math.min(28, Math.max(16, Math.round(20 * scale)));
+        // Accuracy percentage text - 1.5배 키움
+        const mainFontSize = Math.min(42, Math.max(24, Math.round(30 * scale)));
         ctx.fillStyle = 'rgba(50, 255, 150, 1)';
         ctx.font = `bold ${mainFontSize}px Orbitron`;
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         ctx.fillText(Math.round(accuracy * 100) + '%', centerX, centerY);
 
-        // "Accuracy" label below the circle - 크기 줄임
-        const labelFontSize = Math.min(14, Math.max(10, Math.round(12 * scale)));
+        // "Accuracy" label below the circle - 2배 키움
+        const labelFontSize = Math.min(28, Math.max(20, Math.round(24 * scale)));
         ctx.fillStyle = 'rgba(50, 255, 150, 0.9)';
         ctx.font = `bold ${labelFontSize}px Orbitron`;
-        ctx.fillText('Accuracy', centerX, centerY + outerRadius + 15 * scale);
+        ctx.fillText('Accuracy', centerX, centerY + outerRadius + 20 * scale);
         ctx.textBaseline = 'alphabetic';
         ctx.textAlign = 'left';
 
