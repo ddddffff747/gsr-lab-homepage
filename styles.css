@@ -222,31 +222,34 @@ body {
 }
 
 .hero-korean {
-    font-size: 1.5rem;
+    /* 동적 폰트 크기: 1024px에서 1.5rem, 1920px에서 2rem, 2560px에서 2.5rem */
+    font-size: clamp(1.2rem, calc(1rem + 0.8vw), 2.5rem);
     opacity: 0.9;
-    margin-bottom: 10px;
-    letter-spacing: 5px;
+    margin-bottom: clamp(8px, 1vw, 15px);
+    letter-spacing: clamp(3px, 0.5vw, 8px);
 }
 
 .hero-title {
     font-family: 'Orbitron', sans-serif;
-    font-size: 4rem;
+    /* 동적 폰트 크기: 1024px에서 3rem, 1920px에서 4.5rem, 2560px에서 6rem */
+    font-size: clamp(2.5rem, calc(2rem + 3vw), 6rem);
     font-weight: 700;
-    margin-bottom: 20px;
-    letter-spacing: 2px;
+    margin-bottom: clamp(15px, 2vw, 30px);
+    letter-spacing: clamp(1px, 0.2vw, 4px);
     text-shadow: 0 0 30px rgba(0, 191, 255, 0.8), 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
 .hero-line {
-    width: 100px;
-    height: 3px;
+    width: clamp(60px, 8vw, 150px);
+    height: clamp(2px, 0.3vw, 4px);
     background: var(--accent-color);
-    margin: 30px auto;
+    margin: clamp(20px, 3vw, 40px) auto;
 }
 
 .hero-description {
-    font-size: 1.1rem;
-    max-width: 700px;
+    /* 동적 폰트 크기: 1024px에서 1rem, 1920px에서 1.3rem, 2560px에서 1.6rem */
+    font-size: clamp(0.9rem, calc(0.8rem + 0.4vw), 1.6rem);
+    max-width: clamp(500px, 50vw, 900px);
     margin: 0 auto;
     opacity: 0.9;
     line-height: 1.8;
@@ -1620,13 +1623,7 @@ body {
         transform: rotate(45deg) translate(-5px, -6px);
     }
 
-    .hero-title {
-        font-size: 2.5rem;
-    }
-
-    .hero-korean {
-        font-size: 1.2rem;
-    }
+    /* hero-title, hero-korean은 clamp()로 자동 조절됨 */
 
     .hero-content {
         top: 55%;
@@ -1757,9 +1754,7 @@ body {
 }
 
 @media (max-width: 480px) {
-    .hero-title {
-        font-size: 1.8rem;
-    }
+    /* hero-title은 clamp()로 자동 조절됨 */
 
     .page-header h1 {
         font-size: 1.8rem;
