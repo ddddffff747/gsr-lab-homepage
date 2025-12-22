@@ -248,8 +248,8 @@ class GeotechnicalAnimation {
         // 레이어 구성 (7개 레이어)
         const layers = [4, 6, 10, 12, 10, 6, 4];
 
-        // Neural Network 위치 및 크기 (1024px 기준값 * scale * 0.9 축소)
-        const sizeMultiplier = 0.9;  // 0.9배 축소
+        // Neural Network 위치 및 크기 (1024px 기준값 * scale * 0.81 축소)
+        const sizeMultiplier = 0.81;  // 0.9 * 0.9 = 0.81배 축소
         const baseNetworkWidth = 280 * sizeMultiplier;  // 1024px에서의 네트워크 너비
         const baseNodeRadius = 10 * sizeMultiplier;     // 1024px에서의 노드 반지름
         const baseLayerHeight = 300 * sizeMultiplier;   // 1024px에서의 레이어 높이
@@ -716,8 +716,8 @@ class GeotechnicalAnimation {
         this.drawOutputFlowLines(centerX - size / 2, centerY);
 
         // Draw LLM text writing animation to the right
-        // Output 영역의 오른쪽 부분에 LLM 박스 배치
-        const llmBoxX = layout.outputCenterX + layout.sectionWidth * 0.15;
+        // Output 영역의 오른쪽 부분에 LLM 박스 배치 - 간격 넓힘
+        const llmBoxX = layout.outputCenterX + layout.sectionWidth * 0.35;
         const llmBoxY = centerY - 80 * scale;
 
         // 화면 오른쪽 경계 체크 후 그리기
