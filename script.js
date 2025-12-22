@@ -716,8 +716,8 @@ class GeotechnicalAnimation {
         this.drawOutputFlowLines(centerX - size / 2, centerY);
 
         // Draw LLM text writing animation to the right
-        // Output 영역의 오른쪽 부분에 LLM 박스 배치 - 간격 넓힘
-        const llmBoxX = layout.outputCenterX + layout.sectionWidth * 0.35;
+        // Output 영역의 오른쪽 부분에 LLM 박스 배치
+        const llmBoxX = layout.outputCenterX + layout.sectionWidth * 0.25;
         const llmBoxY = centerY - 80 * scale;
 
         // 화면 오른쪽 경계 체크 후 그리기
