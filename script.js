@@ -508,29 +508,37 @@ class GeotechnicalAnimation {
     drawResponseSpectrum(ctx, x, y, size) {
         const scale = this.scale || 1;
         const sizeScale = size / 210;
-        ctx.beginPath();
-        ctx.moveTo(x - 85 * sizeScale, y + 70 * sizeScale);
 
-        // Draw spectrum curve
-        for (let i = 0; i <= 120; i++) {
-            const t = i / 120;
-            const curveX = x - 85 * sizeScale + t * 170 * sizeScale;
-            const curveY = y + 70 * sizeScale - Math.exp(-t * 3) * Math.sin(t * 8 + this.time * 0.05) * 85 * sizeScale - t * 18 * sizeScale;
+        // 축을 중앙에 배치 (y + 10 위치)
+        const axisY = y + 10 * sizeScale;
+
+        // Draw spectrum curve - 축 중앙 기준으로 위아래로 진동
+        ctx.beginPath();
+        ctx.moveTo(x - 40 * sizeScale, axisY);
+
+        for (let i = 0; i <= 100; i++) {
+            const t = i / 100;
+            const curveX = x - 40 * sizeScale + t * 80 * sizeScale;
+            // 감쇠 진동 - 크기를 줄여서 박스 안에 유지
+            const amplitude = Math.exp(-t * 2) * Math.sin(t * 10 + this.time * 0.05) * 35 * sizeScale;
+            const curveY = axisY - amplitude;
             ctx.lineTo(curveX, curveY);
         }
 
         ctx.strokeStyle = 'rgba(0, 255, 200, 0.9)';
-        ctx.lineWidth = Math.max(2, 3.5 * scale);
+        ctx.lineWidth = Math.max(2, 2.5 * scale);
         ctx.stroke();
 
-        // Axes
+        // Axes - 중앙에 배치
         ctx.beginPath();
-        ctx.moveTo(x - 85 * sizeScale, y + 75 * sizeScale);
-        ctx.lineTo(x + 85 * sizeScale, y + 75 * sizeScale);
-        ctx.moveTo(x - 85 * sizeScale, y + 75 * sizeScale);
-        ctx.lineTo(x - 85 * sizeScale, y - 85 * sizeScale);
+        // X축 (중앙)
+        ctx.moveTo(x - 42 * sizeScale, axisY);
+        ctx.lineTo(x + 42 * sizeScale, axisY);
+        // Y축
+        ctx.moveTo(x - 42 * sizeScale, y + 40 * sizeScale);
+        ctx.lineTo(x - 42 * sizeScale, y - 40 * sizeScale);
         ctx.strokeStyle = 'rgba(255, 255, 255, 0.4)';
-        ctx.lineWidth = Math.max(1, 2 * scale);
+        ctx.lineWidth = Math.max(1, 1.5 * scale);
         ctx.stroke();
     }
 
@@ -752,13 +760,15 @@ class GeotechnicalAnimation {
         ctx.fill();
         ctx.stroke();
 
-        // Draw text lines - responsive font and spacing
-        const fontSize = Math.max(10, Math.round(16 * scale));
+        // Draw text lines - 글자 크기를 박스에 맞게 제한
+        // 스케일이 커져도 글자가 너무 커지지 않도록 제한
+        const fontSize = Math.min(14, Math.max(9, Math.round(10 * scale)));
         ctx.font = `${fontSize}px Roboto`;
         ctx.textAlign = 'left';
-        const lineHeight = Math.max(16, 28 * scale);
-        const textStartX = centerX - boxWidth / 2 + 15 * scale;
-        const textStartY = startY + 25 * scale;
+        const lineHeight = Math.min(20, Math.max(14, 16 * scale));
+        // 텍스트 시작 위치 - 박스 내부에 여백을 두고 시작
+        const textStartX = centerX - boxWidth / 2 + 10;
+        const textStartY = startY + 20;
 
         for (let i = 0; i <= currentLineIndex && i < lines.length; i++) {
             const line = lines[i];
