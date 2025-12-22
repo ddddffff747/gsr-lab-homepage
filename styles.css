@@ -21,6 +21,8 @@
     --shadow-md: 0 4px 6px -1px rgba(0, 102, 204, 0.1);
     --shadow-lg: 0 10px 15px -3px rgba(0, 102, 204, 0.15);
     --shadow-xl: 0 20px 25px -5px rgba(0, 102, 204, 0.2);
+    /* Hero 스케일: JS에서 동적으로 업데이트됨 (1024px=1.0, max=2.0) */
+    --hero-scale: 1;
 }
 
 html {
@@ -222,34 +224,38 @@ body {
 }
 
 .hero-korean {
-    /* 동적 폰트 크기: 1024px에서 1.5rem, 1920px에서 2rem, 2560px에서 2.5rem */
-    font-size: clamp(1.2rem, calc(1rem + 0.8vw), 2.5rem);
+    /* Canvas와 동일한 스케일 시스템 사용 (1024px = 1.0, max = 2.0) */
+    /* 기본 1.8rem (1.2 * 1.5), scale 2.0에서 2.7rem */
+    font-size: calc(1.8rem * (0.7 + var(--hero-scale, 1) * 0.3));
     opacity: 0.9;
-    margin-bottom: clamp(8px, 1vw, 15px);
-    letter-spacing: clamp(3px, 0.5vw, 8px);
+    margin-bottom: calc(8px * var(--hero-scale, 1));
+    letter-spacing: calc(4px * (0.8 + var(--hero-scale, 1) * 0.2));
 }
 
 .hero-title {
     font-family: 'Orbitron', sans-serif;
-    /* 동적 폰트 크기: 1024px에서 3rem, 1920px에서 4.5rem, 2560px에서 6rem */
-    font-size: clamp(2.5rem, calc(2rem + 3vw), 6rem);
+    /* Canvas와 동일한 스케일 시스템 사용 (1024px = 1.0, max = 2.0) */
+    /* 기본 2.5rem, scale 2.0에서 4.5rem */
+    font-size: calc(2.5rem * (0.56 + var(--hero-scale, 1) * 0.44));
     font-weight: 700;
-    margin-bottom: clamp(15px, 2vw, 30px);
-    letter-spacing: clamp(1px, 0.2vw, 4px);
+    margin-bottom: calc(15px * var(--hero-scale, 1));
+    letter-spacing: calc(1px * var(--hero-scale, 1));
     text-shadow: 0 0 30px rgba(0, 191, 255, 0.8), 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
 .hero-line {
-    width: clamp(60px, 8vw, 150px);
-    height: clamp(2px, 0.3vw, 4px);
+    /* Canvas와 동일한 스케일 시스템 사용 */
+    width: calc(60px * var(--hero-scale, 1));
+    height: calc(2px * var(--hero-scale, 1));
     background: var(--accent-color);
-    margin: clamp(20px, 3vw, 40px) auto;
+    margin: calc(15px * var(--hero-scale, 1)) auto;
 }
 
 .hero-description {
-    /* 동적 폰트 크기: 1024px에서 1rem, 1920px에서 1.3rem, 2560px에서 1.6rem */
-    font-size: clamp(0.9rem, calc(0.8rem + 0.4vw), 1.6rem);
-    max-width: clamp(500px, 50vw, 900px);
+    /* Canvas와 동일한 스케일 시스템 사용 (1024px = 1.0, max = 2.0) */
+    /* 기본 0.9rem, scale 2.0에서 1.3rem */
+    font-size: calc(0.9rem * (0.77 + var(--hero-scale, 1) * 0.23));
+    max-width: calc(500px * var(--hero-scale, 1));
     margin: 0 auto;
     opacity: 0.9;
     line-height: 1.8;

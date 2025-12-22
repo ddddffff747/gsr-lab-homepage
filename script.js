@@ -185,6 +185,9 @@ class GeotechnicalAnimation {
             sectionWidth: w * 0.28
         };
 
+        // CSS 변수로 스케일 전달 (텍스트도 동일한 스케일 시스템 사용)
+        document.documentElement.style.setProperty('--hero-scale', this.scale);
+
         // Debug info
         console.log(`Screen: ${w}x${h} | Scale: ${this.scale.toFixed(2)} | Base: ${BASE_WIDTH}px`);
     }
