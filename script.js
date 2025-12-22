@@ -139,6 +139,12 @@ class GeotechnicalAnimation {
     }
 
     init() {
+        // Initialize screen info first
+        this.screenWidth = window.innerWidth;
+        this.screenHeight = window.innerHeight;
+        this.isNarrowScreen = this.screenWidth < 1200;
+        this.isMobileScreen = this.screenWidth < 768;
+
         this.resize();
         this.createSoilLayers();
         this.createBuildings();
@@ -150,17 +156,30 @@ class GeotechnicalAnimation {
     resize() {
         this.canvas.width = window.innerWidth;
         this.canvas.height = window.innerHeight;
+
         // Global responsive scale factor based on screen width
         // Base design is for 1920px width (desktop)
         // Elements will scale down proportionally on smaller screens
-        // Use CSS pixel width (window.innerWidth) for consistent scaling across different DPI settings
         const effectiveWidth = window.innerWidth;
-        this.scale = Math.min(1, Math.max(0.5, effectiveWidth / 1920));
+        const effectiveHeight = window.innerHeight;
+
+        // Calculate scale based on both width and height to ensure proper fit
+        const widthScale = effectiveWidth / 1920;
+        const heightScale = effectiveHeight / 1080;
+
+        // Use the smaller scale to ensure everything fits
+        this.scale = Math.min(1, Math.max(0.35, Math.min(widthScale, heightScale)));
+
+        // Store screen info for layout decisions
+        this.screenWidth = effectiveWidth;
+        this.screenHeight = effectiveHeight;
+        this.isNarrowScreen = effectiveWidth < 1200;
+        this.isMobileScreen = effectiveWidth < 768;
 
         // Debug info (can be removed later)
         console.log('Screen:', window.innerWidth, 'x', window.innerHeight,
-                    '| DevicePixelRatio:', window.devicePixelRatio,
-                    '| Scale:', this.scale.toFixed(2));
+                    '| Scale:', this.scale.toFixed(2),
+                    '| Layout:', this.isMobileScreen ? 'Mobile' : (this.isNarrowScreen ? 'Narrow' : 'Full'));
     }
 
     // Create soil layers (geological strata) - reduced height
@@ -216,15 +235,27 @@ class GeotechnicalAnimation {
 
     // Create neural network for ML visualization - enlarged and more complex
     createNeuralNetwork() {
-        const layers = [4, 6, 10, 12, 10, 6, 4]; // More layers, more nodes for complexity
-        const centerX = this.canvas.width * 0.5;
         const scale = this.scale || 1;
-        const networkWidth = Math.max(280, 500 * scale);
+        const isNarrow = this.isNarrowScreen || false;
+        const isMobile = this.isMobileScreen || false;
+
+        // Adjust layer complexity based on screen size
+        const layers = isMobile ? [3, 5, 7, 5, 3] : (isNarrow ? [4, 6, 8, 6, 4] : [4, 6, 10, 12, 10, 6, 4]);
+
+        // Dynamic center position - move to center on narrow screens
+        const centerX = this.canvas.width * 0.5;
+
+        // Dynamic network sizing based on available space
+        const availableWidth = this.canvas.width * (isMobile ? 0.8 : (isNarrow ? 0.4 : 0.3));
+        const networkWidth = Math.max(200, Math.min(500, availableWidth));
         const startX = centerX - networkWidth / 2;
         const endX = centerX + networkWidth / 2;
-        const startY = this.canvas.height * 0.10;
-        const layerHeight = Math.max(280, 500 * scale);
-        const nodeRadius = Math.max(10, 18 * scale);
+
+        // Dynamic height based on screen
+        const availableHeight = this.canvas.height * 0.55;
+        const startY = this.canvas.height * 0.08;
+        const layerHeight = Math.max(200, Math.min(500, availableHeight));
+        const nodeRadius = Math.max(6, Math.min(18, 12 * scale));
 
         this.neuralNetwork.nodes = [];
         this.neuralNetwork.connections = [];
@@ -372,15 +403,25 @@ class GeotechnicalAnimation {
     drawInputQuadrants() {
         const ctx = this.ctx;
         const scale = this.scale || 1;
-        // Adjust centerX for smaller screens to prevent overflow
-        const minCenterX = 250 * scale; // Minimum distance from left edge
-        const centerX = Math.max(minCenterX, this.canvas.width * 0.15);
-        const centerY = this.canvas.height * 0.28;
-        const quadrantSize = Math.max(100, 210 * scale);
-        const gap = Math.max(6, 12 * scale);
+        const isNarrow = this.isNarrowScreen || false;
+        const isMobile = this.isMobileScreen || false;
 
-        // Don't draw if screen is too narrow
-        if (this.canvas.width < 768) return;
+        // Don't draw if screen is too narrow (mobile)
+        if (isMobile) return;
+
+        // Calculate available space for quadrants
+        // On narrow screens, position closer to left edge
+        const neuralNetworkLeft = this.canvas.width * 0.5 - (this.canvas.width * (isNarrow ? 0.2 : 0.15));
+
+        // Dynamic quadrant size based on available space
+        const maxQuadrantSize = (neuralNetworkLeft - 40) / 2.2; // Leave margin for gap
+        const quadrantSize = Math.max(60, Math.min(210, maxQuadrantSize * scale));
+        const gap = Math.max(4, 8 * scale);
+
+        // Center position for quadrants - ensure it doesn't overflow
+        const totalWidth = quadrantSize * 2 + gap;
+        const centerX = Math.max(totalWidth / 2 + 20, Math.min(neuralNetworkLeft - 40, this.canvas.width * 0.18));
+        const centerY = this.canvas.height * 0.28;
 
         // 4 quadrants: 1-structural response, 2-response spectrum, 3-ground properties, 4-hazard curve
         const quadrants = [
@@ -576,10 +617,14 @@ class GeotechnicalAnimation {
         const inputNodes = this.neuralNetwork.nodes[0];
         if (!inputNodes || inputNodes.length === 0) return;
 
+        // Skip on mobile
+        if (this.isMobileScreen) return;
+
         // Draw flowing particles from input visualization to neural network
         const particleRadius = Math.max(2, 3 * scale);
+        const particleCount = this.isNarrowScreen ? 2 : 4;
+
         inputNodes.forEach((node, i) => {
-            const particleCount = 4;
             for (let p = 0; p < particleCount; p++) {
                 const t = ((this.time * 0.02 + p / particleCount + i * 0.1) % 1);
                 const px = startX + (node.x - startX) * t;
@@ -605,21 +650,29 @@ class GeotechnicalAnimation {
     drawOutputPrediction() {
         const ctx = this.ctx;
         const scale = this.scale || 1;
-        // Adjust centerX for smaller screens to prevent overflow
-        const maxCenterX = this.canvas.width - 120 * scale; // Minimum distance from right edge
-        const centerX = Math.min(maxCenterX, this.canvas.width * 0.82);
+        const isNarrow = this.isNarrowScreen || false;
+        const isMobile = this.isMobileScreen || false;
 
-        // Don't draw if screen is too narrow
-        if (this.canvas.width < 768) return;
+        // Don't draw if screen is too narrow (mobile)
+        if (isMobile) return;
+
+        // Calculate available space on the right side
+        const neuralNetworkRight = this.canvas.width * 0.5 + (this.canvas.width * (isNarrow ? 0.2 : 0.15));
+        const availableSpace = this.canvas.width - neuralNetworkRight - 20;
+
+        // Dynamic sizing based on available space
+        const maxRadius = Math.min(78, availableSpace * 0.3);
+        const outerRadius = Math.max(35, maxRadius * scale);
+        const innerRadius = Math.max(25, outerRadius * 0.7);
+
+        // Position to fit available space
+        const centerX = Math.min(this.canvas.width - outerRadius - 30, neuralNetworkRight + outerRadius + 40);
+
         // Align with neural network vertical center
         const layerHeight = this.neuralNetwork.layerHeight || 500;
-        const networkCenterY = this.canvas.height * 0.10 + layerHeight / 2;
+        const networkCenterY = this.canvas.height * 0.08 + layerHeight / 2;
         const centerY = networkCenterY;
-        const size = Math.max(100, 182 * scale);
-
-        // Draw circular prediction indicator
-        const outerRadius = Math.max(45, 78 * scale);
-        const innerRadius = Math.max(32, 55 * scale);
+        const size = Math.max(80, 150 * scale);
 
         // Outer ring with pulse
         const pulse = Math.sin(this.time * 0.05) * 8;
@@ -663,16 +716,17 @@ class GeotechnicalAnimation {
         this.drawOutputFlowLines(centerX - size / 2, centerY);
 
         // Draw LLM text writing animation to the right (2-column layout)
-        // Align vertically with the accuracy circle center
-        // Only draw if there's enough space (check actual remaining space)
-        const boxWidth = Math.max(150, 260 * scale);
-        const llmBoxX = centerX + outerRadius + Math.max(80, 160 * scale);
-        const rightEdge = llmBoxX + boxWidth / 2;
+        // Only draw if there's enough space on larger screens
+        if (!isNarrow) {
+            const boxWidth = Math.max(150, 260 * scale);
+            const llmBoxX = centerX + outerRadius + Math.max(60, 120 * scale);
+            const rightEdge = llmBoxX + boxWidth / 2;
 
-        // Only show LLM box if it fits within screen (with 20px margin)
-        if (rightEdge < this.canvas.width - 20) {
-            const llmBoxY = centerY - Math.max(80, 140 * scale);
-            this.drawLLMTextAnimation(llmBoxX, llmBoxY, scale);
+            // Only show LLM box if it fits within screen (with 20px margin)
+            if (rightEdge < this.canvas.width - 20) {
+                const llmBoxY = centerY - Math.max(80, 140 * scale);
+                this.drawLLMTextAnimation(llmBoxX, llmBoxY, scale);
+            }
         }
     }
 
@@ -754,9 +808,13 @@ class GeotechnicalAnimation {
         const outputNodes = this.neuralNetwork.nodes[this.neuralNetwork.nodes.length - 1];
         if (!outputNodes || outputNodes.length === 0) return;
 
+        // Skip on mobile
+        if (this.isMobileScreen) return;
+
         const particleRadius = Math.max(2, 3 * scale);
+        const particleCount = this.isNarrowScreen ? 2 : 4;
+
         outputNodes.forEach((node, i) => {
-            const particleCount = 4;
             for (let p = 0; p < particleCount; p++) {
                 const t = ((this.time * 0.02 + p / particleCount + i * 0.1) % 1);
                 const px = node.x + (endX - node.x) * t;
@@ -1097,14 +1155,24 @@ class GeotechnicalAnimation {
     }
 
     setupEventListeners() {
+        // Debounced resize handler for better performance
+        let resizeTimeout;
         window.addEventListener('resize', () => {
-            this.resize();
-            this.createSoilLayers();
-            this.createBuildings();
-            this.createTunnels();
-            this.createNeuralNetwork();
-            this.particles = [];
-            this.createParticles();
+            // Update canvas immediately for smooth experience
+            this.canvas.width = window.innerWidth;
+            this.canvas.height = window.innerHeight;
+
+            // Debounce the heavy recalculations
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                this.resize();
+                this.createSoilLayers();
+                this.createBuildings();
+                this.createTunnels();
+                this.createNeuralNetwork();
+                this.particles = [];
+                this.createParticles();
+            }, 100);
         });
 
         window.addEventListener('mousemove', (e) => {
