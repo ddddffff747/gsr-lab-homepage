@@ -2,8 +2,8 @@ name: Update Google Scholar Data
 
 on:
   schedule:
-    # Run daily at 9:00 AM KST (00:00 UTC)
-    - cron: '0 0 * * *'
+    # Run weekly on Monday at 9:00 AM KST (00:00 UTC)
+    - cron: '0 0 * * 1'
   workflow_dispatch:  # Allow manual trigger
 
 jobs:
@@ -21,7 +21,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install requests beautifulsoup4 scholarly
+          pip install requests beautifulsoup4
 
       - name: Update Scholar Data
         run: python scripts/update_scholar.py
@@ -32,5 +32,5 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add scholar-data.json publications-data.json
+          git add scholar-data.json
           git diff --quiet && git diff --staged --quiet || (git commit -m "Update Google Scholar data [skip ci]" && git push)

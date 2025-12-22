@@ -1,58 +1,66 @@
 #!/usr/bin/env python3
 """
-Google Scholar Data Updater
-Fetches citation count, h-index, and publications from Google Scholar profile
+Google Scholar Data Updater (Simple Version)
+Directly scrapes citation count and h-index from Google Scholar profile page
 """
 
 import json
 import os
+import re
 from datetime import datetime
-from scholarly import scholarly
+import requests
+from bs4 import BeautifulSoup
 
 def get_scholar_data(user_id):
-    """Fetch Google Scholar data for a specific user."""
+    """Fetch Google Scholar data by scraping the profile page directly."""
+    url = f"https://scholar.google.com/citations?user={user_id}&hl=en"
+
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+    }
+
     try:
-        # Search for author by ID
-        author = scholarly.search_author_id(user_id)
-        author = scholarly.fill(author, sections=['basics', 'indices', 'publications'])
+        response = requests.get(url, headers=headers, timeout=30)
+        response.raise_for_status()
 
-        return {
-            'citations': author.get('citedby', 0),
-            'hIndex': author.get('hindex', 0),
-            'name': author.get('name', 'Unknown'),
-            'publications': author.get('publications', [])
-        }
-    except Exception as e:
-        print(f"Error fetching scholar data: {e}")
+        soup = BeautifulSoup(response.text, 'html.parser')
+
+        # Find the stats table (citations, h-index, i10-index)
+        # The table has class "gsc_rsb_std" for the values
+        stats = soup.find_all('td', class_='gsc_rsb_std')
+
+        if len(stats) >= 2:
+            # First row: Citations (All, Since 2020)
+            # Second row: h-index (All, Since 2020)
+            citations = int(stats[0].text.strip())
+            h_index = int(stats[2].text.strip())  # Index 2 is h-index (All)
+
+            print(f"Found stats - Citations: {citations}, h-index: {h_index}")
+
+            return {
+                'citations': citations,
+                'hIndex': h_index
+            }
+        else:
+            print("Could not find stats table on the page")
+            return None
+
+    except requests.RequestException as e:
+        print(f"Error fetching page: {e}")
         return None
-
-def categorize_publication(pub):
-    """Categorize publication as international journal, korean journal, or conference."""
-    venue = pub.get('bib', {}).get('venue', '').lower()
-    title = pub.get('bib', {}).get('title', '')
-
-    # Korean journals
-    korean_keywords = ['한국', 'korean', 'ksce', 'kgs', 'kes', '대한토목', '지반공학', '터널']
-    for keyword in korean_keywords:
-        if keyword in venue.lower():
-            return 'korean'
-
-    # Conferences
-    conference_keywords = ['conference', 'symposium', 'congress', 'workshop', 'proc.', 'proceedings']
-    for keyword in conference_keywords:
-        if keyword in venue.lower():
-            return 'conference'
-
-    # Default to international journal
-    return 'international'
+    except (ValueError, IndexError) as e:
+        print(f"Error parsing data: {e}")
+        return None
 
 def update_json_file(data, filepath='scholar-data.json'):
     """Update the JSON file with new data."""
+    user_id = os.environ.get('SCHOLAR_USER_ID', 's55YrBYAAAAJ')
+
     current_data = {
         'lastUpdated': datetime.utcnow().isoformat() + 'Z',
         'citations': data['citations'],
         'hIndex': data['hIndex'],
-        'scholarUrl': f"https://scholar.google.co.kr/citations?user={os.environ.get('SCHOLAR_USER_ID', 's55YrBYAAAAJ')}&hl=ko"
+        'scholarUrl': f"https://scholar.google.co.kr/citations?user={user_id}&hl=ko"
     }
 
     with open(filepath, 'w', encoding='utf-8') as f:
@@ -63,53 +71,6 @@ def update_json_file(data, filepath='scholar-data.json'):
     print(f"  h-index: {current_data['hIndex']}")
     print(f"  Last Updated: {current_data['lastUpdated']}")
 
-def update_publications_file(publications, filepath='publications-data.json'):
-    """Update the publications JSON file with new data."""
-    pub_data = {
-        'lastUpdated': datetime.utcnow().isoformat() + 'Z',
-        'international': [],
-        'korean': [],
-        'conference': []
-    }
-
-    counts = {'international': 0, 'korean': 0, 'conference': 0}
-
-    for pub in publications:
-        try:
-            # Get publication details
-            filled_pub = scholarly.fill(pub)
-            bib = filled_pub.get('bib', {})
-
-            pub_entry = {
-                'title': bib.get('title', ''),
-                'authors': bib.get('author', ''),
-                'venue': bib.get('venue', bib.get('journal', '')),
-                'year': bib.get('pub_year', ''),
-                'citations': filled_pub.get('num_citations', 0)
-            }
-
-            category = categorize_publication(filled_pub)
-            pub_data[category].append(pub_entry)
-            counts[category] += 1
-
-        except Exception as e:
-            print(f"Error processing publication: {e}")
-            continue
-
-    # Sort by year descending
-    for category in ['international', 'korean', 'conference']:
-        pub_data[category].sort(key=lambda x: x.get('year', '0'), reverse=True)
-
-    pub_data['counts'] = counts
-
-    with open(filepath, 'w', encoding='utf-8') as f:
-        json.dump(pub_data, f, indent=2, ensure_ascii=False)
-
-    print(f"\nUpdated publications-data.json:")
-    print(f"  International: {counts['international']}")
-    print(f"  Korean: {counts['korean']}")
-    print(f"  Conference: {counts['conference']}")
-
 def main():
     user_id = os.environ.get('SCHOLAR_USER_ID', 's55YrBYAAAAJ')
 
@@ -118,12 +79,6 @@ def main():
 
     if data:
         update_json_file(data)
-
-        # Also update publications if available
-        if data.get('publications'):
-            print(f"\nFound {len(data['publications'])} publications")
-            update_publications_file(data['publications'])
-
         print("\nSuccessfully updated Google Scholar data!")
     else:
         print("Failed to fetch Google Scholar data. Keeping existing data.")
