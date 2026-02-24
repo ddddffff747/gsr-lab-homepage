@@ -1192,84 +1192,50 @@ if (networkCanvas) {
     new GeotechnicalAnimation(networkCanvas);
 }
 
-// Fetch and display Google Scholar data from JSON
-async function loadScholarData() {
-    // Default fallback data
-    let data = {
-        citations: 5890,
-        hIndex: 31,
-        lastUpdated: new Date().toISOString()
-    };
-
-    try {
-        const response = await fetch('scholar-data.json');
-        if (response.ok) {
-            data = await response.json();
-        }
-    } catch (error) {
-        console.log('Using default scholar data (local file access)');
-    }
-
-    // Update data-target attributes with live data
-    const citationsEl = document.querySelector('.scholar-stat-number[data-target]');
-    const hIndexEl = document.querySelectorAll('.scholar-stat-number')[1];
-
-    if (citationsEl && data.citations) {
-        citationsEl.setAttribute('data-target', data.citations);
-    }
-    if (hIndexEl && data.hIndex) {
-        hIndexEl.setAttribute('data-target', data.hIndex);
-    }
-
-    // Update last updated text if element exists
-    const lastUpdatedEl = document.querySelector('.scholar-last-updated');
-    if (lastUpdatedEl && data.lastUpdated) {
-        const date = new Date(data.lastUpdated);
-        lastUpdatedEl.textContent = `Last updated: ${date.toLocaleDateString('ko-KR')}`;
-    }
-
-    // Trigger animation
-    animateScholarStats();
-}
-
-// Animate scholar stats on professor page
+// Scholar stats counter animation
 function animateScholarStats() {
     const scholarStatNumbers = document.querySelectorAll('.scholar-stat-number');
-    if (scholarStatNumbers.length > 0) {
-        const scholarObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    scholarStatNumbers.forEach(number => {
-                        const target = parseInt(number.getAttribute('data-target'));
-                        const duration = 2000;
-                        const increment = target / (duration / 16);
-                        let current = 0;
+    if (scholarStatNumbers.length === 0) return;
 
-                        const updateNumber = () => {
-                            current += increment;
-                            if (current < target) {
-                                number.textContent = Math.floor(current).toLocaleString();
-                                requestAnimationFrame(updateNumber);
-                            } else {
-                                number.textContent = target.toLocaleString();
-                            }
-                        };
+    scholarStatNumbers.forEach(el => {
+        // HTML 텍스트에서 숫자 추출 (콤마 제거)
+        const targetText = el.textContent.trim();
+        const target = parseInt(targetText.replace(/,/g, ''));
+        if (isNaN(target)) return;
 
-                        updateNumber();
-                    });
-                    scholarObserver.disconnect();
-                }
-            });
-        }, { threshold: 0.5 });
+        // 애니메이션 시작
+        const duration = 2000;
+        const increment = target / (duration / 16);
+        let current = 0;
 
-        scholarStatNumbers.forEach(el => scholarObserver.observe(el));
-    }
+        const updateNumber = () => {
+            current += increment;
+            if (current < target) {
+                el.textContent = Math.floor(current).toLocaleString();
+                requestAnimationFrame(updateNumber);
+            } else {
+                el.textContent = target.toLocaleString();
+            }
+        };
+
+        // 0부터 시작
+        el.textContent = '0';
+        updateNumber();
+    });
 }
 
-// Load scholar data if on professor page
-const scholarStatNumbers = document.querySelectorAll('.scholar-stat-number');
-if (scholarStatNumbers.length > 0) {
-    loadScholarData();
+// Scholar stats가 화면에 보일 때 애니메이션 시작
+const scholarCard = document.querySelector('.scholar-stats-card');
+if (scholarCard) {
+    const scholarObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateScholarStats();
+                scholarObserver.disconnect();
+            }
+        });
+    }, { threshold: 0.5 });
+    scholarObserver.observe(scholarCard);
 }
 
 // Fade in animations on scroll

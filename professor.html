@@ -91,15 +91,15 @@
                         </div>
                         <div class="scholar-stats">
                             <div class="scholar-stat-item">
-                                <span class="scholar-stat-number" data-target="5890">0</span>
+                                <span class="scholar-stat-number">5,910</span>
                                 <span class="scholar-stat-label">Citations</span>
                             </div>
                             <div class="scholar-stat-item">
-                                <span class="scholar-stat-number" data-target="31">0</span>
+                                <span class="scholar-stat-number">31</span>
                                 <span class="scholar-stat-label">h-index</span>
                             </div>
                         </div>
-                        <p class="scholar-last-updated">Last updated: 2024-12-19</p>
+                        <p class="scholar-last-updated">Last updated: 2025. 12. 23.</p>
                         <a href="https://scholar.google.co.kr/citations?user=s55YrBYAAAAJ&hl=ko" target="_blank" class="scholar-link">
                             <i class="fas fa-external-link-alt"></i> View Profile
                         </a>
@@ -252,60 +252,5 @@
     </footer>
 
     <script src="script.js"></script>
-    <script>
-        // Load Google Scholar data from JSON file
-        fetch('scholar-data.json')
-            .then(response => response.json())
-            .then(data => {
-                // Update citation count
-                const citationEl = document.querySelector('.scholar-stat-item:first-child .scholar-stat-number');
-                if (citationEl) {
-                    citationEl.setAttribute('data-target', data.citations);
-                }
-
-                // Update h-index
-                const hIndexEl = document.querySelector('.scholar-stat-item:last-child .scholar-stat-number');
-                if (hIndexEl) {
-                    hIndexEl.setAttribute('data-target', data.hIndex);
-                }
-
-                // Update last updated date
-                const lastUpdatedEl = document.querySelector('.scholar-last-updated');
-                if (lastUpdatedEl && data.lastUpdated) {
-                    const date = new Date(data.lastUpdated);
-                    const formattedDate = date.toISOString().split('T')[0];
-                    lastUpdatedEl.textContent = `Last updated: ${formattedDate}`;
-                }
-
-                // Trigger counter animation
-                animateScholarCounters();
-            })
-            .catch(error => {
-                console.log('Using default scholar data');
-                animateScholarCounters();
-            });
-
-        function animateScholarCounters() {
-            const counters = document.querySelectorAll('.scholar-stat-number');
-            counters.forEach(counter => {
-                const target = parseInt(counter.getAttribute('data-target'));
-                const duration = 2000;
-                const step = target / (duration / 16);
-                let current = 0;
-
-                const updateCounter = () => {
-                    current += step;
-                    if (current < target) {
-                        counter.textContent = Math.floor(current).toLocaleString();
-                        requestAnimationFrame(updateCounter);
-                    } else {
-                        counter.textContent = target.toLocaleString();
-                    }
-                };
-
-                updateCounter();
-            });
-        }
-    </script>
 </body>
 </html>
