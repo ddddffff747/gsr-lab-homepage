@@ -30,7 +30,8 @@
                         <li><a href="members.html#alumni">Alumni</a></li>
                     </ul>
                 </li>
-                <li><a href="research.html" class="nav-link active">Research & Project</a></li>
+                <li><a href="research.html" class="nav-link active">Research</a></li>
+                <li><a href="projects.html" class="nav-link">Projects</a></li>
                 <li><a href="publications.html" class="nav-link">Publications</a></li>
                 <li><a href="contact.html" class="nav-link">Contact</a></li>
             </ul>
@@ -294,134 +295,6 @@
 
     </div>
 
-    <!-- Projects Section -->
-    <section id="projects" class="section projects-section">
-        <div class="container">
-            <h2 class="section-title-projects">Research Projects</h2>
-            <p class="projects-subtitle">Funded research projects driving innovation in geotechnical earthquake engineering</p>
-            <div class="projects-grid">
-
-                <!-- Project 1 -->
-                <div class="project-card" data-project="1">
-                    <div class="project-card-header">
-                        <span class="project-number">01</span>
-                        <span class="project-status ongoing">Ongoing</span>
-                    </div>
-                    <div class="project-card-body">
-                        <span class="project-funder">NRF (National Research Foundation of Korea)</span>
-                        <h3 class="project-title-card">Development of a Cyber Earthquake Simulation Center Based on Self-learning AI and Analytical Models</h3>
-                        <div class="project-meta">
-                            <span><i class="fas fa-calendar-alt"></i> 2022 – 2027</span>
-                            <span><i class="fas fa-won-sign"></i> KRW 2.0 Billion</span>
-                        </div>
-                    </div>
-                    <div class="project-card-footer">
-                        <span class="project-view-detail">View Details <i class="fas fa-arrow-right"></i></span>
-                    </div>
-                </div>
-
-                <!-- Project 2 -->
-                <div class="project-card" data-project="2">
-                    <div class="project-card-header">
-                        <span class="project-number">02</span>
-                        <span class="project-status ongoing">Ongoing</span>
-                    </div>
-                    <div class="project-card-body">
-                        <span class="project-funder">KHNP (Korea Hydro & Nuclear Power)</span>
-                        <h3 class="project-title-card">Development of a Probabilistic UHRS Assessment Framework for Nuclear Power Plant Foundation Bedrock</h3>
-                        <div class="project-meta">
-                            <span><i class="fas fa-calendar-alt"></i> 2024.07 – 2026.06</span>
-                            <span><i class="fas fa-won-sign"></i> KRW 500M / 1.24B</span>
-                        </div>
-                    </div>
-                    <div class="project-card-footer">
-                        <span class="project-view-detail">View Details <i class="fas fa-arrow-right"></i></span>
-                    </div>
-                </div>
-
-                <!-- Project 3 -->
-                <div class="project-card" data-project="3">
-                    <div class="project-card-header">
-                        <span class="project-number">03</span>
-                        <span class="project-status completed">Completed</span>
-                    </div>
-                    <div class="project-card-body">
-                        <span class="project-funder">KHNP (Korea Hydro & Nuclear Power)</span>
-                        <h3 class="project-title-card">Development of Ground Motion Coherency Assessment Considering Spatial Variability</h3>
-                        <div class="project-meta">
-                            <span><i class="fas fa-calendar-alt"></i> 2022.04 – 2024.03</span>
-                            <span><i class="fas fa-won-sign"></i> KRW 380M / 1.3B</span>
-                        </div>
-                    </div>
-                    <div class="project-card-footer">
-                        <span class="project-view-detail">View Details <i class="fas fa-arrow-right"></i></span>
-                    </div>
-                </div>
-
-                <!-- Project 4 -->
-                <div class="project-card" data-project="4">
-                    <div class="project-card-header">
-                        <span class="project-number">04</span>
-                        <span class="project-status completed">Completed</span>
-                    </div>
-                    <div class="project-card-body">
-                        <span class="project-funder">KAIA (Ministry of Land, Infrastructure and Transport)</span>
-                        <h3 class="project-title-card">Mobile MEMS Accelerometer System and AI Algorithm for 3D Subsurface Profile Generation</h3>
-                        <div class="project-meta">
-                            <span><i class="fas fa-calendar-alt"></i> 2021 – 2022</span>
-                            <span><i class="fas fa-won-sign"></i> KRW 150M / 370M</span>
-                        </div>
-                    </div>
-                    <div class="project-card-footer">
-                        <span class="project-view-detail">View Details <i class="fas fa-arrow-right"></i></span>
-                    </div>
-                </div>
-
-                <!-- Project 5 -->
-                <div class="project-card" data-project="5">
-                    <div class="project-card-header">
-                        <span class="project-number">05</span>
-                        <span class="project-status completed">Completed</span>
-                    </div>
-                    <div class="project-card-body">
-                        <span class="project-funder">KETEP (Ministry of Trade, Industry and Energy)</span>
-                        <h3 class="project-title-card">Development of 13,000-ton Installation Vessel with 800-ton Pedestal Crane for Offshore Wind Turbines</h3>
-                        <div class="project-meta">
-                            <span><i class="fas fa-calendar-alt"></i> 2018 – 2022</span>
-                            <span><i class="fas fa-won-sign"></i> KRW 300M</span>
-                        </div>
-                    </div>
-                    <div class="project-card-footer">
-                        <span class="project-view-detail">View Details <i class="fas fa-arrow-right"></i></span>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Project Detail Modal -->
-    <div class="project-modal-overlay" id="projectModal">
-        <div class="project-modal">
-            <button class="project-modal-close" id="projectModalClose"><i class="fas fa-times"></i></button>
-            <div class="project-modal-content">
-                <div class="project-modal-header">
-                    <span class="project-modal-funder" id="modalFunder"></span>
-                    <h2 class="project-modal-title" id="modalTitle"></h2>
-                    <div class="project-modal-meta">
-                        <span id="modalPeriod"></span>
-                        <span id="modalBudget"></span>
-                        <span id="modalStatus"></span>
-                    </div>
-                </div>
-                <div class="project-modal-body">
-                    <div class="project-modal-description" id="modalDescription"></div>
-                    <div class="project-modal-images" id="modalImages"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Footer (shown after all research sections) -->
     <footer class="footer research-footer">
         <div class="container">
@@ -438,6 +311,7 @@
                     <a href="professor.html">Professor</a>
                     <a href="members.html">Members</a>
                     <a href="research.html">Research</a>
+                    <a href="projects.html">Projects</a>
                     <a href="publications.html">Publications</a>
                     <a href="contact.html">Contact</a>
                 </div>
@@ -455,13 +329,11 @@
             const sections = document.querySelectorAll('.research-fullpage-section');
             const navDots = document.querySelectorAll('.nav-dot');
             const footer = document.querySelector('.research-footer');
-            const projectsSection = document.getElementById('projects');
 
             let currentSection = 0;
             let isScrolling = false;
             const totalSections = sections.length;
 
-            // 이전 섹션 visible 제거 및 새 섹션 활성화
             function scrollToSection(index, immediate = false) {
                 if (index < 0 || index >= totalSections || isScrolling) return;
 
@@ -469,44 +341,33 @@
                 const prevSection = currentSection;
                 currentSection = index;
 
-                // 이전 섹션 페이드 아웃
                 if (prevSection !== index) {
                     sections[prevSection].classList.remove('visible');
                     sections[prevSection].classList.add('leaving');
                 }
 
-                // 네비게이션 점 업데이트
                 navDots.forEach((dot, i) => {
                     dot.classList.toggle('active', i === index);
                 });
 
-                // 부드러운 스크롤
                 sections[index].scrollIntoView({ behavior: immediate ? 'auto' : 'smooth' });
 
-                // 새 섹션 활성화 (약간의 딜레이)
                 setTimeout(() => {
                     sections[prevSection].classList.remove('leaving');
                     sections[index].classList.add('visible');
                 }, immediate ? 0 : 200);
 
-                // 스크롤 완료 후 잠금 해제
                 setTimeout(() => {
                     isScrolling = false;
                 }, immediate ? 100 : 1000);
             }
 
-            // 마우스 휠 이벤트 - 한 번에 한 섹션씩 이동
             window.addEventListener('wheel', (e) => {
                 if (isScrolling) {
                     e.preventDefault();
                     return;
                 }
 
-                // 프로젝트 섹션 또는 푸터 영역에서는 일반 스크롤 허용
-                const projectsRect = projectsSection.getBoundingClientRect();
-                if (projectsRect.top < window.innerHeight && e.deltaY > 0) {
-                    return;
-                }
                 const footerRect = footer.getBoundingClientRect();
                 if (footerRect.top < window.innerHeight && e.deltaY > 0) {
                     return;
@@ -515,22 +376,18 @@
                 e.preventDefault();
 
                 if (e.deltaY > 0) {
-                    // 아래로 스크롤
                     if (currentSection < totalSections - 1) {
                         scrollToSection(currentSection + 1);
                     } else {
-                        // 마지막 섹션에서 아래로 스크롤하면 프로젝트 섹션으로
-                        projectsSection.scrollIntoView({ behavior: 'smooth' });
+                        footer.scrollIntoView({ behavior: 'smooth' });
                         isScrolling = true;
                         setTimeout(() => { isScrolling = false; }, 1000);
                     }
                 } else {
-                    // 위로 스크롤
                     scrollToSection(currentSection - 1);
                 }
             }, { passive: false });
 
-            // 키보드 방향키 지원
             window.addEventListener('keydown', (e) => {
                 if (e.key === 'ArrowDown' || e.key === 'PageDown') {
                     e.preventDefault();
@@ -543,7 +400,6 @@
                 }
             });
 
-            // 네비게이션 점 클릭
             navDots.forEach((dot, index) => {
                 dot.addEventListener('click', () => {
                     if (currentSection !== index) {
@@ -578,12 +434,10 @@
                 });
             });
 
-            // 페이지 로드 시 첫 섹션 애니메이션 (약간의 딜레이 후)
             setTimeout(() => {
                 sections[0].classList.add('visible');
             }, 300);
 
-            // Parallax effect on scroll
             window.addEventListener('scroll', () => {
                 sections.forEach((section, index) => {
                     const rect = section.getBoundingClientRect();
@@ -594,7 +448,6 @@
                         overlay.style.opacity = Math.max(0.6, Math.min(0.9, 0.75 + scrollPercent * 0.2));
                     }
 
-                    // 화면에 가까워지면 visible 추가
                     if (Math.abs(scrollPercent) < 0.3 && !section.classList.contains('visible')) {
                         section.classList.add('visible');
                         currentSection = index;
@@ -603,210 +456,6 @@
                         });
                     }
                 });
-            });
-
-            // ===== Project Modal Functionality =====
-            const projectData = {
-                1: {
-                    funder: 'NRF (National Research Foundation of Korea)',
-                    title: 'Development of a Cyber Earthquake Simulation Center Based on Self-learning AI and Analytical Models',
-                    period: '2022 – 2027',
-                    budget: 'KRW 2.0 Billion',
-                    status: 'Ongoing',
-                    description: `
-                        <p>This project aims to develop a <strong>Cyber Earthquake Simulation Center</strong> that integrates self-learning AI with physics-based analytical models to simulate and predict earthquake-induced ground motions and structural responses across the Korean Peninsula.</p>
-                        <h4>Objectives</h4>
-                        <ul>
-                            <li>Construct an AI-driven cyber platform capable of real-time seismic simulation for the entire Korean Peninsula</li>
-                            <li>Develop self-learning algorithms that continuously improve prediction accuracy by incorporating new earthquake observation data</li>
-                            <li>Integrate nonlinear site response analysis, liquefaction assessment, and structural damage evaluation into a unified simulation framework</li>
-                            <li>Create a digital twin of subsurface geotechnical conditions across Korea using extensive borehole and geophysical survey data</li>
-                        </ul>
-                        <h4>Key Research Areas</h4>
-                        <ul>
-                            <li>Physics-informed neural networks for seismic wave propagation modeling</li>
-                            <li>AI-based ground motion prediction models trained on domestic and international earthquake records</li>
-                            <li>Automated 3D subsurface modeling using machine learning and geospatial data</li>
-                            <li>Real-time earthquake damage scenario generation for disaster response support</li>
-                        </ul>
-                        <p>Funded under the NRF Mid-career Researcher Program (Type II), this project represents a convergence of geotechnical earthquake engineering and artificial intelligence to enhance national earthquake preparedness.</p>
-                    `
-                },
-                2: {
-                    funder: 'KHNP (Korea Hydro & Nuclear Power)',
-                    title: 'Development of a Probabilistic UHRS Assessment Framework for Nuclear Power Plant Foundation Bedrock',
-                    period: '2024.07 – 2026.06',
-                    budget: 'KRW 500M (GSR Lab) / KRW 1.24B (Total)',
-                    status: 'Ongoing',
-                    description: `
-                        <p>This project develops a comprehensive <strong>probabilistic framework for Uniform Hazard Response Spectrum (UHRS) assessment</strong> at the foundation bedrock level of nuclear power plants in Korea.</p>
-                        <h4>Objectives</h4>
-                        <ul>
-                            <li>Establish a site-specific probabilistic seismic hazard analysis (PSHA) methodology tailored for NPP foundation bedrock conditions</li>
-                            <li>Develop ground motion models (GMMs) that account for local geological and geotechnical characteristics of Korean NPP sites</li>
-                            <li>Quantify epistemic and aleatory uncertainties in seismic hazard estimation through logic tree frameworks</li>
-                            <li>Generate design-basis UHRS incorporating site amplification and foundation interaction effects</li>
-                        </ul>
-                        <h4>Key Research Areas</h4>
-                        <ul>
-                            <li>Site-specific PSHA incorporating Korean seismotectonic source models</li>
-                            <li>Development of VS profile-based site amplification factors for bedrock sites</li>
-                            <li>Probabilistic site response analysis considering soil/rock nonlinearity</li>
-                            <li>Validation against recorded earthquake data at existing NPP sites</li>
-                        </ul>
-                        <p>This research directly supports the seismic safety evaluation and design verification of nuclear power infrastructure in Korea.</p>
-                    `
-                },
-                3: {
-                    funder: 'KHNP (Korea Hydro & Nuclear Power)',
-                    title: 'Development of Ground Motion Coherency Assessment Considering Spatial Variability',
-                    period: '2022.04 – 2024.03',
-                    budget: 'KRW 380M (GSR Lab) / KRW 1.3B (Total)',
-                    status: 'Completed',
-                    description: `
-                        <p>This project investigated the <strong>spatial variability of earthquake ground motions</strong> and developed coherency models applicable to the seismic analysis of large-scale nuclear structures.</p>
-                        <h4>Objectives</h4>
-                        <ul>
-                            <li>Characterize spatial coherency of seismic ground motions using dense array earthquake records</li>
-                            <li>Develop empirical coherency functions suitable for Korean geological and seismological conditions</li>
-                            <li>Assess the impact of incoherent ground motions on the seismic response of large nuclear structures and foundations</li>
-                            <li>Propose practical guidelines for incorporating spatial variability in NPP seismic design</li>
-                        </ul>
-                        <h4>Key Research Areas</h4>
-                        <ul>
-                            <li>Analysis of spatially recorded earthquake data from dense seismometer arrays (e.g., SMART-1, LSST)</li>
-                            <li>Development of frequency-dependent and distance-dependent lagged coherency models</li>
-                            <li>Stochastic simulation of spatially variable ground motion fields</li>
-                            <li>Soil-structure interaction analysis under incoherent seismic input</li>
-                        </ul>
-                        <p>The outcomes provide essential tools for realistic seismic analysis of nuclear power plant foundations where spatial variability of ground motions is significant.</p>
-                    `
-                },
-                4: {
-                    funder: 'KAIA (Korea Agency for Infrastructure Technology Advancement)',
-                    title: 'Development of Mobile MEMS Accelerometer System for Ambient Vibration Measurement and AI Algorithm for 3D Subsurface Profile Generation',
-                    period: '2021 – 2022',
-                    budget: 'KRW 150M (GSR Lab) / KRW 370M (Total)',
-                    status: 'Completed',
-                    description: `
-                        <p>This project developed a <strong>portable MEMS-based accelerometer system</strong> for in-situ ambient vibration measurement and an <strong>AI-driven algorithm</strong> for generating 3D subsurface geotechnical profiles.</p>
-                        <h4>Objectives</h4>
-                        <ul>
-                            <li>Design and fabricate a compact, mobile MEMS accelerometer array for rapid field deployment</li>
-                            <li>Develop signal processing algorithms for extracting H/V spectral ratios and dispersion curves from microtremor data</li>
-                            <li>Implement machine learning models to invert ambient vibration data into shear wave velocity (VS) profiles</li>
-                            <li>Generate spatially continuous 3D subsurface models by integrating AI-predicted profiles with existing borehole data</li>
-                        </ul>
-                        <h4>Key Research Areas</h4>
-                        <ul>
-                            <li>MEMS sensor calibration and noise characterization for geotechnical applications</li>
-                            <li>Automated HVSR (Horizontal-to-Vertical Spectral Ratio) analysis</li>
-                            <li>Deep learning-based 1D inversion of surface wave dispersion data</li>
-                            <li>Geostatistical interpolation and 3D visualization of subsurface VS structure</li>
-                        </ul>
-                        <p>Funded by KAIA under the Ministry of Land, Infrastructure and Transport, this project enables rapid and cost-effective site characterization for seismic microzonation and infrastructure planning.</p>
-                    `
-                },
-                5: {
-                    funder: 'KETEP (Korea Institute of Energy Technology Evaluation and Planning)',
-                    title: 'Development of 13,000-ton Dedicated Installation Vessel with Integrated 800-ton Pedestal Crane for Offshore Wind Turbines',
-                    period: '2018 – 2022',
-                    budget: 'KRW 300M (GSR Lab)',
-                    status: 'Completed',
-                    description: `
-                        <p>This project contributed to the development of a <strong>13,000-ton dedicated installation vessel</strong> equipped with an 800-ton pedestal crane designed specifically for the installation of large-scale offshore wind turbines.</p>
-                        <h4>GSR Lab's Role: Foundation and Geotechnical Engineering</h4>
-                        <ul>
-                            <li>Geotechnical site investigation and characterization of offshore wind farm seabed conditions</li>
-                            <li>Design and analysis of foundation systems (monopile, jacket) for offshore wind turbine support structures</li>
-                            <li>Soil-structure interaction analysis under combined wind, wave, and seismic loading conditions</li>
-                            <li>Assessment of installation-induced geotechnical effects including pile driving and jack-up vessel foundation stability</li>
-                        </ul>
-                        <h4>Key Research Areas</h4>
-                        <ul>
-                            <li>Cyclic lateral loading analysis of monopile foundations in marine soils</li>
-                            <li>Dynamic response analysis of offshore wind turbine systems considering soil nonlinearity</li>
-                            <li>Geotechnical reliability assessment for offshore foundation design</li>
-                            <li>Seabed-foundation interaction modeling for installation vessel operations</li>
-                        </ul>
-                        <p>Funded by KETEP under the Ministry of Trade, Industry and Energy, this multi-institutional project supports Korea's offshore wind energy expansion by addressing critical engineering challenges in turbine installation and foundation design.</p>
-                    `
-                }
-            };
-
-            // Modal elements
-            const modal = document.getElementById('projectModal');
-            const modalClose = document.getElementById('projectModalClose');
-            const modalFunder = document.getElementById('modalFunder');
-            const modalTitle = document.getElementById('modalTitle');
-            const modalPeriod = document.getElementById('modalPeriod');
-            const modalBudget = document.getElementById('modalBudget');
-            const modalStatus = document.getElementById('modalStatus');
-            const modalDescription = document.getElementById('modalDescription');
-            const modalImages = document.getElementById('modalImages');
-
-            // Open modal
-            document.querySelectorAll('.project-card').forEach(card => {
-                card.addEventListener('click', () => {
-                    const projectId = card.getAttribute('data-project');
-                    const data = projectData[projectId];
-                    if (!data) return;
-
-                    modalFunder.textContent = data.funder;
-                    modalTitle.textContent = data.title;
-                    modalPeriod.innerHTML = '<i class="fas fa-calendar-alt"></i> ' + data.period;
-                    modalBudget.innerHTML = '<i class="fas fa-won-sign"></i> ' + data.budget;
-                    modalStatus.innerHTML = '<i class="fas fa-circle"></i> ' + data.status;
-                    modalDescription.innerHTML = data.description;
-
-                    // Load project images
-                    modalImages.innerHTML = '';
-                    const imgFolder = 'images/projects/PROJECT_' + projectId + '/';
-                    const extensions = ['png', 'jpg', 'jpeg', 'webp'];
-                    let imagesLoaded = 0;
-
-                    // Try loading images numbered 1-10
-                    for (let i = 1; i <= 10; i++) {
-                        extensions.forEach(ext => {
-                            const img = new Image();
-                            img.src = imgFolder + i + '.' + ext;
-                            img.alt = data.title + ' - Image ' + i;
-                            img.onload = () => {
-                                imagesLoaded++;
-                                modalImages.appendChild(img);
-                                // Remove no-images message if present
-                                const noImg = modalImages.querySelector('.project-modal-no-images');
-                                if (noImg) noImg.remove();
-                            };
-                        });
-                    }
-
-                    // Show "no images" message after a short delay if none loaded
-                    setTimeout(() => {
-                        if (imagesLoaded === 0 && !modalImages.querySelector('.project-modal-no-images')) {
-                            modalImages.innerHTML = '<p class="project-modal-no-images">Project images will be added soon.</p>';
-                        }
-                    }, 500);
-
-                    modal.classList.add('active');
-                    document.body.style.overflow = 'hidden';
-                });
-            });
-
-            // Close modal
-            function closeModal() {
-                modal.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-
-            modalClose.addEventListener('click', closeModal);
-            modal.addEventListener('click', (e) => {
-                if (e.target === modal) closeModal();
-            });
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && modal.classList.contains('active')) {
-                    closeModal();
-                }
             });
         });
     </script>

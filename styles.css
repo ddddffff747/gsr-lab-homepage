@@ -1518,6 +1518,7 @@ body {
     background: linear-gradient(135deg, #0a1628 0%, #0d2137 50%, #0a1628 100%);
     padding: 100px 0 80px;
     position: relative;
+    scroll-snap-align: start;
 }
 
 .section-title-projects {
@@ -1851,6 +1852,134 @@ body {
 .project-modal::-webkit-scrollbar-thumb {
     background: rgba(255, 255, 255, 0.15);
     border-radius: 3px;
+}
+
+/* ===== Projects Page Light Theme ===== */
+.projects-page {
+    background: linear-gradient(135deg, #f0f4f8 0%, #e8eef5 50%, #f5f7fa 100%);
+    padding-top: 60px;
+}
+
+.projects-page .projects-subtitle {
+    color: #5a6a7e;
+}
+
+.projects-page .project-card {
+    background: white;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.projects-page .project-card:hover {
+    border-color: #0066cc;
+    background: white;
+    box-shadow: 0 12px 32px rgba(0, 102, 204, 0.12);
+}
+
+.projects-page .project-number {
+    color: #0066cc;
+    opacity: 0.5;
+}
+
+.projects-page .project-status.ongoing {
+    background: #e8f4fd;
+    color: #0066cc;
+    border-color: #b3d9f7;
+}
+
+.projects-page .project-status.completed {
+    background: #e8f8e8;
+    color: #2e8b3e;
+    border-color: #b3e6b3;
+}
+
+.projects-page .project-funder {
+    color: #0066cc;
+}
+
+.projects-page .project-title-card {
+    color: #1a2332;
+}
+
+.projects-page .project-meta span {
+    color: #6b7c93;
+}
+
+.projects-page .project-meta span i {
+    color: #9aadbe;
+}
+
+.projects-page .project-card-footer {
+    border-top-color: #edf1f5;
+}
+
+.projects-page .project-view-detail {
+    color: #0066cc;
+}
+
+/* Light theme modal */
+.projects-page ~ .project-modal-overlay {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.projects-page ~ .project-modal-overlay .project-modal {
+    background: white;
+    border-color: #e2e8f0;
+}
+
+.projects-page ~ .project-modal-overlay .project-modal-close {
+    background: #f0f4f8;
+    border-color: #d1d9e0;
+    color: #4a5568;
+}
+
+.projects-page ~ .project-modal-overlay .project-modal-close:hover {
+    background: #e2e8f0;
+}
+
+.projects-page ~ .project-modal-overlay .project-modal-funder {
+    color: #0066cc;
+    background: #e8f4fd;
+}
+
+.projects-page ~ .project-modal-overlay .project-modal-title {
+    color: #1a2332;
+}
+
+.projects-page ~ .project-modal-overlay .project-modal-header {
+    border-bottom-color: #e2e8f0;
+}
+
+.projects-page ~ .project-modal-overlay .project-modal-meta span {
+    color: #5a6a7e;
+}
+
+.projects-page ~ .project-modal-overlay .project-modal-meta span i {
+    color: #0066cc;
+}
+
+.projects-page ~ .project-modal-overlay .project-modal-body {
+    color: #3d4f63;
+}
+
+.projects-page ~ .project-modal-overlay .project-modal-description h4 {
+    color: #1a2332;
+}
+
+.projects-page ~ .project-modal-overlay .project-modal-description ul li::before {
+    background: #0066cc;
+}
+
+.projects-page ~ .project-modal-overlay .project-modal-images img {
+    border-color: #e2e8f0;
+}
+
+.projects-page ~ .project-modal-overlay .project-modal-no-images {
+    color: #9aadbe;
+}
+
+.projects-page ~ .project-modal-overlay .project-modal::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.15);
 }
 
 /* ===== Projects Responsive ===== */
