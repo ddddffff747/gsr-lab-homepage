@@ -5,10 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GSR | Geo System Research Laboratory</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <!-- Top Utility Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-left">
+                <span>Hanyang University &middot; Department of Civil and Environmental Engineering</span>
+            </div>
+        </div>
+    </div>
+
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
@@ -20,9 +29,9 @@
                 </div>
             </a>
             <ul class="nav-menu">
-                <li><a href="professor.html" class="nav-link">Professor</a></li>
+                <li><a href="professor.html">Professor</a></li>
                 <li class="nav-dropdown">
-                    <a href="members.html" class="nav-link">Members <i class="fas fa-chevron-down"></i></a>
+                    <a href="members.html">Members</a>
                     <ul class="dropdown-menu">
                         <li><a href="members.html#postdoc">Research Professor</a></li>
                         <li><a href="members.html#phd">Ph.D. Student</a></li>
@@ -30,10 +39,10 @@
                         <li><a href="members.html#alumni">Alumni</a></li>
                     </ul>
                 </li>
-                <li><a href="research.html" class="nav-link">Research</a></li>
-                <li><a href="projects.html" class="nav-link">Projects</a></li>
-                <li><a href="publications.html" class="nav-link">Publications</a></li>
-                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><a href="research.html">Research</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="publications.html">Publications</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
             <div class="hamburger">
                 <span class="bar"></span>
@@ -45,31 +54,23 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="hero-background">
-            <canvas id="networkCanvas"></canvas>
-        </div>
-        <div class="hero-content">
-            <p class="hero-korean">지반공학연구실</p>
+        <div class="container">
+            <span class="hero-badge">Hanyang University</span>
             <h1 class="hero-title">Geo System Research Lab</h1>
+            <p class="hero-korean">지반시스템연구실</p>
             <div class="hero-line"></div>
             <p class="hero-description">
-                Advanced computational methods for geotechnical earthquake engineering,<br>
+                Advanced computational methods for geotechnical earthquake engineering,
                 soil-structure interaction, and numerical analysis
             </p>
-        </div>
-        <div class="scroll-indicator">
-            <span>SCROLL</span>
-            <div class="scroll-line"></div>
-            <i class="fas fa-chevron-down"></i>
-            <i class="fas fa-chevron-down"></i>
         </div>
     </section>
 
     <!-- About Section -->
-    <section class="section about-home">
+    <section class="section about-section">
         <div class="container">
-            <div class="about-home-content">
-                <div class="about-home-text">
+            <div class="about-grid">
+                <div class="about-text fade-in">
                     <h2>Welcome to GSR Lab</h2>
                     <p>
                         The Geo System Research Laboratory at Hanyang University focuses on
@@ -83,25 +84,25 @@
                     </p>
                     <a href="professor.html" class="btn btn-primary">Learn More</a>
                 </div>
-                <div class="about-home-stats">
+                <div class="stats-grid fade-in">
                     <div class="stat-card">
-                        <i class="fas fa-file-alt"></i>
-                        <span class="stat-number" data-target="100">0</span>
+                        <div class="stat-icon"><i class="fas fa-file-alt"></i></div>
+                        <span class="stat-number" data-target="100" data-suffix="+">0</span>
                         <span class="stat-label">Publications</span>
                     </div>
                     <div class="stat-card">
-                        <i class="fas fa-users"></i>
-                        <span class="stat-number" data-target="20">0</span>
+                        <div class="stat-icon"><i class="fas fa-users"></i></div>
+                        <span class="stat-number" data-target="20" data-suffix="+">0</span>
                         <span class="stat-label">Researchers</span>
                     </div>
                     <div class="stat-card">
-                        <i class="fas fa-project-diagram"></i>
-                        <span class="stat-number" data-target="50">0</span>
+                        <div class="stat-icon"><i class="fas fa-project-diagram"></i></div>
+                        <span class="stat-number" data-target="50" data-suffix="+">0</span>
                         <span class="stat-label">Projects</span>
                     </div>
                     <div class="stat-card">
-                        <i class="fas fa-calendar-alt"></i>
-                        <span class="stat-number" data-target="19">0</span>
+                        <div class="stat-icon"><i class="fas fa-calendar-alt"></i></div>
+                        <span class="stat-number" data-target="19" data-suffix="">0</span>
                         <span class="stat-label">Years</span>
                     </div>
                 </div>
@@ -114,22 +115,22 @@
         <div class="container">
             <h2 class="section-title">Research Areas</h2>
             <div class="research-cards">
-                <a href="research.html#earthquake" class="research-highlight-card">
+                <a href="research.html#area1" class="research-highlight-card fade-in">
                     <div class="card-icon"><i class="fas fa-house-damage"></i></div>
                     <h3>Geotechnical Earthquake Engineering</h3>
                     <p>Seismic analysis of underground structures, soil-structure interaction, liquefaction assessment</p>
                 </a>
-                <a href="research.html#underground" class="research-highlight-card">
+                <a href="research.html#area2" class="research-highlight-card fade-in">
                     <div class="card-icon"><i class="fas fa-archway"></i></div>
                     <h3>Underground Structures</h3>
                     <p>Seismic performance and damage assessment of tunnels, cut-and-cover structures</p>
                 </a>
-                <a href="research.html#hazard" class="research-highlight-card">
+                <a href="research.html#area3" class="research-highlight-card fade-in">
                     <div class="card-icon"><i class="fas fa-chart-line"></i></div>
                     <h3>Seismic Hazard Assessment</h3>
                     <p>Probabilistic seismic hazard analysis, site response, ground motion prediction</p>
                 </a>
-                <a href="research.html#pipeline" class="research-highlight-card">
+                <a href="research.html#area4" class="research-highlight-card fade-in">
                     <div class="card-icon"><i class="fas fa-water"></i></div>
                     <h3>Pipeline Engineering</h3>
                     <p>Seismic analysis and design of buried gas and water pipelines</p>
@@ -143,6 +144,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
+                    <img src="images/HYU_symbol_basic.png" alt="Hanyang University" class="footer-hyu">
                     <span class="logo-text">GSR</span>
                     <span class="logo-sub">Geo System Research</span>
                 </div>

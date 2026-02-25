@@ -5,10 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Professor | GSR Lab</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <!-- Top Utility Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-left">
+                <span>Hanyang University &middot; Department of Civil and Environmental Engineering</span>
+            </div>
+        </div>
+    </div>
+
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
@@ -20,9 +29,9 @@
                 </div>
             </a>
             <ul class="nav-menu">
-                <li><a href="professor.html" class="nav-link active">Professor</a></li>
+                <li><a href="professor.html" class="active">Professor</a></li>
                 <li class="nav-dropdown">
-                    <a href="members.html" class="nav-link">Members <i class="fas fa-chevron-down"></i></a>
+                    <a href="members.html">Members</a>
                     <ul class="dropdown-menu">
                         <li><a href="members.html#postdoc">Research Professor</a></li>
                         <li><a href="members.html#phd">Ph.D. Student</a></li>
@@ -30,10 +39,10 @@
                         <li><a href="members.html#alumni">Alumni</a></li>
                     </ul>
                 </li>
-                <li><a href="research.html" class="nav-link">Research</a></li>
-                <li><a href="projects.html" class="nav-link">Projects</a></li>
-                <li><a href="publications.html" class="nav-link">Publications</a></li>
-                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><a href="research.html">Research</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="publications.html">Publications</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
             <div class="hamburger">
                 <span class="bar"></span>
@@ -45,13 +54,20 @@
 
     <!-- Page Header -->
     <section class="page-header">
-        <div class="container">
-            <h1>Professor</h1>
-        </div>
+        <h1>Professor</h1>
     </section>
 
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="container">
+            <a href="index.html">Home</a>
+            <span>/</span>
+            <span class="current">Professor</span>
+        </div>
+    </div>
+
     <!-- Professor Section -->
-    <section class="section professor-section">
+    <section class="section">
         <div class="container">
             <div class="professor-layout">
                 <div class="professor-main-content">
@@ -92,11 +108,11 @@
                         </div>
                         <div class="scholar-stats">
                             <div class="scholar-stat-item">
-                                <span class="scholar-stat-number">6,108</span>
+                                <span class="scholar-stat-number" data-target="6108" data-separator=",">0</span>
                                 <span class="scholar-stat-label">Citations</span>
                             </div>
                             <div class="scholar-stat-item">
-                                <span class="scholar-stat-number">33</span>
+                                <span class="scholar-stat-number" data-target="33">0</span>
                                 <span class="scholar-stat-label">h-index</span>
                             </div>
                         </div>
@@ -109,7 +125,7 @@
             </div>
 
             <!-- Biography -->
-            <div class="professor-detail-section">
+            <div class="professor-detail-section fade-in">
                 <h3>Biography</h3>
                 <div class="detail-content">
                     <p>
@@ -136,7 +152,7 @@
             </div>
 
             <!-- Education -->
-            <div class="professor-detail-section">
+            <div class="professor-detail-section fade-in">
                 <h3>Education</h3>
                 <div class="detail-content">
                     <ul class="timeline-list">
@@ -149,7 +165,7 @@
             </div>
 
             <!-- Academic Experience -->
-            <div class="professor-detail-section">
+            <div class="professor-detail-section fade-in">
                 <h3>Academic Experience</h3>
                 <div class="detail-content">
                     <ul class="timeline-list">
@@ -163,27 +179,27 @@
             </div>
 
             <!-- Professional Activities -->
-            <div class="professor-detail-section">
-                <h3>Professional Activities (Selected)</h3>
+            <div class="professor-detail-section fade-in">
+                <h3>Professional Activities</h3>
                 <div class="detail-content">
                     <div class="activities-grid">
                         <div class="activity-group">
                             <h4>Board of Directors</h4>
                             <ul>
-                                <li>KSRM, 2019 – present</li>
-                                <li>KSCE, 2018 – present</li>
-                                <li>EESK, 2017 – present</li>
-                                <li>KGES, 2012 – present</li>
-                                <li>KGS, 2011 – 2016, 2018 - present</li>
+                                <li>KSRM, 2019 - present</li>
+                                <li>KSCE, 2018 - present</li>
+                                <li>EESK, 2017 - present</li>
+                                <li>KGES, 2012 - present</li>
+                                <li>KGS, 2011 - 2016, 2018 - present</li>
                             </ul>
                         </div>
                         <div class="activity-group">
                             <h4>Editorial Roles</h4>
                             <ul>
                                 <li>Editor, Rock Mechanics and Rock Engineering (SCI), 2018 - present</li>
-                                <li>Associate Editor, KSCE Journal of Civil Engineering (SCIE), 2005 – 2014, 2017 – 2018</li>
-                                <li>Associate Editor, Journal of Korean Geotechnical Society, 2005 – present</li>
-                                <li>Associate Editor, International Journal of Geo-Engineering, 2015 – present</li>
+                                <li>Associate Editor, KSCE Journal of Civil Engineering (SCIE), 2005 - 2014, 2017 - 2018</li>
+                                <li>Associate Editor, Journal of Korean Geotechnical Society, 2005 - present</li>
+                                <li>Associate Editor, International Journal of Geo-Engineering, 2015 - present</li>
                             </ul>
                         </div>
                         <div class="activity-group">
@@ -192,14 +208,14 @@
                                 <li>Chair, Soil Dynamics Technical Committee, KGS, 2018 - present</li>
                                 <li>Chair, Excavation Technical Committee, KGS, 2016 - 2017</li>
                                 <li>Chair, Young Geotechnical Engineer Forum, KGS, 2011 - 2015</li>
-                                <li>Vice Chair, KSCE Magazine Committee, 2017 – present</li>
+                                <li>Vice Chair, KSCE Magazine Committee, 2017 - present</li>
                             </ul>
                         </div>
                         <div class="activity-group">
                             <h4>International Activities</h4>
                             <ul>
-                                <li>Technical Committee 203 Nominated Member, ISSMGE, 2009 – present</li>
-                                <li>Technical Committee 214 Corresponding Member, ISSMGE, 2009 – present</li>
+                                <li>Technical Committee 203 Nominated Member, ISSMGE, 2009 - present</li>
+                                <li>Technical Committee 214 Corresponding Member, ISSMGE, 2009 - present</li>
                             </ul>
                         </div>
                     </div>
@@ -207,8 +223,8 @@
             </div>
 
             <!-- Honors and Awards -->
-            <div class="professor-detail-section">
-                <h3>Honors and Awards (Selected)</h3>
+            <div class="professor-detail-section fade-in">
+                <h3>Honors and Awards</h3>
                 <div class="detail-content">
                     <ul class="awards-list">
                         <li><span class="award-year">2017</span> Outstanding Academic Achievement, KGES</li>
@@ -231,6 +247,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
+                    <img src="images/HYU_symbol_basic.png" alt="Hanyang University" class="footer-hyu">
                     <span class="logo-text">GSR</span>
                     <span class="logo-sub">Geo System Research</span>
                 </div>

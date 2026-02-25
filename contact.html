@@ -5,10 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact | GSR Lab</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <!-- Top Utility Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-left">
+                <span>Hanyang University &middot; Department of Civil and Environmental Engineering</span>
+            </div>
+        </div>
+    </div>
+
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
@@ -20,9 +29,9 @@
                 </div>
             </a>
             <ul class="nav-menu">
-                <li><a href="professor.html" class="nav-link">Professor</a></li>
+                <li><a href="professor.html">Professor</a></li>
                 <li class="nav-dropdown">
-                    <a href="members.html" class="nav-link">Members <i class="fas fa-chevron-down"></i></a>
+                    <a href="members.html">Members</a>
                     <ul class="dropdown-menu">
                         <li><a href="members.html#postdoc">Research Professor</a></li>
                         <li><a href="members.html#phd">Ph.D. Student</a></li>
@@ -30,10 +39,10 @@
                         <li><a href="members.html#alumni">Alumni</a></li>
                     </ul>
                 </li>
-                <li><a href="research.html" class="nav-link">Research</a></li>
-                <li><a href="projects.html" class="nav-link">Projects</a></li>
-                <li><a href="publications.html" class="nav-link">Publications</a></li>
-                <li><a href="contact.html" class="nav-link active">Contact</a></li>
+                <li><a href="research.html">Research</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="publications.html">Publications</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
             </ul>
             <div class="hamburger">
                 <span class="bar"></span>
@@ -45,17 +54,24 @@
 
     <!-- Page Header -->
     <section class="page-header">
-        <div class="container">
-            <h1>Contact</h1>
-        </div>
+        <h1>Contact</h1>
     </section>
 
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="container">
+            <a href="index.html">Home</a>
+            <span>/</span>
+            <span class="current">Contact</span>
+        </div>
+    </div>
+
     <!-- Contact Section -->
-    <section class="section contact-section">
+    <section class="section">
         <div class="container">
             <div class="contact-grid">
                 <!-- Contact Information -->
-                <div class="contact-info-card">
+                <div class="contact-info-card fade-in">
                     <h3>Contact Information</h3>
 
                     <div class="contact-detail">
@@ -103,13 +119,13 @@
                 </div>
 
                 <!-- Map -->
-                <div class="contact-map-card">
+                <div class="contact-map-card fade-in">
                     <h3>Location</h3>
                     <div class="map-container">
                         <iframe
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3162.9036391085!2d127.0432747!3d37.5572669!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca4996d7a8f2d%3A0x97709fd2ea87b41c!2z7ZWc7JaR64yA7ZWZ6rWQ!5e0!3m2!1sko!2skr!4v1234567890"
                             width="100%"
-                            height="350"
+                            height="280"
                             style="border:0;"
                             allowfullscreen=""
                             loading="lazy">
@@ -131,34 +147,32 @@
         <div class="container">
             <h2 class="section-title">Join Our Lab</h2>
             <div class="join-content">
-                <div class="join-text">
-                    <p>
-                        We are always looking for motivated students and researchers who are
-                        interested in geotechnical earthquake engineering and soil-structure interaction.
-                        If you are passionate about computational geomechanics and want to contribute to innovative
-                        research, we encourage you to apply.
-                    </p>
+                <p>
+                    We are always looking for motivated students and researchers who are
+                    interested in geotechnical earthquake engineering and soil-structure interaction.
+                    If you are passionate about computational geomechanics and want to contribute to innovative
+                    research, we encourage you to apply.
+                </p>
 
-                    <div class="join-positions">
-                        <div class="position-item">
-                            <h4><i class="fas fa-graduation-cap"></i> Graduate Students (M.S. / Ph.D.)</h4>
-                            <p>We accept applications for graduate programs every semester. Applicants should have a background in civil engineering, geotechnical engineering, or related fields. Competitive scholarships are available for outstanding candidates.</p>
-                        </div>
-                        <div class="position-item">
-                            <h4><i class="fas fa-flask"></i> Postdoctoral Researchers</h4>
-                            <p>Positions are available for postdoctoral researchers with expertise in numerical methods, geotechnical earthquake engineering, seismic hazard analysis, or soil dynamics.</p>
-                        </div>
-                        <div class="position-item">
-                            <h4><i class="fas fa-user-friends"></i> Visiting Researchers</h4>
-                            <p>We welcome visiting researchers and scholars for collaborative research opportunities. Exchange programs with international universities are available.</p>
-                        </div>
+                <div class="join-positions">
+                    <div class="position-item fade-in">
+                        <h4><i class="fas fa-graduation-cap"></i> Graduate Students (M.S. / Ph.D.)</h4>
+                        <p>We accept applications for graduate programs every semester. Applicants should have a background in civil engineering, geotechnical engineering, or related fields. Competitive scholarships are available for outstanding candidates.</p>
                     </div>
-
-                    <p class="join-contact">
-                        To apply or inquire about positions, please send your CV and a brief statement
-                        of research interests to <strong>dpark@hanyang.ac.kr</strong>
-                    </p>
+                    <div class="position-item fade-in">
+                        <h4><i class="fas fa-flask"></i> Postdoctoral Researchers</h4>
+                        <p>Positions are available for postdoctoral researchers with expertise in numerical methods, geotechnical earthquake engineering, seismic hazard analysis, or soil dynamics.</p>
+                    </div>
+                    <div class="position-item fade-in">
+                        <h4><i class="fas fa-user-friends"></i> Visiting Researchers</h4>
+                        <p>We welcome visiting researchers and scholars for collaborative research opportunities. Exchange programs with international universities are available.</p>
+                    </div>
                 </div>
+
+                <p class="join-contact">
+                    To apply or inquire about positions, please send your CV and a brief statement
+                    of research interests to <strong>dpark@hanyang.ac.kr</strong>
+                </p>
             </div>
         </div>
     </section>
@@ -168,6 +182,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
+                    <img src="images/HYU_symbol_basic.png" alt="Hanyang University" class="footer-hyu">
                     <span class="logo-text">GSR</span>
                     <span class="logo-sub">Geo System Research</span>
                 </div>

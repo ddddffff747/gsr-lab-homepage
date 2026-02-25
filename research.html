@@ -5,10 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Research | GSR Lab</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <!-- Top Utility Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-left">
+                <span>Hanyang University &middot; Department of Civil and Environmental Engineering</span>
+            </div>
+        </div>
+    </div>
+
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
@@ -20,9 +29,9 @@
                 </div>
             </a>
             <ul class="nav-menu">
-                <li><a href="professor.html" class="nav-link">Professor</a></li>
+                <li><a href="professor.html">Professor</a></li>
                 <li class="nav-dropdown">
-                    <a href="members.html" class="nav-link">Members <i class="fas fa-chevron-down"></i></a>
+                    <a href="members.html">Members</a>
                     <ul class="dropdown-menu">
                         <li><a href="members.html#postdoc">Research Professor</a></li>
                         <li><a href="members.html#phd">Ph.D. Student</a></li>
@@ -30,10 +39,10 @@
                         <li><a href="members.html#alumni">Alumni</a></li>
                     </ul>
                 </li>
-                <li><a href="research.html" class="nav-link active">Research</a></li>
-                <li><a href="projects.html" class="nav-link">Projects</a></li>
-                <li><a href="publications.html" class="nav-link">Publications</a></li>
-                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><a href="research.html" class="active">Research</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="publications.html">Publications</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
             <div class="hamburger">
                 <span class="bar"></span>
@@ -43,52 +52,42 @@
         </div>
     </nav>
 
-    <!-- Research Navigation Dots -->
-    <div class="research-nav-dots">
-        <div class="nav-dot active" data-section="0">
-            <span class="dot-label">Area 1</span>
-        </div>
-        <div class="nav-dot" data-section="1">
-            <span class="dot-label">Area 2</span>
-        </div>
-        <div class="nav-dot" data-section="2">
-            <span class="dot-label">Area 3</span>
-        </div>
-        <div class="nav-dot" data-section="3">
-            <span class="dot-label">Area 4</span>
-        </div>
-        <div class="nav-dot" data-section="4">
-            <span class="dot-label">Area 5</span>
+    <!-- Page Header -->
+    <section class="page-header">
+        <h1>Research</h1>
+        <p>Our core research areas in geotechnical earthquake engineering</p>
+    </section>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="container">
+            <a href="index.html">Home</a>
+            <span>/</span>
+            <span class="current">Research</span>
         </div>
     </div>
 
-    <!-- Research Sections Container -->
-    <div class="research-fullpage-container">
-
-        <!-- Research Area 1 -->
-        <section class="research-fullpage-section" data-area="1">
-            <div class="research-background-overlay"></div>
-            <div class="research-content-wrapper">
-                <div class="research-text-side">
-                    <div class="research-area-badge">
-                        <span class="area-number">01</span>
-                        <span class="area-line"></span>
-                    </div>
-                    <h2 class="research-area-title">Earthquake–Soil Interaction</h2>
-                    <div class="research-area-description">
+    <!-- Research Area 1 -->
+    <section id="area1" class="research-section">
+        <div class="container">
+            <div class="research-inner fade-in">
+                <div class="research-text">
+                    <div class="research-number">01</div>
+                    <h2 class="research-area-title">Earthquake-Soil Interaction</h2>
+                    <div class="research-description">
                         <p>We investigate how soils respond to earthquake ground motions, with particular emphasis on amplification, attenuation, and nonlinear deformation of soil deposits.</p>
                         <p>Our research focuses on understanding seismic wave propagation through different soil conditions and stratigraphic profiles, aiming to characterize and predict site-specific seismic behavior across regions.</p>
                         <p>These studies provide a fundamental basis for interpreting earthquake-induced ground motions and improving seismic design practices.</p>
                     </div>
                     <div class="research-keywords">
-                        <span class="keyword">Site Response</span>
-                        <span class="keyword">Wave Propagation</span>
-                        <span class="keyword">Soil Amplification</span>
+                        <span class="keyword-tag">Site Response</span>
+                        <span class="keyword-tag">Wave Propagation</span>
+                        <span class="keyword-tag">Soil Amplification</span>
                     </div>
                 </div>
-                <div class="research-image-side">
-                    <div class="research-image-slider" data-area="1">
-                        <div class="slider-track">
+                <div class="research-images">
+                    <div class="research-slider">
+                        <div class="slides">
                             <div class="slide active">
                                 <img src="images/research/RESEARCH_1_1.png" alt="Earthquake-Soil Interaction Research 1">
                             </div>
@@ -108,36 +107,30 @@
                     </div>
                 </div>
             </div>
-            <div class="scroll-hint">
-                <span>Scroll to explore</span>
-                <i class="fas fa-chevron-down"></i>
-            </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Research Area 2 -->
-        <section class="research-fullpage-section" data-area="2">
-            <div class="research-background-overlay"></div>
-            <div class="research-content-wrapper">
-                <div class="research-text-side">
-                    <div class="research-area-badge">
-                        <span class="area-number">02</span>
-                        <span class="area-line"></span>
-                    </div>
-                    <h2 class="research-area-title">Seismic Ground Failure & Hazard Assessment</h2>
-                    <div class="research-area-description">
+    <!-- Research Area 2 -->
+    <section id="area2" class="research-section">
+        <div class="container">
+            <div class="research-inner fade-in">
+                <div class="research-text">
+                    <div class="research-number">02</div>
+                    <h2 class="research-area-title">Seismic Ground Failure &amp; Hazard Assessment</h2>
+                    <div class="research-description">
                         <p>This research area focuses on earthquake-induced ground failures such as liquefaction, ground deformation, and slope instability.</p>
                         <p>Using observations from real earthquake events together with analytical and numerical approaches, we evaluate the mechanisms, likelihood, and severity of seismic ground failures.</p>
                         <p>The ultimate goal is to quantitatively assess earthquake-related ground hazards and support risk-informed mitigation and design strategies.</p>
                     </div>
                     <div class="research-keywords">
-                        <span class="keyword">Liquefaction</span>
-                        <span class="keyword">Slope Stability</span>
-                        <span class="keyword">Hazard Analysis</span>
+                        <span class="keyword-tag">Liquefaction</span>
+                        <span class="keyword-tag">Slope Stability</span>
+                        <span class="keyword-tag">Hazard Analysis</span>
                     </div>
                 </div>
-                <div class="research-image-side">
-                    <div class="research-image-slider" data-area="2">
-                        <div class="slider-track">
+                <div class="research-images">
+                    <div class="research-slider">
+                        <div class="slides">
                             <div class="slide active">
                                 <img src="images/research/RESEARCH_2_1.png" alt="Ground Failure Research 1">
                                 <span class="slide-caption">Seo et al. (2024)</span>
@@ -159,32 +152,30 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Research Area 3 -->
-        <section class="research-fullpage-section" data-area="3">
-            <div class="research-background-overlay"></div>
-            <div class="research-content-wrapper">
-                <div class="research-text-side">
-                    <div class="research-area-badge">
-                        <span class="area-number">03</span>
-                        <span class="area-line"></span>
-                    </div>
-                    <h2 class="research-area-title">Seismic Behavior of Geotechnical & Underground Structures</h2>
-                    <div class="research-area-description">
+    <!-- Research Area 3 -->
+    <section id="area3" class="research-section">
+        <div class="container">
+            <div class="research-inner fade-in">
+                <div class="research-text">
+                    <div class="research-number">03</div>
+                    <h2 class="research-area-title">Seismic Behavior of Geotechnical &amp; Underground Structures</h2>
+                    <div class="research-description">
                         <p>We study the seismic response of geotechnical and underground structures, including tunnels, underground transit systems, retaining walls, and foundation systems.</p>
-                        <p>By explicitly considering soil–structure interaction, our research aims to identify damage mechanisms, deformation characteristics, and seismic vulnerability of these systems.</p>
+                        <p>By explicitly considering soil-structure interaction, our research aims to identify damage mechanisms, deformation characteristics, and seismic vulnerability of these systems.</p>
                         <p>The outcomes contribute to performance-based seismic evaluation and resilient design of underground and geotechnical infrastructure.</p>
                     </div>
                     <div class="research-keywords">
-                        <span class="keyword">Tunnels</span>
-                        <span class="keyword">SSI Analysis</span>
-                        <span class="keyword">Infrastructure</span>
+                        <span class="keyword-tag">Tunnels</span>
+                        <span class="keyword-tag">SSI Analysis</span>
+                        <span class="keyword-tag">Infrastructure</span>
                     </div>
                 </div>
-                <div class="research-image-side">
-                    <div class="research-image-slider" data-area="3">
-                        <div class="slider-track">
+                <div class="research-images">
+                    <div class="research-slider">
+                        <div class="slides">
                             <div class="slide active">
                                 <img src="images/research/RESEARCH_3_1.png" alt="Underground Structures Research 1">
                             </div>
@@ -203,32 +194,30 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Research Area 4 -->
-        <section class="research-fullpage-section" data-area="4">
-            <div class="research-background-overlay"></div>
-            <div class="research-content-wrapper">
-                <div class="research-text-side">
-                    <div class="research-area-badge">
-                        <span class="area-number">04</span>
-                        <span class="area-line"></span>
-                    </div>
-                    <h2 class="research-area-title">Numerical Simulation & Predictive Modeling</h2>
-                    <div class="research-area-description">
+    <!-- Research Area 4 -->
+    <section id="area4" class="research-section">
+        <div class="container">
+            <div class="research-inner fade-in">
+                <div class="research-text">
+                    <div class="research-number">04</div>
+                    <h2 class="research-area-title">Numerical Simulation &amp; Predictive Modeling</h2>
+                    <div class="research-description">
                         <p>This research area develops advanced numerical simulation frameworks to model the complex behavior of soils and structures under seismic loading.</p>
                         <p>Through multi-dimensional and nonlinear analyses, we simulate realistic earthquake scenarios and quantify seismic response and risk.</p>
                         <p>Predictive models are developed to efficiently evaluate seismic performance of geotechnical systems while accounting for material nonlinearity and uncertainty.</p>
                     </div>
                     <div class="research-keywords">
-                        <span class="keyword">FEM Analysis</span>
-                        <span class="keyword">Nonlinear Modeling</span>
-                        <span class="keyword">Risk Assessment</span>
+                        <span class="keyword-tag">FEM Analysis</span>
+                        <span class="keyword-tag">Nonlinear Modeling</span>
+                        <span class="keyword-tag">Risk Assessment</span>
                     </div>
                 </div>
-                <div class="research-image-side">
-                    <div class="research-image-slider" data-area="4">
-                        <div class="slider-track">
+                <div class="research-images">
+                    <div class="research-slider">
+                        <div class="slides">
                             <div class="slide active">
                                 <img src="images/research/RESEARCH_4_1.png" alt="Numerical Simulation Research 1">
                             </div>
@@ -247,32 +236,30 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Research Area 5 -->
-        <section class="research-fullpage-section" data-area="5">
-            <div class="research-background-overlay"></div>
-            <div class="research-content-wrapper">
-                <div class="research-text-side">
-                    <div class="research-area-badge">
-                        <span class="area-number">05</span>
-                        <span class="area-line"></span>
-                    </div>
-                    <h2 class="research-area-title">Artificial Intelligence & Machine Learning</h2>
-                    <div class="research-area-description">
+    <!-- Research Area 5 -->
+    <section id="area5" class="research-section">
+        <div class="container">
+            <div class="research-inner fade-in">
+                <div class="research-text">
+                    <div class="research-number">05</div>
+                    <h2 class="research-area-title">Artificial Intelligence &amp; Machine Learning</h2>
+                    <div class="research-description">
                         <p>Artificial intelligence and machine learning techniques are applied using data obtained from field measurements and rigorously conducted site response and numerical analyses.</p>
                         <p>By integrating physics-based understanding with data-driven approaches, we enhance the interpretation and prediction of seismic behavior of soils and underground structures.</p>
                         <p>This research aims to complement conventional analytical methods and improve the efficiency and reliability of seismic assessment of complex geotechnical systems.</p>
                     </div>
                     <div class="research-keywords">
-                        <span class="keyword">Deep Learning</span>
-                        <span class="keyword">Data-Driven</span>
-                        <span class="keyword">AI Prediction</span>
+                        <span class="keyword-tag">Deep Learning</span>
+                        <span class="keyword-tag">Data-Driven</span>
+                        <span class="keyword-tag">AI Prediction</span>
                     </div>
                 </div>
-                <div class="research-image-side">
-                    <div class="research-image-slider" data-area="5">
-                        <div class="slider-track">
+                <div class="research-images">
+                    <div class="research-slider">
+                        <div class="slides">
                             <div class="slide active">
                                 <img src="images/research/RESEARCH_5_1.png" alt="AI/ML Research 1">
                             </div>
@@ -291,15 +278,15 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-    </div>
-
-    <!-- Footer (shown after all research sections) -->
-    <footer class="footer research-footer">
+    <!-- Footer -->
+    <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
+                    <img src="images/HYU_symbol_basic.png" alt="Hanyang University" class="footer-hyu">
                     <span class="logo-text">GSR</span>
                     <span class="logo-sub">Geo System Research</span>
                 </div>
@@ -323,141 +310,5 @@
     </footer>
 
     <script src="script.js"></script>
-    <script>
-        // Research page specific functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const sections = document.querySelectorAll('.research-fullpage-section');
-            const navDots = document.querySelectorAll('.nav-dot');
-            const footer = document.querySelector('.research-footer');
-
-            let currentSection = 0;
-            let isScrolling = false;
-            const totalSections = sections.length;
-
-            function scrollToSection(index, immediate = false) {
-                if (index < 0 || index >= totalSections || isScrolling) return;
-
-                isScrolling = true;
-                const prevSection = currentSection;
-                currentSection = index;
-
-                if (prevSection !== index) {
-                    sections[prevSection].classList.remove('visible');
-                    sections[prevSection].classList.add('leaving');
-                }
-
-                navDots.forEach((dot, i) => {
-                    dot.classList.toggle('active', i === index);
-                });
-
-                sections[index].scrollIntoView({ behavior: immediate ? 'auto' : 'smooth' });
-
-                setTimeout(() => {
-                    sections[prevSection].classList.remove('leaving');
-                    sections[index].classList.add('visible');
-                }, immediate ? 0 : 200);
-
-                setTimeout(() => {
-                    isScrolling = false;
-                }, immediate ? 100 : 1000);
-            }
-
-            window.addEventListener('wheel', (e) => {
-                if (isScrolling) {
-                    e.preventDefault();
-                    return;
-                }
-
-                const footerRect = footer.getBoundingClientRect();
-                if (footerRect.top < window.innerHeight && e.deltaY > 0) {
-                    return;
-                }
-
-                e.preventDefault();
-
-                if (e.deltaY > 0) {
-                    if (currentSection < totalSections - 1) {
-                        scrollToSection(currentSection + 1);
-                    } else {
-                        footer.scrollIntoView({ behavior: 'smooth' });
-                        isScrolling = true;
-                        setTimeout(() => { isScrolling = false; }, 1000);
-                    }
-                } else {
-                    scrollToSection(currentSection - 1);
-                }
-            }, { passive: false });
-
-            window.addEventListener('keydown', (e) => {
-                if (e.key === 'ArrowDown' || e.key === 'PageDown') {
-                    e.preventDefault();
-                    if (currentSection < totalSections - 1) {
-                        scrollToSection(currentSection + 1);
-                    }
-                } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
-                    e.preventDefault();
-                    scrollToSection(currentSection - 1);
-                }
-            });
-
-            navDots.forEach((dot, index) => {
-                dot.addEventListener('click', () => {
-                    if (currentSection !== index) {
-                        scrollToSection(index);
-                    }
-                });
-            });
-
-            // Image sliders auto-play
-            const sliders = document.querySelectorAll('.research-image-slider');
-            sliders.forEach(slider => {
-                const slides = slider.querySelectorAll('.slide');
-                const indicators = slider.querySelectorAll('.indicator');
-                let currentSlide = 0;
-
-                setInterval(() => {
-                    slides[currentSlide].classList.remove('active');
-                    indicators[currentSlide].classList.remove('active');
-                    currentSlide = (currentSlide + 1) % slides.length;
-                    slides[currentSlide].classList.add('active');
-                    indicators[currentSlide].classList.add('active');
-                }, 4000);
-
-                indicators.forEach((indicator, index) => {
-                    indicator.addEventListener('click', () => {
-                        slides[currentSlide].classList.remove('active');
-                        indicators[currentSlide].classList.remove('active');
-                        currentSlide = index;
-                        slides[currentSlide].classList.add('active');
-                        indicators[currentSlide].classList.add('active');
-                    });
-                });
-            });
-
-            setTimeout(() => {
-                sections[0].classList.add('visible');
-            }, 300);
-
-            window.addEventListener('scroll', () => {
-                sections.forEach((section, index) => {
-                    const rect = section.getBoundingClientRect();
-                    const scrollPercent = rect.top / window.innerHeight;
-                    const overlay = section.querySelector('.research-background-overlay');
-
-                    if (overlay) {
-                        overlay.style.opacity = Math.max(0.6, Math.min(0.9, 0.75 + scrollPercent * 0.2));
-                    }
-
-                    if (Math.abs(scrollPercent) < 0.3 && !section.classList.contains('visible')) {
-                        section.classList.add('visible');
-                        currentSection = index;
-                        navDots.forEach((dot, i) => {
-                            dot.classList.toggle('active', i === index);
-                        });
-                    }
-                });
-            });
-        });
-    </script>
 </body>
 </html>
