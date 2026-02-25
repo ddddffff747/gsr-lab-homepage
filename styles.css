@@ -616,6 +616,10 @@ img {
     gap: 24px;
 }
 
+.research-cards.research-cards-3x3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
 .research-highlight-card {
     display: block;
     background: var(--white);
