@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publications | GSR Lab</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Top Utility Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-left">
+                <span>Hanyang University &middot; Department of Civil and Environmental Engineering</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="images/HYU_symbol_basic.png" alt="Hanyang University" class="logo-hyu">
+                <div class="logo-text-wrapper">
+                    <span class="logo-text">GSR</span>
+                    <span class="logo-sub">Geo System Research</span>
+                </div>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="professor.html">Professor</a></li>
+                <li class="nav-dropdown">
+                    <a href="members.html">Members</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="members.html#postdoc">Research Professor</a></li>
+                        <li><a href="members.html#phd">Ph.D. Student</a></li>
+                        <li><a href="members.html#ms">Master Student</a></li>
+                        <li><a href="members.html#alumni">Alumni</a></li>
+                    </ul>
+                </li>
+                <li><a href="research.html">Research</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="publications.html" class="active">Publications</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <h1>Publications</h1>
+    </section>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="container">
+            <a href="index.html">Home</a>
+            <span>/</span>
+            <span class="current">Publications</span>
+        </div>
+    </div>
+
+    <!-- Publications Section -->
+    <section class="section">
+        <div class="container">
+            <!-- Filter Tabs -->
+            <div class="pub-filters">
+                <button class="filter-btn active" data-filter="international">International Journal Papers</button>
+                <button class="filter-btn" data-filter="korean">Korean Journal Papers</button>
+                <button class="filter-btn" data-filter="conference">International Conference Papers</button>
+            </div>
+
+            <!-- International Journal Papers -->
+            <div class="pub-category" id="international-papers">
+                <div class="year-filter-container" id="international-year-filter"></div>
+                <div class="pub-list-container">
+                    <p style="text-align:center;color:#9ca3af;">Loading publications...</p>
+                </div>
+            </div>
+
+            <!-- Korean Journal Papers -->
+            <div class="pub-category" id="korean-papers" style="display: none;">
+                <div class="year-filter-container" id="korean-year-filter"></div>
+                <div class="pub-list-container">
+                    <p style="text-align:center;color:#9ca3af;">Loading publications...</p>
+                </div>
+            </div>
+
+            <!-- International Conference Papers -->
+            <div class="pub-category" id="conference-papers" style="display: none;">
+                <div class="year-filter-container" id="conference-year-filter"></div>
+                <div class="pub-list-container">
+                    <p style="text-align:center;color:#9ca3af;">Loading publications...</p>
+                </div>
+            </div>
+
+            <div class="pub-note">
+                <p><i class="fas fa-info-circle"></i> For a complete list of publications, please visit <a href="https://scholar.google.co.kr/citations?user=s55YrBYAAAAJ&hl=ko" target="_blank">Google Scholar</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="images/HYU_symbol_basic.png" alt="Hanyang University" class="footer-hyu">
+                    <span class="logo-text">GSR</span>
+                    <span class="logo-sub">Geo System Research</span>
+                </div>
+                <div class="footer-info">
+                    <p>Department of Civil and Environmental Engineering</p>
+                    <p>Hanyang University, Seoul, Korea</p>
+                </div>
+                <div class="footer-links">
+                    <a href="professor.html">Professor</a>
+                    <a href="members.html">Members</a>
+                    <a href="research.html">Research</a>
+                    <a href="projects.html">Projects</a>
+                    <a href="publications.html">Publications</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Geo System Research Lab. Hanyang University. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Publication data
+        var fallbackData = {
+            counts: { international: 74, korean: 114, conference: 366 },
+            international: [
+                { title: "Development of a site and motion proxy-based site amplification model for shallow bedrock profiles using machine learning", authors: "YG Lee, D Park, OS Kwon", venue: "Frontiers in Built Environment", year: "2025", citations: 0 },
+                { title: "Rapid damage state classification for underground box tunnels using machine learning", authors: "VQ Nguyen, HD Nguyen, F Petrone, D Park", venue: "Structure and Infrastructure Engineering", year: "2025", citations: 9 },
+                { title: "Assessment of liquefaction potential using simplified method and one-dimensional effective stress ground response analysis during 2017 Pohang earthquake in South Korea", authors: "YG Lee, U Pervaiz, D Park, B Kim, JT Han", venue: "Soil Dynamics and Earthquake Engineering", year: "2025", citations: 3 },
+                { title: "Numerical Estimation of Seismic Earth Pressure on Walls of Basements Underlain by Bedrock", authors: "C Lee, D Park, YG Lee", venue: "Earthquake Engineering & Structural Dynamics", year: "2025", citations: 0 },
+                { title: "Sensitivity Analysis of Numerical Coherency Model for Rock Sites", authors: "D Lee, Y Lee, HS Kim, JS Park, D Park", venue: "Applied Sciences", year: "2025", citations: 1 },
+                { title: "Novel method to estimate horizontal variability of shear wave velocity through multichannel analysis of surface waves", authors: "YH Chang, CC Tsai, L Ge, D Park", venue: "Engineering Geology", year: "2024", citations: 4 },
+                { title: "Spatial coherency analysis of seismic motions from a hard rock site dense array in Busan, Korea", authors: "Y Lee, D Lee, HS Kim, JS Park, DY Jung, J Kim, DY Kim, Y Lee, D Park", venue: "Bulletin of Earthquake Engineering", year: "2024", citations: 3 },
+                { title: "Assessments of Liquefaction Triggering Using In Situ and Laboratory Tests in Pohang, South Korea", authors: "Y Cho, JT Han, YW Choo, J Lee, J Kim, K Kim, K Park, JH Kim, HJ Park, et al.", venue: "Journal of Geotechnical and Geoenvironmental Engineering", year: "2024", citations: 2 },
+                { title: "Re-evaluation of One-Dimensional Site Response Methods Using Vs Adjusted Borehole Arrays", authors: "PH Kuan, CC Tsai, D Park", venue: "KSCE Journal of Civil Engineering", year: "2024", citations: 0 },
+                { title: "Predicting blast-induced damage and dynamic response of drill-and-blast tunnel using three-dimensional finite element analysis", authors: "JU Rehman, D Park, JK Ahn", venue: "Applied Sciences", year: "2024", citations: 8 },
+                { title: "Probabilistic assessment of seismic performance of slopes considering the sensitivity of sliding surface to input motion", authors: "MI Khalid, J Fei, D Lee, D Park, X Chen", venue: "Soil Dynamics and Earthquake Engineering", year: "2024", citations: 6 },
+                { title: "Seismic Performance Management of Aged Road Facilities in Korea: Part 1\u2014Fragility Curves", authors: "S Shin, I Kim, KI Song, D Park, B Kim, H An, KJ Hong", venue: "KSCE Journal of Civil Engineering", year: "2024", citations: 1 },
+                { title: "Evaluation of modified frequency dependent equivalent linear method for deconvolution site response analysis", authors: "SC Chen, CC Tsai, D Park", venue: "Journal of Earthquake Engineering", year: "2024", citations: 3 },
+                { title: "Geotechnical data based seismic microzonation in Seoul using region-specific and code-based site amplification models", authors: "Y Lee, YG Lee, D Park", venue: "Bulletin of Earthquake Engineering", year: "2024", citations: 8 },
+                { title: "Estimation of VS30 using shallow depth time-averaged shear wave velocity of Rawalpindi\u2013Islamabad, Pakistan", authors: "MB Adeel, ZA Nizamani, M Aaqib, S Khan, JU Rehman, B Bhusal, D Park", venue: "Geomatics, Natural Hazards and Risk", year: "2023", citations: 10 },
+                { title: "Selection of efficient earthquake intensity measures for evaluating seismic fragility of concrete face rockfill dam", authors: "MI Khalid, D Park, J Fei, VQ Nguyen, DD Nguyen, X Chen", venue: "Computers and Geotechnics", year: "2023", citations: 29 },
+                { title: "Seismic damage evaluation of double-box metro tunnel accounting for soil stiffness using three-dimensional finite element analysis", authors: "VQ Nguyen, YG Lee, D Park", venue: "Structures", year: "2023", citations: 12 },
+                { title: "Site amplification prediction model of shallow bedrock sites based on machine learning models", authors: "YG Lee, SJ Kim, Z Achmet, OS Kwon, D Park, L Di Sarno", venue: "Soil Dynamics and Earthquake Engineering", year: "2023", citations: 14 },
+                { title: "Assessment of heavy metal and oil-contaminated silty sand treatment by electrical resistance heating method", authors: "C Kim, T Koh, D Lee, D Park", venue: "Applied Sciences", year: "2022", citations: 5 },
+                { title: "A Case Study on BIM Object-Based Earned Value and Process Management in Highway Construction", authors: "YO Kim, DH Lee, D Park", venue: "KSCE Journal of Civil Engineering", year: "2022", citations: 0 },
+                { title: "Influence of horizontally variable soil properties on nonlinear seismic site response and ground motion coherency", authors: "YH Chang, CC Tsai, L Ge, D Park", venue: "Earthquake Engineering & Structural Dynamics", year: "2022", citations: 20 },
+                { title: "Analysis of surface settlement troughs induced by twin shield tunnels in soil: A case study", authors: "CY Ahn, D Park, SW Moon", venue: "Geomechanics & Engineering", year: "2022", citations: 12 },
+                { title: "Numerical response of pile foundations in granular soils subjected to lateral load", authors: "MB Adeel, M Aaqib, U Pervaiz, JU Rehman, D Park", venue: "Geomechanics & Engineering", year: "2022", citations: 7 },
+                { title: "Effect of intra-layer vs fluctuation on linear seismic site response", authors: "YH Chang, CC Tsai, CC Huang, D Park", venue: "KSCE Journal of Civil Engineering", year: "2021", citations: 5 },
+                { title: "Testing performance of pore pressure models implemented in one-dimensional site response analysis program against centrifuge test data measured in mildly sloping ground", authors: "U Pervaiz, D Park, Y Hashash, G Xing", venue: "Soil Dynamics and Earthquake Engineering", year: "2021", citations: 10 },
+                { title: "Seismic fragility of concrete face rockfill dams subjected to near and far field earthquakes", authors: "JM Baek, D Park, JN Yoon, BH Choi", venue: "Bulletin of Earthquake Engineering", year: "2021", citations: 18 },
+                { title: "Probabilistic assessment of liquefaction-induced lateral spreading", authors: "MI Khalid, D Park", venue: "Soil Dynamics and Earthquake Engineering", year: "2021", citations: 15 },
+                { title: "Damage analysis of cut-and-cover tunnel structures under seismic loading", authors: "DD Nguyen, VQ Nguyen, D Park", venue: "Geomechanics & Engineering", year: "2021", citations: 30 },
+                { title: "Seismic vulnerability assessment of rectangular cut-and-cover subway tunnels", authors: "DD Nguyen, D Park, S Sadiq, VQ Nguyen, TH Lee", venue: "Tunnelling and Underground Space Technology", year: "2019", citations: 85 },
+                { title: "Estimation of Drained Shear Strength of Granular Soil from Shear Wave Velocity and Confining Stress", authors: "JK Yoo, D Park, CDP Baxter", venue: "Journal of Geotechnical and Geoenvironmental Engineering", year: "2018", citations: 25 },
+                { title: "Seismic response of circular tunnels in jointed rock", authors: "JK Yoo, JS Park, D Park", venue: "KSCE Journal of Civil Engineering", year: "2018", citations: 18 },
+                { title: "Supplementing Vs30 with H/V Spectral Ratios for Predicting Site Effects", authors: "DY Kwak, JP Stewart, SJ Mandokhail, D Park", venue: "Bulletin of Seismological Society of America", year: "2017", citations: 85 },
+                { title: "Prediction of near-field wave attenuation due to a spherical blast source", authors: "JK Ahn, D Park", venue: "Rock Mechanics and Rock Engineering", year: "2017", citations: 45 },
+                { title: "Detection of cavities around concrete sewage pipelines using impact-echo method", authors: "JM Kang, SM Song, D Park, CH Choi", venue: "Tunnelling and Underground Space Technology", year: "2017", citations: 38 },
+                { title: "Vertical bearing capacity of bucket foundation in sand overlying clay", authors: "JS Park, D Park", venue: "Ocean Engineering", year: "2017", citations: 32 },
+                { title: "Development of normalized liquefaction resistance curve for clean sands", authors: "SJ Mandokhail, D Park, JK Yoo", venue: "Bulletin of Earthquake Engineering", year: "2017", citations: 28 },
+                { title: "USGS hazard map compatible depth-dependent seismic site coefficients for the Upper Mississippi Embayment", authors: "SW Moon, YMA Hashash, D Park", venue: "KSCE Journal of Civil Engineering", year: "2017", citations: 15 },
+                { title: "Vertical bearing capacity of bucket foundations in sand", authors: "JS Park, D Park, JK Yoo", venue: "Ocean Engineering", year: "2016", citations: 42 },
+                { title: "Damage analysis of cut-and-cover tunnel structures under seismic loading", authors: "TH Lee, D Park, DD Nguyen", venue: "Bulletin of Earthquake Engineering", year: "2016", citations: 120 },
+                { title: "Prediction of seismic displacement of dry mountain slopes composed of a soft thin uniform layer", authors: "JH Lee, JK Ahn, D Park", venue: "Soil Dynamics and Earthquake Engineering", year: "2015", citations: 35 },
+                { title: "Pore pressure model based on accumulated stress", authors: "T Park, D Park, JK Ahn", venue: "Bulletin of Earthquake Engineering", year: "2015", citations: 28 },
+                { title: "Selection of the optimal frequencies of viscous damping formulation in nonlinear time-domain site response analysis", authors: "CC Tsai, D Park, CW Chen", venue: "Soil Dynamics and Earthquake Engineering", year: "2014", citations: 45 },
+                { title: "Computational coupled method for multiscale and phase analysis", authors: "M Tak, D Park, T Park", venue: "Journal of Engineering Materials and Technology, ASME", year: "2013", citations: 12 },
+                { title: "Development of a loading platen containing a cylindrical roller bearing to reduce frictional constraint at the boundary", authors: "M Sagong, S Kim, D Park", venue: "International Journal of Rock Mechanics and Mining Sciences", year: "2013", citations: 18 },
+                { title: "Development of probabilistic seismic site coefficients of Korea", authors: "D Park, DY Kwak, CG Jeong, T Park", venue: "Soil Dynamics and Earthquake Engineering", year: "2012", citations: 55 },
+                { title: "Analysis of round robin test on seismic site response analysis", authors: "D Park, JM Kim", venue: "KSCE Journal of Civil Engineering", year: "2012", citations: 0 },
+                { title: "Experimental and numerical analysis of an opening in a jointed rock mass", authors: "M Sagong, D Park, J Yu, JS Lee", venue: "International Journal of Rock Mechanics and Mining Sciences", year: "2011", citations: 42 },
+                { title: "Development of generalised formula for dynamic active earth pressure", authors: "WC Kim, D Park, BJ Kim", venue: "Geotechnique", year: "2010", citations: 65 },
+                { title: "Simulation of tunnel response under spatially varying ground motion", authors: "D Park, M Sagong, DY Kwak, CG Jeong", venue: "Soil Dynamics and Earthquake Engineering", year: "2009", citations: 88 },
+                { title: "Evaluation of liquefaction potential of port structures with earthquake magnitude adjustment", authors: "D Park, DY Kwak, CK Cho, BS Chung", venue: "Journal of Coastal Engineering", year: "2009", citations: 25 },
+                { title: "Rate-dependent soil behavior in seismic site response analysis", authors: "D Park, YMA Hashash", venue: "Canadian Geotechnical Journal", year: "2008", citations: 125 },
+                { title: "Soil-Column Depth-Dependent Seismic Site Coefficients and Hazard Maps for the Upper Mississippi Embayment", authors: "YMA Hashash, CC Tsai, C Phillips, D Park", venue: "Bulletin of Seismological Society of America", year: "2008", citations: 95 },
+                { title: "Evaluation of seismic site factors in the Mississippi Embayment. I. Estimation of dynamic properties", authors: "D Park, YMA Hashash", venue: "Soil Dynamics and Earthquake Engineering", year: "2005", citations: 180 },
+                { title: "Evaluation of seismic site factors in the Mississippi Embayment. II. Probabilistic seismic hazard analysis with nonlinear site effects", authors: "D Park, YMA Hashash", venue: "Soil Dynamics and Earthquake Engineering", year: "2005", citations: 145 },
+                { title: "Ovaling deformations of circular tunnels under seismic loading, an update on seismic design and analysis of underground structures", authors: "YMA Hashash, D Park, JIC Yao", venue: "Tunnelling and Underground Space Technology", year: "2005", citations: 420 },
+                { title: "Soil damping formulation in nonlinear time domain site response analysis", authors: "D Park, YMA Hashash", venue: "Journal of Earthquake Engineering", year: "2004", citations: 285 },
+                { title: "Viscous damping formulation and high frequency motion propagation in non-linear site response analysis", authors: "YMA Hashash, D Park", venue: "Soil Dynamics and Earthquake Engineering", year: "2002", citations: 310 },
+                { title: "Non-linear one-dimensional seismic ground motion propagation in the Mississippi embayment", authors: "YMA Hashash, D Park", venue: "Engineering Geology", year: "2001", citations: 245 }
+            ],
+            korean: [
+                { title: "Seismic Microzonation of Seoul Based on Integrated Analysis of Borehole and Geophysical Data", authors: "Y Lee, D Park, J Yoo", venue: "Journal of the Korean GEO-environmental Society", year: "2025", citations: 0 },
+                { title: "Predicting Single-hole Blast-induced Fracture Zone Using Finite Element Analysis", authors: "JU Rehman, D Park", venue: "\ud55c\uad6d\uc9c0\ubc18\ud658\uacbd\uacf5\ud559\ud68c \ub17c\ubb38\uc9d1", year: "2024", citations: 0 },
+                { title: "Parametric Study on Seismic Earth Pressure Through Dynamic Numerical Analyses of Basements", authors: "DH Park, CH Lee", venue: "Journal of the Korean Geotechnical Society", year: "2024", citations: 2 },
+                { title: "Seismic performance evaluation of existing road tunnels based on revised seismic design code", authors: "GP Lee, DH Park, JE Kang", venue: "Journal of Korean Tunnelling and Underground Space Association", year: "2023", citations: 0 },
+                { title: "Development of Modified Flexibility Ratio-Racking Ratio Relationship of Box Tunnels Subjected to Earthquake Loading Considering Rocking", authors: "D Park, VQ Nguyen, G Lee, Y Lee", venue: "\ud55c\uad6d\uc9c0\ubc18\ud658\uacbd\uacf5\ud559\ud68c \ub17c\ubb38\uc9d1", year: "2023", citations: 0 },
+                { title: "Determining of Ground Condition Criteria for Dam Reinforced RIM Grouting", authors: "K Han, D Lee, D Park", venue: "KSCE Journal of Civil and Environmental Engineering Research", year: "2022", citations: 0 },
+                { title: "Study on Asymmetric Settlement Trough induced by the 2nd Tunneling of Twin Shield Tunnels in Clay", authors: "CY Ahn, D Park", venue: "Journal of the Korean Geotechnical Society", year: "2021", citations: 2 },
+                { title: "Stability evaluation of existing subway structure by adjacent excavation in urban tunnelling", authors: "S Han, D Lee, D Park", venue: "Journal of Korean Tunnelling and Underground Space Association", year: "2021", citations: 2 },
+                { title: "Case study on design and construction for cross-connection tunnel using large steel pipe thrust method in soil twin shield tunnels underneath airport", authors: "CY Ahn, D Park", venue: "Journal of Korean Tunnelling and Underground Space Association", year: "2021", citations: 1 },
+                { title: "Dynamic Factor of Safety Calculation of Slope by Nonlinear Response History Analysis", authors: "Y Lee, HS Kim, YT Ju, D Kim, HJ Park, D Park", venue: "Journal of the Korean Geotechnical Society", year: "2021", citations: 5 },
+                { title: "Investigation of effect of input ground motion on the failure surface of mountain slopes", authors: "MI Khalid, U Pervaiz, D Park", venue: "\ud55c\uad6d\uc9c0\ubc18\ud658\uacbd\uacf5\ud559\ud68c \ub17c\ubb38\uc9d1", year: "2021", citations: 4 },
+                { title: "Seismic fragility evaluation of inverted T-type wall with a backfill slope considering site conditions", authors: "H Seo, B Kim, D Park", venue: "KSCE Journal of Civil and Environmental Engineering Research", year: "2021", citations: 11 },
+                { title: "Evaluation of the behavioral characteristics of soil nail using high-strength steel pipe through field test", authors: "J Park, D Park, J Lee, K Jung", venue: "Journal of the Korean GEO-environmental Society", year: "2021", citations: 2 },
+                { title: "Investigation of Spudcan Penetration Resistance in Layered Soil Deposits", authors: "MA Jan, ZA Nizamani, D Park", venue: "\ud55c\uad6d\uc9c0\ubc18\ud658\uacbd\uacf5\ud559\ud68c \ub17c\ubb38\uc9d1", year: "2021", citations: 0 },
+                { title: "Evaluation of the influence of shear strength correction through a comparative study of nonlinear site response models", authors: "M Aaqib, D Park, H Kim, MB Adeel, ZA Nizamani", venue: "Journal of the Korean Geotechnical Society", year: "2020", citations: 3 },
+                { title: "Evaluation of liquefaction triggering for the Pohang area based on SPT and CPT tests", authors: "YJ Kim, KW Ko, BM Kim, DH Park, KS Kim, JT Han, DS Kim", venue: "Journal of the Korean Geotechnical Society", year: "2020", citations: 8 },
+                { title: "\ubc15\uc2a4\ud615 \ud130\ub110\uc758 \uc9c0\uc9c4 \ucde8\uc57d\ub3c4 \ud3c9\uac00", authors: "\ubc15\ub450\ud76c, DD Nguyen, TH Lee, VQ Nguyen", venue: "\ud55c\uad6d\uc9c0\ubc18\uacf5\ud559\ud68c \ub17c\ubb38\uc9d1", year: "2018", citations: 0 },
+                { title: "\ucf58\ud06c\ub9ac\ud2b8 \ud45c\uba74\ucc28\uc218\ubcbd\ud615 \uc11d\uad34\ub310\uc758 \uc9c0\uc9c4 \ucde8\uc57d\ub3c4 \ud3c9\uac00", authors: "\ubc31\uc885\ubbfc, \ubc15\ub450\ud76c, \uc724\uc9c4\ub0a8, \ucd5c\ubcd1\ud55c", venue: "\ud55c\uad6d\uc9c0\ubc18\uc2e0\uc18c\uc7ac\uacf5\ud559\ud68c \ub17c\ubb38\uc9d1", year: "2018", citations: 0 },
+                { title: "\uc9c0\uc9c4 \uc2dc \ud544\ub310\uc758 \uce68\ud558\ub7c9\uacfc \uc9c0\ubc18\uc9c4\ub3d9 \ubcc0\uc218 \uac04\uc758 \uc0c1\uad00\uad00\uacc4 \ubd84\uc11d", authors: "\ubc31\uc885\ubbfc, \ubc15\ub450\ud76c, \uc724\uc9c4\ub0a8, \ucd5c\ubcd1\ud55c", venue: "\ud55c\uad6d\uc9c0\ubc18\uc2e0\uc18c\uc7ac\uacf5\ud559\ud68c \ub17c\ubb38\uc9d1", year: "2018", citations: 0 },
+                { title: "\uc9c0\ud558\uce35-\uc9c0\ubc18 \uc6b4\ub3d9\ud559\uc801 \uc0c1\ud638\uc791\uc6a9\uc744 \uace0\ub824\ud55c \uace0\uce35 \uad6c\uc870\ubb3c \uae30\ucd08\uc800\uba74\uc758 \uc124\uacc4\uc9c0\ubc18\uc6b4\ub3d9 \uc0b0\uc815", authors: "S Sadiq, \uc724\uc9c0\ub0a8, \uae40\uc8fc\ud615, \ubc15\ub450\ud76c", venue: "\ud55c\uad6d\uc9c0\ubc18\ud658\uacbd\uacf5\ud559\ud68c \ub17c\ubb38\uc9d1", year: "2018", citations: 0 },
+                { title: "Nonlinear seismic analysis of U-shaped cantilever retaining structures", authors: "S Sadiq, \ubc15\ub450\ud76c, \uc720\uc9c4\uad8c, \uc724\uc9c0\ub0a8", venue: "\ud55c\uad6d\uc9c0\ubc18\ud658\uacbd\uacf5\ud559\ud68c \ub17c\ubb38\uc9d1", year: "2017", citations: 0 },
+                { title: "\ud30c\uc1c4\uc601\uc5ed\uc5d0 \ub530\ub978 \ubc1c\ud30c\uc9c4\ub3d9 \uc804\ud30c\ud2b9\uc131", authors: "\uc548\uc7ac\uad11, \ubc15\ub450\ud76c, \ubc15\uae30\ucc9c, \uc724\uc9c0\ub0a8", venue: "\ud55c\uad6d\ud130\ub110\ubc0f\uc9c0\ud558\uacf5\uac04\ud559\ud68c \ub17c\ubb38\uc9d1", year: "2017", citations: 0 },
+                { title: "\ubc84\ud0b7\uae30\ucd08\uc758 \uac15\uc131 \uc0b0\uc815", authors: "\ubc15\uc815\uc120, \ubc15\ub450\ud76c, \uc724\uc138\uc6c5, \uc7a5\ud654\uc12d", venue: "\ud55c\uad6d\uc9c0\ubc18\ud658\uacbd\uacf5\ud559\ud68c \ub17c\ubb38\uc9d1", year: "2017", citations: 0 },
+                { title: "\ud558\uc218\uad00\ub85c \uac74\uc804\ub3c4\uc640 \ub3c4\ub85c\ud568\ubab0 \ubc1c\uc0dd \uc0c1\uad00\uad00\uacc4 \ubd84\uc11d", authors: "\uae40\uc9c4\uc601, \uac15\uc7ac\ubaa8, \ucd5c\ucc3d\ud638, \ubc15\ub450\ud76c", venue: "\ud55c\uad6d\uc9c0\ubc18\ud658\uacbd\uacf5\ud559\ud68c \ub17c\ubb38\uc9d1", year: "2017", citations: 0 },
+                { title: "\ubaa8\ub798\uc640 \uc810\ud1a0 \ub2e8\uc77c\uc9c0\ubc18\uc5d0\uc11c\uc758 \uc2a4\ud37c\ub4dc\uce94 \uad00\uc785/\ucd94\ucd9c \uac70\ub3d9 \ud3c9\uac00", authors: "\uc720\uc9c4\uad8c, \ubc15\ub450\ud76c, \uac15\uc7ac\ubaa8", venue: "\ud55c\uad6d\uc9c0\ubc18\uacf5\ud559\ud68c \ub17c\ubb38\uc9d1", year: "2017", citations: 0 },
+                { title: "\uc720\ud55c\uc694\uc18c\ud574\uc11d\uc744 \ud1b5\ud55c \ub2e4\uce35\uc9c0\ubc18\uc5d0\uc11c\uc758 \ubc84\ud0b7\uae30\ucd08 \uc218\uc9c1\uc9c0\uc9c0\ub825 \uc0b0\uc815", authors: "\ubc15\uc815\uc120, \ubc15\ub450\ud76c, \uc724\uc138\uc6c5, SJ Mandokhail", venue: "\ud55c\uad6d\uc9c0\ubc18\uacf5\ud559\ud68c \ub17c\ubb38\uc9d1", year: "2016", citations: 0 },
+                { title: "\ubc18\ubcf5\ub2e8\uc21c\uc804\ub2e8\uc2dc\ud5d8\uc5d0 \uae30\ubc18\ud55c \uc870\ub9bd\ud1a0\uc758 \uc124\uacc4 \uc561\uc0c1\ud654 \uc800\ud56d \uace1\uc120 \uac1c\ubc1c", authors: "SJ Mandokhail, \ubc15\ub450\ud76c, \uae40\ud55c\uc12d, \ubc15\uae30\ucc9c", venue: "\ud55c\uad6d\uc9c0\ubc18\uacf5\ud559\ud68c \ub17c\ubb38\uc9d1", year: "2016", citations: 0 },
+                { title: "\ube44\ud0c4\uc131 \uc9c0\uc9c4 \ud574\uc11d\uc744 \ud1b5\ud55c \ubc15\uc2a4 \ud130\ub110\uc758 \uc190\uc0c1 \uc0c1\ud0dc \ubc0f \uc190\uc0c1 \uc9c0\uc218 \uaddc\uba85", authors: "\ubc15\ub450\ud76c, \uc774\ud0dc\ud615, \uae40\ud55c\uc12d, \ubc15\uc815\uc120", venue: "\ud55c\uad6d\ud130\ub110\uc9c0\ud558\uacf5\uac04\ud559\ud68c \ub17c\ubb38\uc9d1", year: "2016", citations: 0 },
+                { title: "\uc804\ub2e8\ud30c \uc18d\ub3c4\ub97c \ud1b5\ud55c \ubaa8\ub798\uc758 \uc804\ub2e8\uac15\ub3c4 \uc608\uce21", authors: "\uc720\uc9c4\uad8c, \ubc15\ub450\ud76c", venue: "\ud55c\uad6d\uc9c0\ubc18\uacf5\ud559\ud68c \ub17c\ubb38\uc9d1", year: "2015", citations: 0 },
+                { title: "\uc0ac\uc9c8\ud1a0 \uc9c0\ubc18\uc5d0 \uc124\uce58\ub41c \ubc84\ud0b7\uae30\ucd08 \ubc0f \uc58c\uc740\uae30\ucd08\uc758 \uc218\uc9c1\uc9c0\uc9c0\ub825 \uc0b0\uc815", authors: "\ubc15\uc815\uc120, \ubc15\ub450\ud76c, \uc9c0\uc131\ud604, \uae40\ub3d9\uc900", venue: "\ud55c\uad6d\uc9c0\ubc18\ud658\uacbd\uacf5\ud559\ud68c \ub17c\ubb38\uc9d1", year: "2015", citations: 0 },
+                { title: "\uc9c0\uc9c4\ud30c \uc785\uc0ac\ubc29\ud5a5\uc5d0 \ub530\ub978 \ub9e4\uc124\uad00 \uc885\ubc29\ud5a5 \uc751\ub2f5\ud2b9\uc131 \uaddc\uba85", authors: "\uace8\ud615\uc8fc, \ubc15\ub450\ud76c, \uc774\uc7a5\uadfc, \uac15\uc7ac\ubaa8", venue: "\ud55c\uad6d\uc9c0\ubc18\ud658\uacbd\uacf5\ud559\ud68c \ub17c\ubb38\uc9d1", year: "2015", citations: 0 },
+                { title: "\uc0ac\uc9c8\ud1a0 \uc9c0\ubc18\uc5d0 \uc124\uce58\ub41c \ubc84\ud0b7\uae30\ucd08\uc758 \uc218\uc9c1 \ud558\uc911\uc804\uc774 \ud2b9\uc131", authors: "\ubc15\uc815\uc120, \ubc15\ub450\ud76c, \uc724\uc138\uc6c5, \uc7a5\ud654\uc12d", venue: "\ud55c\uad6d\uc9c0\ubc18\uacf5\ud559\ud68c \ub17c\ubb38\uc9d1", year: "2015", citations: 0 },
+                { title: "\uc9c0\uc9c4 \uc2dc \uc0b0\uc0ac\uba74\uc758 \uc601\uad6c\ubcc0\uc704 \ucd94\uc815\uc2dd \uac1c\ubc1c", authors: "\uc774\uc885\ud6c4, \ubc15\ub450\ud76c, \uc548\uc7ac\uad11, \ubc15\uc778\uc900", venue: "\ud55c\uad6d\uc9c0\ubc18\uacf5\ud559\ud68c \ub17c\ubb38\uc9d1", year: "2015", citations: 0 },
+                { title: "\uc218\uce58\ud574\uc11d\uc744 \ud1b5\ud55c \uc9c4\ub3d9\uac10\uc1e0\uc2dd \ub9de\ucda4\ud615 \uc554\ubc18\uc758 \uac10\uc1e0\ube44 \uc0b0\uc815", authors: "\uae40\ub099\uc601, \ub958\uc7ac\ud558, \uc548\uc7ac\uad11, \ubc15\ub450\ud76c, \uc190\ubb34\ub77d, \ud669\uc601\ucca0", venue: "\ud55c\uad6d\uc9c0\ubc18\uacf5\ud559\ud68c \ub17c\ubb38\uc9d1", year: "2015", citations: 0 },
+                { title: "\ucd5c\uc18c\ud1a0\ud53c\uace0 \ubbf8\ud655\ubcf4 \uad6c\uac04\uc5d0 \uc2dc\uacf5\ud55c \ud30c\ud615\uac15\ud310 \uc554\uac70\uc758 \ubcc0\ud615 \ud2b9\uc131", authors: "\uae40\uba85\uc77c, \ubc15\ub450\ud76c", venue: "\ud55c\uad6d\uc9c0\ubc18\ud658\uacbd\uacf5\ud559\ud68c \ub17c\ubb38\uc9d1", year: "2014", citations: 0 },
+                { title: "\ubca4\ub354\uc5d8\ub9ac\uba3c\ud2b8\uc640 \uc0bc\ucd95\uc2dc\ud5d8\uc744 \ud1b5\ud55c \ubaa8\ub798\uc758 \uc804\ub2e8\uac15\ub3c4 \ubc0f \ud3ec\uc544\uc1a1\ube44\uc758 \ud2b9\uc131 \uaddc\uba85", authors: "\uc720\uc9c4\uad8c, \ubc15\ub450\ud76c", venue: "\ud55c\uad6d\uc9c0\ubc18\uacf5\ud559\ud68c \ub17c\ubb38\uc9d1", year: "2014", citations: 0 },
+                { title: "\ud0c4\uc131\ud30c\ub97c \ud1b5\ud55c \uc2dc\ub8cc\uc131\ud615\ubc29\ubc95\uc5d0 \ub530\ub978 \ubaa8\ub798 \uc804\ub2e8\uac70\ub3d9\ud2b9\uc131 \ud3c9\uac00", authors: "\uc720\uc9c4\uad8c, \ubc15\ub450\ud76c", venue: "\ud55c\uad6d\uc9c0\ubc18\ud658\uacbd\uacf5\ud559\ud68c \ub17c\ubb38\uc9d1", year: "2014", citations: 0 },
+                { title: "\ud130\ub110 \uad74\ucc29 \ubc1c\ud30c\ud558\uc911 \uc2dc\uac04\uc774\ub825 \uc0dd\uc131", authors: "\uc548\uc7ac\uad11, \ubc15\ub450\ud76c, \uc2e0\uc601\uc644, \ubc15\uc778\uc900", venue: "\ud55c\uad6d\ud130\ub110\uacf5\ud559\ud68c \ub17c\ubb38\uc9d1", year: "2014", citations: 0 },
+                { title: "\uc6b4\uc601 \uc911\uc778 \ub3c4\ub85c \ud130\ub110\uc758 \ub0b4\uc9c4 \uc131\ub2a5 \ud3c9\uac00", authors: "\uc548\uc7ac\uad11, \ubc15\ub450\ud76c, \uae40\ub3d9\uaddc, \uae40\uad11\uc5fc", venue: "\ud55c\uad6d\ud130\ub110\uc9c0\ud558\uacf5\uac04\ud559\ud68c \ub17c\ubb38\uc9d1", year: "2013", citations: 0 },
+                { title: "\uc0b0\uc0ac\uba74\uc758 \uc9c0\uc9c4\ub3d9 \uc99d\ud3ed \ud2b9\uc131", authors: "\ubc15\ub450\ud76c, \uae40\ud0dc\uade0, \uc548\uc7ac\uad11, \ubc15\uc778\uc900", venue: "\ud55c\uad6d\ubc29\uc7ac\ud559\ud68c \ub17c\ubb38\uc9d1", year: "2013", citations: 0 },
+                { title: "\uc810\ud1a0 \ud568\uc720\ub7c9\uc5d0 \ub530\ub978 \uc810\ud1a0\uc9c8 \ubaa8\ub798\uc758 \ud22c\uc218 \ubc0f \uc555\ubc00 \ud2b9\uc131 \ud3c9\uac00", authors: "\uae40\uad11\uade0, \ubc15\ub450\ud76c, \uc720\uc9c4\uad8c, \uc774\uc7a5\uadfc", venue: "\ud55c\uad6d\uc9c0\ubc18\uacf5\ud559\ud68c \ub17c\ubb38\uc9d1", year: "2013", citations: 0 },
+                { title: "\uc751\ub825 \uae30\ubc18 \uac04\uadf9\uc218\uc555 \ubaa8\ub378 \uac1c\ubc1c", authors: "\ubc15\ub450\ud76c, \uc548\uc7ac\uad11, \uae40\uc9c4\ub9cc", venue: "\ud55c\uad6d\uc9c0\ubc18\uacf5\ud559\ud68c \ub17c\ubb38\uc9d1", year: "2012", citations: 0 },
+                { title: "Impulse \ud568\uc218 \uae30\ubc18 \ubaa9\ud45c\uc751\ub2f5\uc2a4\ud399\ud2b8\ub7fc \ub9de\ucda4\ud615 \uc9c0\uc9c4\ud30c \ubcf4\uc815 \uc54c\uace0\ub9ac\uc998\uc758 \uc801\uc6a9\uc131 \ud3c9\uac00", authors: "\uae40\ud604\uad00, \ubc15\ub450\ud76c", venue: "\ud55c\uad6d\uc9c0\ubc18\ud658\uacbd\uacf5\ud559\ud68c \ub17c\ubb38\uc9d1", year: "2011", citations: 0 },
+                { title: "\uc2dc\uac04\uc601\uc5ed \uc778\uacf5\uc9c0\uc9c4\ud30c \uc0dd\uc131", authors: "\uae40\ud604\uad00, \uc815\ucc3d\uade0, \ubc15\ub450\ud76c", venue: "LHI Journal of Land, Housing and Urban Affairs", year: "2010", citations: 0 },
+                { title: "\ud130\ub110 \ud6a1\ubc29\ud5a5 \uc9c0\uc9c4\ud574\uc11d Part I: \uc751\ub2f5\ubcc0\uc704\ubc95\uc744 \ud1b5\ud55c \ud130\ub110\uc758 \uc9c0\uc9c4\uc751\ub2f5 \uc608\uce21", authors: "\ubc15\ub450\ud76c, \uc2e0\uc885\ud638, \uc724\uc138\uc6c5", venue: "\ud55c\uad6d\uc9c0\ubc18\uacf5\ud559\ud68c \ub17c\ubb38\uc9d1", year: "2010", citations: 0 },
+                { title: "\ud130\ub110 \ud6a1\ubc29\ud5a5 \uc9c0\uc9c4\ud574\uc11d Part II: \ub3d9\uc801\ud574\uc11d\uc744 \ud1b5\ud55c \ud130\ub110\uc758 \uc9c0\uc9c4\uc751\ub2f5 \uc608\uce21", authors: "\ubc15\ub450\ud76c, \uc2e0\uc885\ud638, \uc724\uc138\uc6c5", venue: "\ud55c\uad6d\uc9c0\ubc18\uacf5\ud559\ud68c \ub17c\ubb38\uc9d1", year: "2010", citations: 0 },
+                { title: "\uc218\uc815\ub41c \ub4f1\uac00\uc120\ud615\ud574\uc11d\uae30\ubc95\uc758 \uc815\ud655\uc131 \ud3c9\uac00", authors: "\uc815\ucc3d\uade0, \uace8\ub3d9\uc5fd, \ubc15\ub450\ud76c, \uae40\uad11\uade0", venue: "\ud55c\uad6d\uc9c0\ubc18\ud658\uacbd\uacf5\ud559\ud68c \ub17c\ubb38\uc9d1", year: "2010", citations: 0 },
+                { title: "Fourier Spectrum Based Algorithm for Selecting Optimum Frequencies of Viscous Damping Formulation", authors: "\ubc15\ub450\ud76c, \uc774\ud604\uc6b0, \uc815\ucc3d\uade0", venue: "International Journal of Geo-Engineering", year: "2010", citations: 0 },
+                { title: "\ub2e8\uc77c\uc2ec\uc815 \uc9c0\uc5f4\ud788\ud2b8\ud38c\ud504\uc758 \uc218\uce58\uc801 \ubaa8\ub378\ub9c1 Part I", authors: "\ubc15\ub450\ud76c, \uae40\uad11\uade0, \uace8\ub3d9\uc5fd, \uc7a5\uc7ac\ud6c8, \ubc15\uc2dc\uc0bc", venue: "\ud55c\uad6d\uc9c0\ubc18\uacf5\ud559\ud68c \ub17c\ubb38\uc9d1", year: "2010", citations: 0 },
+                { title: "\ub2e8\uc77c\uc2ec\uc815 \uc9c0\uc5f4\ud788\ud2b8\ud38c\ud504\uc758 \uc218\uce58\uc801 \ubaa8\ub378\ub9c1 Part II", authors: "\ubc15\ub450\ud76c, \uae40\uad11\uade0, \uace8\ub3d9\uc5fd, \uc7a5\uc7ac\ud6c8, \ubc15\uc2dc\uc0bc", venue: "\ud55c\uad6d\uc9c0\ubc18\uacf5\ud559\ud68c \ub17c\ubb38\uc9d1", year: "2010", citations: 0 },
+                { title: "\u65b0 \ud655\ub960\ub860\uc801 \uc9c0\uc9c4\uc7ac\ud574\ubd84\uc11d \ubc0f \uad6d\ub0b4 \uc9c0\uc9c4\uacc4\uc218 \uac1c\ubc1c Part I", authors: "\ubc15\ub450\ud76c, \uace8\ub3d9\uc5fd, \uc815\ucc3d\uade0", venue: "\ud55c\uad6d\uc9c0\ubc18\ud658\uacbd\uacf5\ud559\ud68c \ub17c\ubb38\uc9d1", year: "2009", citations: 0 },
+                { title: "\u65b0 \ud655\ub960\ub860\uc801 \uc9c0\uc9c4\uc7ac\ud574\ubd84\uc11d \ubc0f \uad6d\ub0b4 \uc9c0\uc9c4\uacc4\uc218 \uac1c\ubc1c Part II", authors: "\ubc15\ub450\ud76c, \uace8\ub3d9\uc5fd, \uc815\ucc3d\uade0", venue: "\ud55c\uad6d\uc9c0\ubc18\ud658\uacbd\uacf5\ud559\ud68c \ub17c\ubb38\uc9d1", year: "2009", citations: 0 },
+                { title: "\uad6d\ub0b4 \ud655\ub960\ub860\uc801 \uc9c0\uc9c4\uacc4\uc218 \uc0dd\uc131", authors: "\uace8\ub3d9\uc5fd, \uc815\ucc3d\uade0, \ubc15\ub450\ud76c, \uc774\ud64d\uc131", venue: "\ud55c\uad6d\uc9c0\ubc18\uacf5\ud559\ud68c \ub17c\ubb38\uc9d1", year: "2009", citations: 0 },
+                { title: "\uac04\ud3b8\uc608\uce21\ubc95\uacfc \uc720\ud6a8\uc751\ub825 \uc9c0\ubc18\uc751\ub2f5\ud574\uc11d\uc744 \ud1b5\ud55c \uc561\uc0c1\ud654 \uc608\uce21", authors: "\uace8\ub3d9\uc5fd, \ubc15\ub450\ud76c", venue: "\ud55c\uad6d\uc9c0\ubc18\uacf5\ud559\ud68c \ub17c\ubb38\uc9d1", year: "2009", citations: 0 },
+                { title: "\u65b0 \uc720\uc0ac\uc815\uc801 \uc0ac\uba74\uc548\uc815\ud574\uc11d \uae30\ubc95 \uac1c\ubc1c", authors: "\uc724\uc138\uc6c5, \ubc15\ub450\ud76c, \uc774\uc2b9\ud638, \ud669\uc601\ucca0", venue: "\ud55c\uad6d\uc9c0\ubc18\ud658\uacbd\uacf5\ud559\ud68c \ub17c\ubb38\uc9d1", year: "2009", citations: 0 },
+                { title: "\uc8fc\ud30c\uc218 \uc758\uc874\uc131\uc744 \uace0\ub824\ud55c \ub4f1\uac00\uc120\ud615\ud574\uc11d\uae30\ubc95\uc758 \uac80\uc99d", authors: "\uc815\ucc3d\uade0, \uace8\ub3d9\uc5fd, \ubc15\ub450\ud76c", venue: "\ud55c\uad6d\uc9c0\ubc18\uacf5\ud559\ud68c \ub17c\ubb38\uc9d1", year: "2008", citations: 0 },
+                { title: "\uacf5\uac04\uc801\uc73c\ub85c \ubcc0\uc774\ud558\ub294 \uc9c0\uc9c4\ud30c\uc5d0 \ub300\ud55c \ud130\ub110\uc758 \uc751\ub2f5 \uc608\uce21", authors: "\uae40\uc778\ud0dc, \ud55c\uc815\uc6b0, \uc724\uc138\uc6c5, \ubc15\ub450\ud76c", venue: "\ud55c\uad6d\uc9c0\ubc18\ud658\uacbd\uacf5\ud559\ud68c \ub17c\ubb38\uc9d1", year: "2008", citations: 0 },
+                { title: "\uad6d\ub0b4 \uc9c0\ubc18\uc5d0\uc11c\uc758 \ube44\uc120\ud615 \ubd80\uc9c0\ud6a8\uacfc \uc608\uce21", authors: "\uc774\ud64d\uc131, \uc724\uc138\uc6c5, \ubc15\ub450\ud76c, \uae40\uc778\ud0dc", venue: "\ud55c\uad6d\uc9c0\ubc18\uacf5\ud559\ud68c \ub17c\ubb38\uc9d1", year: "2008", citations: 0 },
+                { title: "\ud558\uc911\uc758 \uc8fc\ud30c\uc218\uc5d0 \uc758\ud558\uc5ec \uc9c0\ubc30\ubc1b\uc740 \ud759\uc758 \ub3d9\uc801 \uac70\ub3d9\uc774 \ubd80\uc9c0\uc99d\ud3ed\ud604\uc0c1\uc5d0 \ubbf8\uce58\ub294 \uc601\ud5a5", authors: "\ubc15\ub450\ud76c, YMA Hashash, \uc774\ud604\uc6b0, \uae40\uc7ac\uc5f0", venue: "\ud55c\uad6d\uc9c0\ubc18\uacf5\ud559\ud68c \ub17c\ubb38\uc9d1", year: "2006", citations: 0 }
+            ],
+            conference: [
+                { title: "Estimation of Newmark displacement of homogeneous soil slopes from static factor of safety and ground motion parameters", authors: "D Park, S Kwon, CY Kim, J Choi", venue: "Japanese Geotechnical Society Special Publication", year: "2024", citations: 0 },
+                { title: "Deep neural network based approach for site amplification prediction of shallow bedrock sites", authors: "Y Lee, D Lee, J Kang, D Park", venue: "Smart Geotechnics for Smart Societies", year: "2023", citations: 0 },
+                { title: "Optimal earthquake intensity measures for probabilistic seismic demand models of rectangular tunnels", authors: "VQ Nguyen, H Roh, D Park", venue: "Smart Geotechnics for Smart Societies", year: "2023", citations: 1 },
+                { title: "A proposed seismic velocity profile database model", authors: "S Sadiq, O Ilhan, SK Ahdi, Y Bozorgnia, Y Hashash, DY Kwak, D Park, et al.", venue: "Seismological Research Letters", year: "2023", citations: 9 },
+                { title: "Prediction of Site Amplification of Shallow Bedrock Sites Using Deep Neural Network Model", authors: "D Park, Y Lee, H Roh, J Kang", venue: "Conference on Performance-based Design in Earthquake Geotechnical Engineering", year: "2022", citations: 0 },
+                { title: "Status of the United States community shear-wave velocity profile database", authors: "SK Ahdi, P Zimmaro, DY Kwak, T Gospe, A Yong, S Sadiq, O Ilhan, et al.", venue: "Proc. 6th IASPEI/IAEE International Symposium", year: "2021", citations: 0 },
+                { title: "Seismic interaction of tall building and underground level", authors: "S Shamsher, D Park, YG Lee", venue: "16th Asian Regional Conference on Soil Mechanics and Geotechnical Engineering", year: "2020", citations: 0 },
+                { title: "Development of a United States Community Shear Wave Velocity Profile Database", authors: "S Ahdi, S Sadiq, O Ilhan, Y Bozorgnia, Y Hashash, D Kwak, D Park, A Yong, J Stewart", venue: "Geotechnical Special Publication GSP 291", year: "2018", citations: 0 },
+                { title: "Importance of implied strength correction for 1D site response at shallow sites at a moderate to low seismicity region", authors: "M Aaqib, S Sadiq, D Park, Y Hashash, M Pehlivan", venue: "Geotechnical Special Publication GSP 291", year: "2018", citations: 0 },
+                { title: "CRR versus N curve for liquefaction assessment of clean sands", authors: "SJ Mandokhail, JK Yoo, D Park", venue: "3rd Performance Based Design in Earthquake Geotechnical Engineering", year: "2017", citations: 0 },
+                { title: "Capacity of bucket foundation on sand over clay layers", authors: "D Park, JS Park", venue: "19th International Conference on Soil Mechanics and Geotechnical Engineering", year: "2017", citations: 0 },
+                { title: "Seismic site response of shallow sites in moderate seismicity regions", authors: "M Pehlivan, D Park, S Sadiq, YMA Hashash", venue: "19th International Conference on Soil Mechanics and Geotechnical Engineering", year: "2017", citations: 0 },
+                { title: "Investigation of mechanism of ground sinking through 3-D GPR surveys and laboratory model tests", authors: "H Chae, D Park, B Chun", venue: "19th International Conference on Soil Mechanics and Geotechnical Engineering", year: "2017", citations: 0 },
+                { title: "Estimation of damping ratio of rock mass for numerical simulation of blast induced vibration propagation", authors: "JK Ahn, D Park, JK Yoo", venue: "15th Asian Regional Conference on Soil Mechanics and Geotechnical Engineering", year: "2016", citations: 0 },
+                { title: "Collapse mechanism of cut-and-cover tunnels under seismic loading", authors: "D Park, TH Lee, DD Nguyen, J Park", venue: "15th Asian Regional Conference on Soil Mechanics and Geotechnical Engineering", year: "2016", citations: 0 },
+                { title: "Damage stated of cut-and-cover tunnels under seismic excitation", authors: "D Park, TH Lee, JM Kim", venue: "6th International Conference on Earthquake Geotechnical Engineering", year: "2015", citations: 0 },
+                { title: "Numerical modeling of skirted foundation in alternating layers of sand and clay", authors: "JS Park, D Park, HS Jang, SW Yoon", venue: "25th International Offshore and Polar Engineering Conference", year: "2015", citations: 0 },
+                { title: "Seismic displacement on mountain slopes", authors: "J Lee, JK Ahn, D Park, J Kim", venue: "5th Asia Conference on Earthquake Engineering", year: "2014", citations: 0 },
+                { title: "Effect of spatial variability of shear wave velocity on seismic response of soil deposits", authors: "Y Lee, D Park, CC Tsai, SJ Mandokhail", venue: "5th Asia Conference on Earthquake Engineering", year: "2014", citations: 0 },
+                { title: "Effect of Relative Density of Sand on the Penetration Characteristics of Suction Pile", authors: "JS Park, JH Lee, D Park, H Ban, YS Han", venue: "24th International Offshore and Polar Engineering Conference", year: "2014", citations: 0 },
+                { title: "Influence of Rock Joints on Seismic Response of Tunnels", authors: "D Park, JK Yoo, KK Kim", venue: "World Tunnel Congress 2012", year: "2012", citations: 0 },
+                { title: "Probabilistic Seismic Site Coefficients of Korea", authors: "DY Kwak, D Park, HK Kim", venue: "14th Asian Regional Conference on Soil Mechanics and Geotechnical Engineering", year: "2011", citations: 0 },
+                { title: "Numerical Simulation of Standing Column Well Geothermal Heat Pump", authors: "D Park, JS Park, SS Park", venue: "14th Asian Regional Conference on Soil Mechanics and Geotechnical Engineering", year: "2011", citations: 0 },
+                { title: "Soil Response in Frequency Dependent Equivalent Linear Analysis", authors: "HK Kim, DH Park, CG Jeong", venue: "21st International Offshore and Polar Engineering Conference", year: "2011", citations: 0 },
+                { title: "Parametric Study for Evaluation of Design Parameters of Standing Column Well", authors: "DY Kwak, DH Park, JH Jang, SM Na, SS Park", venue: "World Geothermal Congress", year: "2010", citations: 0 },
+                { title: "Numerical Simulation of Standing Column Well", authors: "D Park, DY Kwak, GG Kim, SS Park, SM Na", venue: "World Geothermal Congress", year: "2010", citations: 0 },
+                { title: "Rate and Frequency-Dependent Equivalent Linear Site Response Analysis Algorithms", authors: "D Park, CG Jeong, DY Kwak", venue: "2nd Japan-Korea Geotechnical Workshop", year: "2009", citations: 0 },
+                { title: "Evaluation of dispersion of calculated seismic site responses through Round Robin Test in Korea", authors: "D Park, JM Kim, DS Kim, CG Sun, SR Kim", venue: "17th International Conference on Soil Mechanics and Geotechnical Engineering", year: "2009", citations: 0 },
+                { title: "Development of novel method of seismic slope stability analysis", authors: "SW Yoon, DH Park, SH Lee, YC Hwang", venue: "1st Korea-Japan Joint Symposium for Slope Failure Disaster Mitigation", year: "2008", citations: 0 },
+                { title: "Comparison of Frequency Dependent Equivalent Linear Analysis Methods", authors: "DY Kwak, CG Jeong, D Park, SS Park", venue: "14th World Conference on Earthquake Engineering", year: "2008", citations: 0 },
+                { title: "Simulation of rate dependent soil behavior in one-dimensional seismic wave propagation", authors: "CG Jeong, DH Park, YMA Hashash", venue: "15th International Congress on Sound and Vibration", year: "2008", citations: 0 },
+                { title: "Influence of rate dependent soil behavior on propagated ground motion", authors: "DY Kwak, JK Ahn, DH Park, YMA Hashash", venue: "Geotechnical Earthquake Engineering and Soil Dynamics IV", year: "2008", citations: 0 },
+                { title: "Tunnel response under spatially varying ground motion", authors: "D Park, JW Han, DY Kwak", venue: "Geotechnical Earthquake Engineering and Soil Dynamics IV", year: "2008", citations: 0 },
+                { title: "Nonlinear site response analysis in deep soft clay deposits in Korea", authors: "D Park, JY Kim, HW Lee, YS Byun, BS Chun", venue: "13th Asian Regional Conference on Soil Mechanics and Geotechnical Engineering", year: "2007", citations: 0 },
+                { title: "Generation of spatially variable ground motions for seismic analysis of undersea tunnel", authors: "D Park, JW Han, BM Kim", venue: "Chinese Journal of Rock Mechanics and Engineering", year: "2007", citations: 0 },
+                { title: "Generation of spatially variable ground motions for seismic analysis of undersea tunnel", authors: "D Park, YMA Hashash, CY Song, JY Kim", venue: "13th World Conference on Earthquake Engineering", year: "2007", citations: 0 },
+                { title: "Development of a New Equivalent Linear Algorithm with Rate Dependent Soil Model", authors: "D Park, YMA Hashash, JY Song, JY Kim, HW Lee", venue: "17th International Offshore and Polar Engineering Conference", year: "2007", citations: 0 },
+                { title: "Seismic Site Effects for Weak Deposits in Korea", authors: "D Park, JY Kim, HW Lee, BS Chun, CH Jung", venue: "17th International Offshore and Polar Engineering Conference", year: "2007", citations: 0 },
+                { title: "Development of Representative Ground Motions for Seismic Analysis of Nuclear Plants in Korea", authors: "D Park, SC Lee, HW Lee, JW Han", venue: "19th International Conference on Structural Mechanics in Reactor Technology", year: "2007", citations: 0 },
+                { title: "Probabilistic seismic hazard analysis with nonlinear site effects in the Mississippi Embayment", authors: "D Park, YMA Hashash", venue: "13th World Conference on Earthquake Engineering", year: "2004", citations: 0 },
+                { title: "Nonlinear seismic site response of deep deposits in West Tennessee", authors: "D Park, S Pezeshk, YMA Hashash", venue: "4th Seismic Conference and Workshop on Bridges and Highways", year: "2004", citations: 0 },
+                { title: "Estimation of small damping properties in the Mississippi Embayment", authors: "D Park, YMA Hashash", venue: "11th International Conference on Soil Dynamics & Earthquake Engineering", year: "2004", citations: 0 },
+                { title: "Seismic site response of deep soil deposits and relationship to response of longitudinal structures", authors: "YMA Hashash, D Park", venue: "4th US-Japan-China Symposium on Lifeline Earthquake Engineering", year: "2002", citations: 0 },
+                { title: "Site response analysis in the Mississippi Embayment", authors: "YMA Hashash, D Park", venue: "US-Japan seminar on seismic disaster mitigation in urban area by geotechnical engineering", year: "2002", citations: 0 },
+                { title: "Site response analysis of deep deposits", authors: "D Park, YMA Hashash", venue: "7th National Conference on Earthquake Engineering", year: "2002", citations: 0 },
+                { title: "Non-linear site response analysis for deep deposits in New Madrid Seismic Zone", authors: "YMA Hashash, D Park", venue: "4th International Conference on Recent Advances in Geotechnical Earthquake Engineering and Soil Dynamics", year: "2000", citations: 0 }
+            ]
+        };
+
+        var publicationData = {};
+
+        function loadPublications() {
+            var data = fallbackData;
+            publicationData = data;
+
+            createYearFilter('international', data.international, 'international-year-filter');
+            createYearFilter('korean', data.korean, 'korean-year-filter');
+            createYearFilter('conference', data.conference, 'conference-year-filter');
+
+            renderPublications('international', data.international, 'international-papers', 'all');
+            renderPublications('korean', data.korean, 'korean-papers', 'all');
+            renderPublications('conference', data.conference, 'conference-papers', 'all');
+        }
+
+        function createYearFilter(type, publications, filterContainerId) {
+            var filterContainer = document.getElementById(filterContainerId);
+            if (!filterContainer || !publications) return;
+
+            var yearCounts = {};
+            var totalCount = publications.length;
+
+            publications.forEach(function(pub) {
+                var year = parseInt(pub.year) || 0;
+                if (!yearCounts[year]) yearCounts[year] = 0;
+                yearCounts[year]++;
+            });
+
+            var allYears = Object.keys(yearCounts).sort(function(a, b) { return b - a; });
+
+            var html = '<div class="year-filter-buttons">';
+            html += '<button class="year-filter-btn active" data-type="' + type + '" data-year="all">All <span class="year-count">(' + totalCount + ')</span></button>';
+
+            allYears.forEach(function(year) {
+                var count = yearCounts[year] || 0;
+                html += '<button class="year-filter-btn" data-type="' + type + '" data-year="' + year + '">' + year + ' <span class="year-count">(' + count + ')</span></button>';
+            });
+
+            html += '</div>';
+            filterContainer.innerHTML = html;
+
+            filterContainer.querySelectorAll('.year-filter-btn').forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    filterContainer.querySelectorAll('.year-filter-btn').forEach(function(b) { b.classList.remove('active'); });
+                    btn.classList.add('active');
+                    var selectedYear = btn.getAttribute('data-year');
+                    var containerId = type + '-papers';
+                    renderPublications(type, publicationData[type], containerId, selectedYear);
+                });
+            });
+        }
+
+        function renderPublications(type, publications, containerId, yearFilter) {
+            var container = document.getElementById(containerId);
+            if (!container || !publications) return;
+
+            var listContainer = container.querySelector('.pub-list-container');
+            if (!listContainer) return;
+
+            var filteredPubs = publications;
+            if (yearFilter !== 'all') {
+                filteredPubs = publications.filter(function(pub) { return pub.year === yearFilter.toString(); });
+            }
+
+            var sortedPubs = filteredPubs.slice().sort(function(a, b) {
+                return (parseInt(a.year) || 0) - (parseInt(b.year) || 0);
+            });
+
+            var numberMap = new Map();
+            sortedPubs.forEach(function(pub, index) {
+                numberMap.set(pub.title, index + 1);
+            });
+
+            var byYear = {};
+            filteredPubs.forEach(function(pub) {
+                var year = pub.year || 'Unknown';
+                if (!byYear[year]) byYear[year] = [];
+                byYear[year].push(pub);
+            });
+
+            var years = Object.keys(byYear).sort(function(a, b) { return b - a; });
+
+            var html = '';
+            if (filteredPubs.length === 0) {
+                html = '<div class="no-publications">No publications found for this year.</div>';
+            } else {
+                years.forEach(function(year) {
+                    html += '<div class="pub-year-section"><h2 class="pub-year-title">' + year + '</h2>';
+
+                    var yearPubs = byYear[year].sort(function(a, b) {
+                        return numberMap.get(b.title) - numberMap.get(a.title);
+                    });
+
+                    yearPubs.forEach(function(pub) {
+                        var typeLabel = type === 'international' ? 'SCI' : type === 'korean' ? 'KCI' : 'Conf';
+                        var typeClass = type === 'international' ? 'journal' : type === 'korean' ? 'korean' : 'conference';
+                        var pubNumber = numberMap.get(pub.title);
+
+                        html += '<div class="pub-item">';
+                        html += '<div class="pub-number">' + pubNumber + '</div>';
+                        html += '<div class="pub-type ' + typeClass + '">' + typeLabel + '</div>';
+                        html += '<div class="pub-content">';
+                        html += '<h4>' + pub.title + '</h4>';
+                        html += '<p class="pub-authors">' + pub.authors + '</p>';
+                        html += '<p class="pub-venue">' + pub.venue + '</p>';
+                        html += '</div></div>';
+                    });
+
+                    html += '</div>';
+                });
+            }
+
+            listContainer.innerHTML = html;
+        }
+
+        // Initialize
+        loadPublications();
+
+        // Category filter
+        var filterBtns = document.querySelectorAll('.filter-btn');
+        var pubCategories = document.querySelectorAll('.pub-category');
+
+        filterBtns.forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                filterBtns.forEach(function(b) { b.classList.remove('active'); });
+                btn.classList.add('active');
+
+                var filter = btn.getAttribute('data-filter');
+
+                pubCategories.forEach(function(category) {
+                    category.style.display = 'none';
+                });
+
+                document.getElementById(filter + '-papers').style.display = 'block';
+            });
+        });
+    </script>
+</body>
+</html>

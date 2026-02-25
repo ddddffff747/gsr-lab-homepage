@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSR Lab | Geo System Research Laboratory</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'DM Sans', sans-serif; color: #1a1a1a; background: #fafaf9; line-height: 1.6; }
+        a { color: inherit; text-decoration: none; }
+
+        /* Navigation */
+        nav { position: sticky; top: 0; z-index: 100; background: #fff; border-bottom: 1px solid #e7e5e4; }
+        .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 48px; display: flex; align-items: center; justify-content: space-between; height: 58px; }
+        .nav-logo { font-family: 'DM Serif Display', serif; font-size: 1.35rem; color: #1a1a1a; letter-spacing: -0.02em; }
+        .nav-links { display: flex; gap: 26px; }
+        .nav-links a { font-size: 0.82rem; font-weight: 500; color: #a8a29e; transition: color 0.2s; }
+        .nav-links a:hover { color: #1a1a1a; }
+
+        /* Hero - Editorial split */
+        .hero { max-width: 1200px; margin: 0 auto; padding: 88px 48px 72px; display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 64px; align-items: end; }
+        .hero-left h1 { font-family: 'DM Serif Display', serif; font-size: 4.2rem; line-height: 1.06; color: #1a1a1a; letter-spacing: -0.03em; }
+        .hero-left .hero-korean { font-size: 0.85rem; color: #a8a29e; margin-top: 16px; }
+        .hero-right { padding-bottom: 6px; }
+        .hero-right p { font-size: 0.95rem; line-height: 1.8; color: #57534e; margin-bottom: 28px; }
+        .hero-stats { display: flex; gap: 36px; padding-top: 20px; border-top: 1px solid #e7e5e4; }
+        .h-stat-num { font-family: 'DM Serif Display', serif; font-size: 1.75rem; color: #1a1a1a; }
+        .h-stat-label { font-size: 0.7rem; color: #a8a29e; text-transform: uppercase; letter-spacing: 0.08em; margin-top: 2px; }
+
+        /* About */
+        .about { max-width: 1200px; margin: 0 auto; padding: 0 48px 56px; }
+        .about-inner { border-top: 1px solid #e7e5e4; padding-top: 40px; display: grid; grid-template-columns: 200px 1fr; gap: 40px; }
+        .about-label { font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: #a8a29e; padding-top: 4px; }
+        .about-text p { font-size: 0.92rem; color: #57534e; line-height: 1.75; margin-bottom: 10px; max-width: 640px; }
+
+        /* Stats bar */
+        .stats-bar { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
+        .stats-inner { display: grid; grid-template-columns: repeat(6, 1fr); border-top: 1px solid #e7e5e4; border-bottom: 1px solid #e7e5e4; }
+        .sb-item { padding: 24px 0; text-align: center; }
+        .sb-item + .sb-item { border-left: 1px solid #e7e5e4; }
+        .sb-num { font-family: 'DM Serif Display', serif; font-size: 1.5rem; color: #1a1a1a; }
+        .sb-label { font-size: 0.65rem; color: #a8a29e; text-transform: uppercase; letter-spacing: 0.06em; margin-top: 2px; }
+
+        /* Research - stacked cards */
+        .research { max-width: 1200px; margin: 0 auto; padding: 56px 48px; }
+        .sec-label { font-family: 'DM Serif Display', serif; font-size: 1rem; color: #a8a29e; margin-bottom: 24px; }
+        .r-card { display: grid; grid-template-columns: 64px 1fr auto; gap: 28px; align-items: start; padding: 28px 0; border-top: 1px solid #e7e5e4; }
+        .r-card:last-child { border-bottom: 1px solid #e7e5e4; }
+        .r-num { font-family: 'DM Serif Display', serif; font-size: 2.2rem; color: #d6d3d1; line-height: 1; }
+        .r-content h3 { font-family: 'DM Serif Display', serif; font-size: 1.3rem; color: #1a1a1a; margin-bottom: 6px; letter-spacing: -0.01em; }
+        .r-content p { font-size: 0.86rem; line-height: 1.7; color: #78716c; max-width: 520px; }
+        .r-tags { display: flex; flex-direction: column; gap: 5px; padding-top: 4px; }
+        .r-tags span { font-size: 0.72rem; color: #78716c; background: #f5f5f4; padding: 4px 12px; white-space: nowrap; }
+
+        /* Projects - dark section */
+        .projects { background: #292524; color: #fafaf9; padding: 64px 0; }
+        .projects-inner { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
+        .projects .sec-label { color: #78716c; }
+        .p-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 20px; }
+        .p-card { background: #1c1917; padding: 28px 24px; }
+        .p-card-status { font-size: 0.68rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 12px; }
+        .p-card-status.on { color: #93c5fd; }
+        .p-card-status.done { color: #6ee7b7; }
+        .p-card h4 { font-family: 'DM Serif Display', serif; font-size: 1.05rem; color: #fafaf9; margin-bottom: 10px; line-height: 1.35; }
+        .p-card-meta { font-size: 0.78rem; color: #a8a29e; }
+        .p-card-fund { font-size: 0.72rem; color: #57534e; margin-top: 12px; padding-top: 12px; border-top: 1px solid #44403c; }
+        .p-row2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+
+        /* Footer */
+        footer { max-width: 1200px; margin: 0 auto; padding: 40px 48px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #e7e5e4; }
+        .f-copy { font-size: 0.78rem; color: #a8a29e; }
+        .f-links { display: flex; gap: 20px; }
+        .f-links a { font-size: 0.78rem; color: #78716c; }
+        .f-links a:hover { color: #1a1a1a; }
+
+        /* Style tag */
+        .style-tag { position: fixed; bottom: 16px; right: 16px; background: #292524; color: #fafaf9; font-size: 0.65rem; font-weight: 600; padding: 5px 12px; z-index: 200; }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <div class="nav-logo">Geo System Research</div>
+        <div class="nav-links">
+            <a href="professor.html">Professor</a>
+            <a href="members.html">Members</a>
+            <a href="research.html">Research</a>
+            <a href="projects.html">Projects</a>
+            <a href="publications.html">Publications</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="hero-left">
+        <h1>Geo System<br>Research<br>Laboratory</h1>
+        <p class="hero-korean">한양대학교 건설환경공학과 지반시스템연구실</p>
+    </div>
+    <div class="hero-right">
+        <p>Advancing geotechnical earthquake engineering through computational analysis, field investigation, and artificial intelligence at Hanyang University.</p>
+        <div class="hero-stats">
+            <div><div class="h-stat-num">6,108</div><div class="h-stat-label">Citations</div></div>
+            <div><div class="h-stat-num">74</div><div class="h-stat-label">Intl. Papers</div></div>
+            <div><div class="h-stat-num">33</div><div class="h-stat-label">h-index</div></div>
+        </div>
+    </div>
+</section>
+
+<section class="about">
+    <div class="about-inner">
+        <div class="about-label">About</div>
+        <div class="about-text">
+            <p>The Geo System Research Laboratory focuses on advanced computational methods to solve challenging geotechnical engineering problems. Led by Professor Duhee Park, our primary interests include geotechnical earthquake engineering, soil-structure interaction, and numerical analysis of underground structures.</p>
+        </div>
+    </div>
+</section>
+
+<div class="stats-bar">
+    <div class="stats-inner">
+        <div class="sb-item"><div class="sb-num">6,108</div><div class="sb-label">Citations</div></div>
+        <div class="sb-item"><div class="sb-num">33</div><div class="sb-label">h-index</div></div>
+        <div class="sb-item"><div class="sb-num">74</div><div class="sb-label">Intl. Papers</div></div>
+        <div class="sb-item"><div class="sb-num">71</div><div class="sb-label">Korean Papers</div></div>
+        <div class="sb-item"><div class="sb-num">61</div><div class="sb-label">Conference</div></div>
+        <div class="sb-item"><div class="sb-num">19+</div><div class="sb-label">Years</div></div>
+    </div>
+</div>
+
+<section class="research">
+    <div class="sec-label">Research Areas</div>
+    <div class="r-card">
+        <div class="r-num">01</div>
+        <div class="r-content">
+            <h3>Earthquake-Soil Interaction</h3>
+            <p>Seismic wave propagation, site response analysis, and soil amplification characteristics.</p>
+        </div>
+        <div class="r-tags"><span>Site Response</span><span>Wave Propagation</span></div>
+    </div>
+    <div class="r-card">
+        <div class="r-num">02</div>
+        <div class="r-content">
+            <h3>Seismic Ground Failure &amp; Hazard Assessment</h3>
+            <p>Liquefaction, slope stability, and probabilistic hazard frameworks.</p>
+        </div>
+        <div class="r-tags"><span>Liquefaction</span><span>Slope Stability</span></div>
+    </div>
+    <div class="r-card">
+        <div class="r-num">03</div>
+        <div class="r-content">
+            <h3>Seismic Behavior of Underground Structures</h3>
+            <p>Tunnels, metro systems, retaining walls, and foundations with SSI.</p>
+        </div>
+        <div class="r-tags"><span>Tunnels</span><span>SSI</span></div>
+    </div>
+    <div class="r-card">
+        <div class="r-num">04</div>
+        <div class="r-content">
+            <h3>Numerical Simulation &amp; Predictive Modeling</h3>
+            <p>Nonlinear FEM analysis and predictive models for seismic performance.</p>
+        </div>
+        <div class="r-tags"><span>FEM</span><span>Nonlinear</span></div>
+    </div>
+    <div class="r-card">
+        <div class="r-num">05</div>
+        <div class="r-content">
+            <h3>AI &amp; Machine Learning</h3>
+            <p>Physics-informed deep learning for seismic response prediction and automated characterization.</p>
+        </div>
+        <div class="r-tags"><span>Deep Learning</span><span>Physics-Informed</span></div>
+    </div>
+</section>
+
+<section class="projects">
+    <div class="projects-inner">
+        <div class="sec-label">Selected Projects</div>
+        <div class="p-grid">
+            <div class="p-card">
+                <div class="p-card-status on">Ongoing</div>
+                <h4>Cyber Earthquake Simulation Center Based on Self-learning AI</h4>
+                <div class="p-card-meta">2022 &ndash; 2027 &middot; KRW 2.0B</div>
+                <div class="p-card-fund">NRF</div>
+            </div>
+            <div class="p-card">
+                <div class="p-card-status on">Ongoing</div>
+                <h4>Probabilistic UHRS Assessment for NPP Foundation Bedrock</h4>
+                <div class="p-card-meta">2024 &ndash; 2026 &middot; KRW 1.24B</div>
+                <div class="p-card-fund">KHNP</div>
+            </div>
+            <div class="p-card">
+                <div class="p-card-status done">Completed</div>
+                <h4>Ground Motion Coherency Assessment with Spatial Variability</h4>
+                <div class="p-card-meta">2022 &ndash; 2024 &middot; KRW 1.3B</div>
+                <div class="p-card-fund">KHNP</div>
+            </div>
+        </div>
+        <div class="p-row2">
+            <div class="p-card">
+                <div class="p-card-status done">Completed</div>
+                <h4>Mobile MEMS &amp; AI Algorithm for 3D Subsurface Profiling</h4>
+                <div class="p-card-meta">2021 &ndash; 2022 &middot; KRW 370M</div>
+                <div class="p-card-fund">KAIA</div>
+            </div>
+            <div class="p-card">
+                <div class="p-card-status done">Completed</div>
+                <h4>13,000-ton Offshore Wind Installation Vessel</h4>
+                <div class="p-card-meta">2018 &ndash; 2022 &middot; KRW 300M</div>
+                <div class="p-card-fund">KETEP</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="f-copy">&copy; 2024 Geo System Research Lab &middot; Dept. of Civil and Environmental Engineering, Hanyang University, Seoul, Korea</div>
+    <div class="f-links">
+        <a href="professor.html">Professor</a>
+        <a href="members.html">Members</a>
+        <a href="research.html">Research</a>
+        <a href="projects.html">Projects</a>
+        <a href="publications.html">Publications</a>
+        <a href="contact.html">Contact</a>
+    </div>
+</footer>
+
+<div class="style-tag">Style 2 &mdash; Modern Editorial</div>
+
+</body>
+</html>
