@@ -1905,6 +1905,10 @@ img {
         grid-template-columns: repeat(2, 1fr);
     }
 
+    .research-cards.research-cards-3x3 {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
     .activities-grid {
         grid-template-columns: 1fr;
     }
