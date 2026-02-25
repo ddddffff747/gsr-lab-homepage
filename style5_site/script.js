@@ -162,16 +162,16 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // ===== Research Image Sliders =====
-    var sliders = document.querySelectorAll('.research-slider');
-    sliders.forEach(function (slider) {
-        var slides = slider.querySelectorAll('.slide');
-        var indicators = slider.querySelectorAll('.indicator');
+    // ===== Dynamic Research Image Sliders =====
+    var researchSections = document.querySelectorAll('.research-section[data-folder]');
+
+    function initSlider(section) {
+        var slides = section.querySelectorAll('.slide');
+        var indicators = section.querySelectorAll('.indicator');
         var currentSlide = 0;
 
         if (slides.length <= 1) return;
 
-        // Auto-play
         setInterval(function () {
             slides[currentSlide].classList.remove('active');
             if (indicators[currentSlide]) indicators[currentSlide].classList.remove('active');
@@ -180,7 +180,6 @@ document.addEventListener('DOMContentLoaded', function () {
             if (indicators[currentSlide]) indicators[currentSlide].classList.add('active');
         }, 4000);
 
-        // Click indicator
         indicators.forEach(function (indicator, index) {
             indicator.addEventListener('click', function () {
                 slides[currentSlide].classList.remove('active');
@@ -190,6 +189,58 @@ document.addEventListener('DOMContentLoaded', function () {
                 indicators[currentSlide].classList.add('active');
             });
         });
+    }
+
+    researchSections.forEach(function (section) {
+        var folderNum = section.getAttribute('data-folder');
+        var slidesContainer = section.querySelector('.research-slider .slides');
+        var indicatorContainer = section.querySelector('.slider-indicators');
+        var sliderEl = section.querySelector('.research-slider');
+
+        if (!slidesContainer || !indicatorContainer) return;
+
+        var imgIndex = 1;
+        var loadedCount = 0;
+        var formats = ['.png', '.jpg', '.jpeg', '.webp'];
+
+        function tryLoadImage() {
+            var basePath = 'images/research/' + folderNum + '/' + imgIndex;
+            var formatIdx = 0;
+
+            function tryFormat() {
+                if (formatIdx >= formats.length) {
+                    // No more formats to try, done loading
+                    if (loadedCount > 1) initSlider(section);
+                    if (loadedCount === 0 && sliderEl) sliderEl.style.display = 'none';
+                    return;
+                }
+
+                var img = new Image();
+                img.onload = function () {
+                    var slide = document.createElement('div');
+                    slide.className = 'slide' + (loadedCount === 0 ? ' active' : '');
+                    slide.appendChild(img);
+                    slidesContainer.appendChild(slide);
+
+                    var indicator = document.createElement('span');
+                    indicator.className = 'indicator' + (loadedCount === 0 ? ' active' : '');
+                    indicatorContainer.appendChild(indicator);
+
+                    loadedCount++;
+                    imgIndex++;
+                    tryLoadImage();
+                };
+                img.onerror = function () {
+                    formatIdx++;
+                    tryFormat();
+                };
+                img.src = basePath + formats[formatIdx];
+            }
+
+            tryFormat();
+        }
+
+        tryLoadImage();
     });
 
     // ===== Smooth Scroll for Anchor Links =====

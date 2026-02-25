@@ -55,7 +55,6 @@
     <!-- Page Header -->
     <section class="page-header">
         <h1>Projects</h1>
-        <p>Funded research projects driving innovation in geotechnical earthquake engineering</p>
     </section>
 
     <!-- Breadcrumb -->
@@ -83,7 +82,7 @@
                         <h3 class="project-title-card">Development of a Cyber Earthquake Simulation Center Based on Self-learning AI and Analytical Models</h3>
                         <div class="project-meta">
                             <span><i class="fas fa-calendar-alt"></i> 2022 - 2027</span>
-                            <span><i class="fas fa-won-sign"></i> KRW 2.0 Billion</span>
+                            <span><i class="fas fa-won-sign"></i> KRW 2,000,000,000</span>
                         </div>
                     </div>
                     <div class="project-card-footer">
@@ -101,8 +100,8 @@
                         <span class="project-funder">KHNP (Korea Hydro &amp; Nuclear Power)</span>
                         <h3 class="project-title-card">Development of a Probabilistic UHRS Assessment Framework for Nuclear Power Plant Foundation Bedrock</h3>
                         <div class="project-meta">
-                            <span><i class="fas fa-calendar-alt"></i> 2024.07 - 2026.06</span>
-                            <span><i class="fas fa-won-sign"></i> KRW 500M / 1.24B</span>
+                            <span><i class="fas fa-calendar-alt"></i> 2024.07 - 2026.09</span>
+                            <span><i class="fas fa-won-sign"></i> KRW 500,000,000 / 1,240,000,000</span>
                         </div>
                     </div>
                     <div class="project-card-footer">
@@ -120,8 +119,8 @@
                         <span class="project-funder">KHNP (Korea Hydro &amp; Nuclear Power)</span>
                         <h3 class="project-title-card">Development of Ground Motion Coherency Assessment Considering Spatial Variability</h3>
                         <div class="project-meta">
-                            <span><i class="fas fa-calendar-alt"></i> 2022.04 - 2024.03</span>
-                            <span><i class="fas fa-won-sign"></i> KRW 380M / 1.3B</span>
+                            <span><i class="fas fa-calendar-alt"></i> 2022.04 - 2024.10</span>
+                            <span><i class="fas fa-won-sign"></i> KRW 380,000,000 / 1,300,000,000</span>
                         </div>
                     </div>
                     <div class="project-card-footer">
@@ -140,7 +139,7 @@
                         <h3 class="project-title-card">Mobile MEMS Accelerometer System and AI Algorithm for 3D Subsurface Profile Generation</h3>
                         <div class="project-meta">
                             <span><i class="fas fa-calendar-alt"></i> 2021 - 2022</span>
-                            <span><i class="fas fa-won-sign"></i> KRW 150M / 370M</span>
+                            <span><i class="fas fa-won-sign"></i> KRW 150,000,000 / 370,000,000</span>
                         </div>
                     </div>
                     <div class="project-card-footer">
@@ -159,7 +158,7 @@
                         <h3 class="project-title-card">Development of 13,000-ton Installation Vessel with 800-ton Pedestal Crane for Offshore Wind Turbines</h3>
                         <div class="project-meta">
                             <span><i class="fas fa-calendar-alt"></i> 2018 - 2022</span>
-                            <span><i class="fas fa-won-sign"></i> KRW 300M</span>
+                            <span><i class="fas fa-won-sign"></i> KRW 300,000,000</span>
                         </div>
                     </div>
                     <div class="project-card-footer">
@@ -187,7 +186,12 @@
                 </div>
                 <div class="project-modal-body">
                     <div class="project-modal-description" id="modalDescription"></div>
-                    <div class="project-modal-images" id="modalImages"></div>
+                    <div class="project-modal-images" id="modalImages">
+                        <div class="project-modal-slides" id="modalSlides"></div>
+                        <button class="project-modal-slider-nav prev" id="modalPrev"><i class="fas fa-chevron-left"></i></button>
+                        <button class="project-modal-slider-nav next" id="modalNext"><i class="fas fa-chevron-right"></i></button>
+                        <div class="project-modal-indicators" id="modalIndicators"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -230,23 +234,23 @@
                     funder: 'NRF (National Research Foundation of Korea)',
                     title: 'Development of a Cyber Earthquake Simulation Center Based on Self-learning AI and Analytical Models',
                     period: '2022 - 2027',
-                    budget: 'KRW 2.0 Billion',
+                    budget: 'KRW 2,000,000,000',
                     status: 'Ongoing',
                     description: '<p>This project aims to develop a <strong>Cyber Earthquake Simulation Center</strong> that integrates self-learning AI with physics-based analytical models to simulate and predict earthquake-induced ground motions and structural responses across the Korean Peninsula.</p><h4>Objectives</h4><ul><li>Construct an AI-driven cyber platform capable of real-time seismic simulation for the entire Korean Peninsula</li><li>Develop self-learning algorithms that continuously improve prediction accuracy by incorporating new earthquake observation data</li><li>Integrate nonlinear site response analysis, liquefaction assessment, and structural damage evaluation into a unified simulation framework</li><li>Create a digital twin of subsurface geotechnical conditions across Korea using extensive borehole and geophysical survey data</li></ul><h4>Key Research Areas</h4><ul><li>Physics-informed neural networks for seismic wave propagation modeling</li><li>AI-based ground motion prediction models trained on domestic and international earthquake records</li><li>Automated 3D subsurface modeling using machine learning and geospatial data</li><li>Real-time earthquake damage scenario generation for disaster response support</li></ul><p>Funded under the NRF Mid-career Researcher Program (Type II), this project represents a convergence of geotechnical earthquake engineering and artificial intelligence to enhance national earthquake preparedness.</p>'
                 },
                 2: {
                     funder: 'KHNP (Korea Hydro & Nuclear Power)',
                     title: 'Development of a Probabilistic UHRS Assessment Framework for Nuclear Power Plant Foundation Bedrock',
-                    period: '2024.07 - 2026.06',
-                    budget: 'KRW 500M (GSR Lab) / KRW 1.24B (Total)',
+                    period: '2024.07 - 2026.09',
+                    budget: 'KRW 500,000,000 (GSR Lab) / KRW 1,240,000,000 (Total)',
                     status: 'Ongoing',
                     description: '<p>This project develops a comprehensive <strong>probabilistic framework for Uniform Hazard Response Spectrum (UHRS) assessment</strong> at the foundation bedrock level of nuclear power plants in Korea.</p><h4>Objectives</h4><ul><li>Establish a site-specific probabilistic seismic hazard analysis (PSHA) methodology tailored for NPP foundation bedrock conditions</li><li>Develop ground motion models (GMMs) that account for local geological and geotechnical characteristics of Korean NPP sites</li><li>Quantify epistemic and aleatory uncertainties in seismic hazard estimation through logic tree frameworks</li><li>Generate design-basis UHRS incorporating site amplification and foundation interaction effects</li></ul><h4>Key Research Areas</h4><ul><li>Site-specific PSHA incorporating Korean seismotectonic source models</li><li>Development of VS profile-based site amplification factors for bedrock sites</li><li>Probabilistic site response analysis considering soil/rock nonlinearity</li><li>Validation against recorded earthquake data at existing NPP sites</li></ul><p>This research directly supports the seismic safety evaluation and design verification of nuclear power infrastructure in Korea.</p>'
                 },
                 3: {
                     funder: 'KHNP (Korea Hydro & Nuclear Power)',
                     title: 'Development of Ground Motion Coherency Assessment Considering Spatial Variability',
-                    period: '2022.04 - 2024.03',
-                    budget: 'KRW 380M (GSR Lab) / KRW 1.3B (Total)',
+                    period: '2022.04 - 2024.10',
+                    budget: 'KRW 380,000,000 (GSR Lab) / KRW 1,300,000,000 (Total)',
                     status: 'Completed',
                     description: '<p>This project investigated the <strong>spatial variability of earthquake ground motions</strong> and developed coherency models applicable to the seismic analysis of large-scale nuclear structures.</p><h4>Objectives</h4><ul><li>Characterize spatial coherency of seismic ground motions using dense array earthquake records</li><li>Develop empirical coherency functions suitable for Korean geological and seismological conditions</li><li>Assess the impact of incoherent ground motions on the seismic response of large nuclear structures and foundations</li><li>Propose practical guidelines for incorporating spatial variability in NPP seismic design</li></ul><h4>Key Research Areas</h4><ul><li>Analysis of spatially recorded earthquake data from dense seismometer arrays (e.g., SMART-1, LSST)</li><li>Development of frequency-dependent and distance-dependent lagged coherency models</li><li>Stochastic simulation of spatially variable ground motion fields</li><li>Soil-structure interaction analysis under incoherent seismic input</li></ul><p>The outcomes provide essential tools for realistic seismic analysis of nuclear power plant foundations where spatial variability of ground motions is significant.</p>'
                 },
@@ -254,7 +258,7 @@
                     funder: 'KAIA (Korea Agency for Infrastructure Technology Advancement)',
                     title: 'Development of Mobile MEMS Accelerometer System for Ambient Vibration Measurement and AI Algorithm for 3D Subsurface Profile Generation',
                     period: '2021 - 2022',
-                    budget: 'KRW 150M (GSR Lab) / KRW 370M (Total)',
+                    budget: 'KRW 150,000,000 (GSR Lab) / KRW 370,000,000 (Total)',
                     status: 'Completed',
                     description: '<p>This project developed a <strong>portable MEMS-based accelerometer system</strong> for in-situ ambient vibration measurement and an <strong>AI-driven algorithm</strong> for generating 3D subsurface geotechnical profiles.</p><h4>Objectives</h4><ul><li>Design and fabricate a compact, mobile MEMS accelerometer array for rapid field deployment</li><li>Develop signal processing algorithms for extracting H/V spectral ratios and dispersion curves from microtremor data</li><li>Implement machine learning models to invert ambient vibration data into shear wave velocity (VS) profiles</li><li>Generate spatially continuous 3D subsurface models by integrating AI-predicted profiles with existing borehole data</li></ul><h4>Key Research Areas</h4><ul><li>MEMS sensor calibration and noise characterization for geotechnical applications</li><li>Automated HVSR (Horizontal-to-Vertical Spectral Ratio) analysis</li><li>Deep learning-based 1D inversion of surface wave dispersion data</li><li>Geostatistical interpolation and 3D visualization of subsurface VS structure</li></ul><p>Funded by KAIA under the Ministry of Land, Infrastructure and Transport, this project enables rapid and cost-effective site characterization for seismic microzonation and infrastructure planning.</p>'
                 },
@@ -262,7 +266,7 @@
                     funder: 'KETEP (Korea Institute of Energy Technology Evaluation and Planning)',
                     title: 'Development of 13,000-ton Dedicated Installation Vessel with Integrated 800-ton Pedestal Crane for Offshore Wind Turbines',
                     period: '2018 - 2022',
-                    budget: 'KRW 300M (GSR Lab)',
+                    budget: 'KRW 300,000,000 (GSR Lab)',
                     status: 'Completed',
                     description: '<p>This project contributed to the development of a <strong>13,000-ton dedicated installation vessel</strong> equipped with an 800-ton pedestal crane designed specifically for the installation of large-scale offshore wind turbines.</p><h4>GSR Lab\'s Role: Foundation and Geotechnical Engineering</h4><ul><li>Geotechnical site investigation and characterization of offshore wind farm seabed conditions</li><li>Design and analysis of foundation systems (monopile, jacket) for offshore wind turbine support structures</li><li>Soil-structure interaction analysis under combined wind, wave, and seismic loading conditions</li><li>Assessment of installation-induced geotechnical effects including pile driving and jack-up vessel foundation stability</li></ul><h4>Key Research Areas</h4><ul><li>Cyclic lateral loading analysis of monopile foundations in marine soils</li><li>Dynamic response analysis of offshore wind turbine systems considering soil nonlinearity</li><li>Geotechnical reliability assessment for offshore foundation design</li><li>Seabed-foundation interaction modeling for installation vessel operations</li></ul><p>Funded by KETEP under the Ministry of Trade, Industry and Energy, this multi-institutional project supports Korea\'s offshore wind energy expansion by addressing critical engineering challenges in turbine installation and foundation design.</p>'
                 }
@@ -285,36 +289,93 @@
                     document.getElementById('modalStatus').innerHTML = '<i class="fas fa-circle"></i> ' + data.status;
                     document.getElementById('modalDescription').innerHTML = data.description;
 
-                    // Load project images
-                    var modalImages = document.getElementById('modalImages');
-                    modalImages.innerHTML = '';
+                    // Load project images as slider
+                    var modalImagesEl = document.getElementById('modalImages');
+                    var slidesContainer = document.getElementById('modalSlides');
+                    var indicatorsContainer = document.getElementById('modalIndicators');
+                    slidesContainer.innerHTML = '';
+                    indicatorsContainer.innerHTML = '';
+                    modalImagesEl.style.display = 'none';
+                    window._pmSlides = [];
+                    window._pmCurrent = 0;
+
                     var imgFolder = 'images/projects/PROJECT_' + projectId + '/';
-                    var extensions = ['png', 'jpg', 'jpeg', 'webp'];
-                    var imagesLoaded = 0;
+                    var formats = ['.png', '.jpg', '.jpeg', '.webp'];
+                    var imgIndex = 1;
+                    var loadedCount = 0;
 
-                    for (var i = 1; i <= 10; i++) {
-                        extensions.forEach(function(ext) {
+                    function tryLoadProjectImage() {
+                        var basePath = imgFolder + imgIndex;
+                        var fmtIdx = 0;
+
+                        function tryFmt() {
+                            if (fmtIdx >= formats.length) {
+                                if (loadedCount === 0) {
+                                    modalImagesEl.style.display = 'none';
+                                } else if (loadedCount === 1) {
+                                    document.getElementById('modalPrev').style.display = 'none';
+                                    document.getElementById('modalNext').style.display = 'none';
+                                }
+                                return;
+                            }
                             var img = new Image();
-                            img.src = imgFolder + i + '.' + ext;
-                            img.alt = data.title + ' - Image ' + i;
                             img.onload = function() {
-                                imagesLoaded++;
-                                modalImages.appendChild(this);
-                                var noImg = modalImages.querySelector('.project-modal-no-images');
-                                if (noImg) noImg.remove();
-                            };
-                        });
-                    }
+                                var slide = document.createElement('div');
+                                slide.className = 'pm-slide' + (loadedCount === 0 ? ' active' : '');
+                                slide.appendChild(img);
+                                slidesContainer.appendChild(slide);
 
-                    setTimeout(function() {
-                        if (imagesLoaded === 0 && !modalImages.querySelector('.project-modal-no-images')) {
-                            modalImages.innerHTML = '<p class="project-modal-no-images">Project images will be added soon.</p>';
+                                var dot = document.createElement('span');
+                                dot.className = 'pm-indicator' + (loadedCount === 0 ? ' active' : '');
+                                dot.setAttribute('data-index', loadedCount);
+                                indicatorsContainer.appendChild(dot);
+
+                                loadedCount++;
+                                modalImagesEl.style.display = '';
+                                document.getElementById('modalPrev').style.display = '';
+                                document.getElementById('modalNext').style.display = '';
+                                imgIndex++;
+                                tryLoadProjectImage();
+                            };
+                            img.onerror = function() {
+                                fmtIdx++;
+                                tryFmt();
+                            };
+                            img.src = basePath + formats[fmtIdx];
                         }
-                    }, 500);
+                        tryFmt();
+                    }
+                    tryLoadProjectImage();
 
                     modal.classList.add('active');
                     document.body.style.overflow = 'hidden';
                 });
+            });
+
+            // Slider navigation
+            function goToSlide(index) {
+                var slides = document.querySelectorAll('#modalSlides .pm-slide');
+                var dots = document.querySelectorAll('#modalIndicators .pm-indicator');
+                if (slides.length === 0) return;
+                slides[window._pmCurrent].classList.remove('active');
+                if (dots[window._pmCurrent]) dots[window._pmCurrent].classList.remove('active');
+                window._pmCurrent = (index + slides.length) % slides.length;
+                slides[window._pmCurrent].classList.add('active');
+                if (dots[window._pmCurrent]) dots[window._pmCurrent].classList.add('active');
+            }
+
+            document.getElementById('modalPrev').addEventListener('click', function(e) {
+                e.stopPropagation();
+                goToSlide(window._pmCurrent - 1);
+            });
+            document.getElementById('modalNext').addEventListener('click', function(e) {
+                e.stopPropagation();
+                goToSlide(window._pmCurrent + 1);
+            });
+            document.getElementById('modalIndicators').addEventListener('click', function(e) {
+                if (e.target.classList.contains('pm-indicator')) {
+                    goToSlide(parseInt(e.target.getAttribute('data-index')));
+                }
             });
 
             function closeModal() {
