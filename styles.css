@@ -1759,7 +1759,7 @@ img {
 
 .contact-info-card h3 {
     font-family: var(--font-heading);
-    font-size: 20px;
+    font-size: 32px;
     color: var(--navy);
     margin-bottom: 24px;
 }
@@ -1772,8 +1772,8 @@ img {
 }
 
 .contact-icon {
-    width: 40px;
-    height: 40px;
+    width: 60px;
+    height: 60px;
     background: var(--light-gray);
     border: 1px solid var(--border);
     border-radius: 4px;
@@ -1782,18 +1782,18 @@ img {
     justify-content: center;
     color: var(--navy);
     flex-shrink: 0;
-    font-size: 16px;
+    font-size: 24px;
 }
 
 .contact-text h4 {
-    font-size: 14px;
+    font-size: 24px;
     font-weight: 600;
     color: var(--dark-text);
     margin-bottom: 2px;
 }
 
 .contact-text p {
-    font-size: 14px;
+    font-size: 18px;
     color: var(--gray-text);
     line-height: 1.7;
 }
@@ -1808,7 +1808,7 @@ img {
 
 .contact-map-card h3 {
     font-family: var(--font-heading);
-    font-size: 20px;
+    font-size: 32px;
     color: var(--navy);
     margin-bottom: 16px;
 }
@@ -1827,14 +1827,14 @@ img {
 }
 
 .directions h4 {
-    font-size: 15px;
+    font-size: 18px;
     font-weight: 600;
     color: var(--navy);
     margin-bottom: 10px;
 }
 
 .directions p {
-    font-size: 14px;
+    font-size: 18px;
     color: var(--gray-text);
     margin-bottom: 6px;
     line-height: 1.7;
@@ -1847,7 +1847,7 @@ img {
 }
 
 .join-content p {
-    font-size: 15px;
+    font-size: 18px;
     color: var(--dark-text);
     line-height: 1.8;
     margin-bottom: 16px;
@@ -1886,7 +1886,7 @@ img {
 
 .join-contact {
     text-align: center;
-    font-size: 15px;
+    font-size: 18px;
     color: var(--dark-text);
     margin-top: 24px;
 }
