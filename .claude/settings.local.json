@@ -4,7 +4,15 @@
       "Bash(del \"c:\\\\Users\\\\GSR_ES\\\\Desktop\\\\연구실 홈페이지\\\\about.html\")",
       "Bash(git push)",
       "Bash(git add:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(git status -u)",
+      "Bash(gh repo view --json url,homepageUrl)",
+      "Bash(git remote get-url origin)",
+      "WebFetch(domain:scholar.google.com)",
+      "Bash(git push origin main)",
+      "Bash(gh api repos/ddddffff747/gsr-lab-homepage/pages -X PUT -f cname=\"hyu-gsr.com\")",
+      "Bash(where gh)",
+      "Bash(ls -la *.html *.css *.js CNAME)"
     ]
   }
 }
