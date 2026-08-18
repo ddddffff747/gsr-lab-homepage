@@ -71,10 +71,29 @@
         <div class="container">
             <div class="projects-grid">
 
+                <!-- Project 6 (MetaEX) -->
+                <div class="project-card fade-in" data-project="6">
+                    <div class="project-card-header">
+                        <span class="project-number">01</span>
+                        <span class="project-status ongoing">Ongoing</span>
+                    </div>
+                    <div class="project-card-body">
+                        <span class="project-funder">NRF (National Research Foundation of Korea)</span>
+                        <h3 class="project-title-card">Meta Cognitive AI Laboratory for Autonomous Design of Underground EXcavation (MetaEX)</h3>
+                        <div class="project-meta">
+                            <span><i class="fas fa-calendar-alt"></i> 2026.07 - 2029.06</span>
+                            <span><i class="fas fa-won-sign"></i> KRW 375,000,000 / 1,500,000,000</span>
+                        </div>
+                    </div>
+                    <div class="project-card-footer">
+                        <span class="project-view-detail">View Details <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </div>
+
                 <!-- Project 1 -->
                 <div class="project-card fade-in" data-project="1">
                     <div class="project-card-header">
-                        <span class="project-number">01</span>
+                        <span class="project-number">02</span>
                         <span class="project-status ongoing">Ongoing</span>
                     </div>
                     <div class="project-card-body">
@@ -93,7 +112,7 @@
                 <!-- Project 2 -->
                 <div class="project-card fade-in" data-project="2">
                     <div class="project-card-header">
-                        <span class="project-number">02</span>
+                        <span class="project-number">03</span>
                         <span class="project-status ongoing">Ongoing</span>
                     </div>
                     <div class="project-card-body">
@@ -112,7 +131,7 @@
                 <!-- Project 3 -->
                 <div class="project-card fade-in" data-project="3">
                     <div class="project-card-header">
-                        <span class="project-number">03</span>
+                        <span class="project-number">04</span>
                         <span class="project-status completed">Completed</span>
                     </div>
                     <div class="project-card-body">
@@ -131,7 +150,7 @@
                 <!-- Project 4 -->
                 <div class="project-card fade-in" data-project="4">
                     <div class="project-card-header">
-                        <span class="project-number">04</span>
+                        <span class="project-number">05</span>
                         <span class="project-status completed">Completed</span>
                     </div>
                     <div class="project-card-body">
@@ -150,7 +169,7 @@
                 <!-- Project 5 -->
                 <div class="project-card fade-in" data-project="5">
                     <div class="project-card-header">
-                        <span class="project-number">05</span>
+                        <span class="project-number">06</span>
                         <span class="project-status completed">Completed</span>
                     </div>
                     <div class="project-card-body">
@@ -230,6 +249,14 @@
         // Project Modal Functionality
         document.addEventListener('DOMContentLoaded', function() {
             var projectData = {
+                6: {
+                    funder: 'NRF (National Research Foundation of Korea)',
+                    title: 'Meta Cognitive AI Laboratory for Autonomous Design of Underground EXcavation (MetaEX)',
+                    period: '2026.07 - 2029.06',
+                    budget: 'KRW 375,000,000 (GSR Lab) / KRW 1,500,000,000 (Total)',
+                    status: 'Ongoing',
+                    description: '<p>This project develops an <strong>autonomous analysis and design platform for deep underground excavation</strong>, integrating open-source finite element analysis with physics-informed artificial intelligence and meta-cognitive decision-making toward a Level 4 digital twin.</p><h4>Objectives</h4><ul><li>Build an automated staged-excavation finite element module driven directly by borehole profiles and design data</li><li>Develop a hybrid PINN–MINN architecture that jointly learns from monitoring records, governing equations, and numerical simulation data</li><li>Couple an AI constitutive model to the FE engine as a user-defined material to realize a closed-loop neuro-physical analysis platform (NeuroFEA)</li><li>Construct a surrogate model (neuroSimulator) predicting two-dimensional displacement and stress fields of excavation response</li><li>Provide real-time synchronization, parameter updating, and uncertainty quantification for risk-based design decisions</li></ul><h4>Key Research Areas</h4><ul><li>Automated finite element model generation and staged excavation analysis in OpenSeesPy, including groundwater variation and nonlinear soil behavior</li><li>Hybrid physics-informed learning in which FE-computed stress fields serve as an intermediate physical layer to suppress long-tail extrapolation error, with continuous-wall governing-equation residuals imposed as a loss term</li><li>Closed-loop self-recovery module generating and correcting execution code from error messages, convergence history, and state variables, with an end-to-end web-based workflow</li><li>Large-scale virtual database generation combining measured displacements with computed stress fields</li><li>Multimodal fusion of ground information, structural information, construction stages, and design variables through dedicated CNN, LSTM, and MLP encoders with cross-modal attention</li><li>Online fine-tuning with elastic weight consolidation, ensemble Kalman filtering for back-analysis of ground parameters, and deep ensembles for uncertainty quantification</li></ul><p>The outcomes establish an explainable neuro-physical excavation analysis engine and a standardized verification dataset, forming the analytical core of an autonomous excavation design platform.</p>'
+                },
                 1: {
                     funder: 'NRF (National Research Foundation of Korea)',
                     title: 'Development of a Cyber Earthquake Simulation Center Based on Self-learning AI and Analytical Models',
