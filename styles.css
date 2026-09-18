@@ -2097,3 +2097,52 @@ img {
         text-align: center;
     }
 }
+
+/* ==========================================================
+   NEWS PAGE
+   ========================================================== */
+.news-list {
+    max-width: 860px;
+    margin: 0 auto;
+}
+
+.news-item {
+    display: flex;
+    gap: 28px;
+    padding: 22px 4px;
+    border-bottom: 1px solid var(--border);
+}
+
+.news-item:first-child {
+    border-top: 3px solid var(--navy);
+}
+
+.news-date {
+    flex: 0 0 120px;
+    font-family: var(--font-heading);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.6;
+}
+
+.news-text {
+    font-size: 18px;
+    color: var(--dark-text);
+    line-height: 1.7;
+}
+
+.news-text em {
+    font-style: italic;
+}
+
+@media (max-width: 640px) {
+    .news-item {
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .news-date {
+        flex: none;
+    }
+}
