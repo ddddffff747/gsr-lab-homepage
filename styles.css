@@ -2099,72 +2099,89 @@ img {
 }
 
 /* ==========================================================
-   NEWS PAGE
+   NEWS PAGE (스크롤 피드형 — 항목별 상세가 펼쳐진 채 아래로 이어짐)
    ========================================================== */
 .news-list {
-    max-width: 860px;
+    max-width: 900px;
     margin: 0 auto;
 }
 
-.news-item {
-    display: flex;
-    gap: 28px;
-    padding: 22px 4px;
+.news-entry {
+    padding: 40px 0;
     border-bottom: 1px solid var(--border);
 }
 
-.news-item:first-child {
-    border-top: 3px solid var(--navy);
+.news-entry:first-child {
+    padding-top: 8px;
 }
 
-.news-date {
-    flex: 0 0 120px;
+.news-entry-meta {
+    font-size: 15px;
+    color: var(--gray-text);
+    margin-bottom: 8px;
+}
+
+.news-entry-meta .news-tag {
+    display: inline-block;
+    color: var(--navy);
+    font-weight: 700;
+    margin-right: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 13.5px;
+}
+
+.news-entry-title {
     font-family: var(--font-heading);
-    font-size: 18px;
+    font-size: 27px;
     font-weight: 700;
     color: var(--navy);
-    line-height: 1.6;
+    line-height: 1.4;
+    margin-bottom: 14px;
 }
 
-.news-text {
+.news-entry-body p {
     font-size: 18px;
     color: var(--dark-text);
-    line-height: 1.7;
+    line-height: 1.75;
+    margin-bottom: 10px;
 }
 
-.news-text em {
+.news-entry-body em {
     font-style: italic;
 }
 
-.news-item.clickable {
-    cursor: pointer;
-    transition: background-color 0.15s;
+.news-entry-body ul {
+    list-style: disc;
+    margin: 10px 0 0 22px;
 }
 
-.news-item.clickable:hover {
-    background-color: var(--light-gray);
+.news-entry-body li {
+    font-size: 17px;
+    color: var(--dark-text);
+    line-height: 1.7;
+    margin-bottom: 10px;
 }
 
-.news-arrow {
-    margin-left: auto;
-    align-self: center;
-    padding-left: 16px;
-    color: var(--gray-text-light);
-    font-size: 14px;
-    flex-shrink: 0;
-}
-
-.news-item.clickable:hover .news-arrow {
+.news-entry-body a {
     color: var(--navy);
+    font-weight: 500;
 }
 
-@media (max-width: 640px) {
-    .news-item {
-        flex-direction: column;
-        gap: 4px;
-    }
+.news-entry-body a:hover {
+    text-decoration: underline;
+}
 
-    .news-date {
-        flex: none;
-    }
+.news-entry-photos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.news-entry-photos img {
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--border);
+    border-radius: 4px;
 }
