@@ -2136,6 +2136,28 @@ img {
     font-style: italic;
 }
 
+.news-item.clickable {
+    cursor: pointer;
+    transition: background-color 0.15s;
+}
+
+.news-item.clickable:hover {
+    background-color: var(--light-gray);
+}
+
+.news-arrow {
+    margin-left: auto;
+    align-self: center;
+    padding-left: 16px;
+    color: var(--gray-text-light);
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+.news-item.clickable:hover .news-arrow {
+    color: var(--navy);
+}
+
 @media (max-width: 640px) {
     .news-item {
         flex-direction: column;

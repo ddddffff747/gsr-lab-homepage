@@ -68,46 +68,93 @@
     </div>
 
     <!-- News -->
+    <!-- 사진 추가: images/news/<항목id>/ 폴더에 1.png, 2.png ... 순서로 넣으면
+         해당 항목 상세창에 슬라이더로 자동 표시됨 (projects 페이지와 같은 방식) -->
     <section class="section">
         <div class="container">
             <div class="news-list">
-                <div class="news-item fade-in">
+                <div class="news-item clickable fade-in" data-news="eesk2026">
+                    <div class="news-date">2026. 09</div>
+                    <div class="news-text">
+                        Members attended the 2026 conference of the Earthquake Engineering
+                        Society of Korea.
+                    </div>
+                    <i class="fas fa-chevron-right news-arrow"></i>
+                </div>
+                <div class="news-item clickable fade-in" data-news="kgs2026">
+                    <div class="news-date">2026. 09</div>
+                    <div class="news-text">
+                        Members attended the 2026 conference of the Korean Geotechnical Society.
+                    </div>
+                    <i class="fas fa-chevron-right news-arrow"></i>
+                </div>
+                <div class="news-item clickable fade-in" data-news="interns2026">
                     <div class="news-date">2026. 07&ndash;08</div>
                     <div class="news-text">
                         Three intern researchers joined the laboratory.
                     </div>
+                    <i class="fas fa-chevron-right news-arrow"></i>
                 </div>
-                <div class="news-item fade-in">
+                <div class="news-item clickable fade-in" data-news="metaex">
                     <div class="news-date">2026. 07</div>
                     <div class="news-text">
                         New NRF project <em>MetaEX</em> (Meta Cognitive AI Laboratory for
                         Autonomous Design of Underground EXcavation, 2026&ndash;2029) launched.
                     </div>
+                    <i class="fas fa-chevron-right news-arrow"></i>
                 </div>
-                <div class="news-item fade-in">
+                <div class="news-item clickable fade-in" data-news="paper_eesd">
                     <div class="news-date">2026</div>
                     <div class="news-text">
                         Paper on coherency models from finite element simulations at a hard rock
                         site in Busan published in <em>Earthquake Engineering &amp; Structural Dynamics</em>.
                     </div>
+                    <i class="fas fa-chevron-right news-arrow"></i>
                 </div>
-                <div class="news-item fade-in">
+                <div class="news-item clickable fade-in" data-news="paper_geomatics">
                     <div class="news-date">2026</div>
                     <div class="news-text">
                         Machine learning-based site amplification models for Japan published in
                         <em>Geomatics, Natural Hazards and Risk</em>.
                     </div>
+                    <i class="fas fa-chevron-right news-arrow"></i>
                 </div>
-                <div class="news-item fade-in">
+                <div class="news-item clickable fade-in" data-news="paper_gae">
                     <div class="news-date">2026</div>
                     <div class="news-text">
                         Numerical study of seismic response of pile foundations in sand using 3D
                         finite element methods published in <em>Geomechanics and Engineering</em>.
                     </div>
+                    <i class="fas fa-chevron-right news-arrow"></i>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- News Detail Modal (projects 페이지 모달과 같은 스타일 클래스 재사용) -->
+    <div class="project-modal-overlay" id="newsModal">
+        <div class="project-modal">
+            <button class="project-modal-close" id="newsModalClose"><i class="fas fa-times"></i></button>
+            <div class="project-modal-content">
+                <div class="project-modal-header">
+                    <span class="project-modal-funder" id="nModalTag"></span>
+                    <h2 class="project-modal-title" id="nModalTitle"></h2>
+                    <div class="project-modal-meta">
+                        <span id="nModalDate"></span>
+                    </div>
+                </div>
+                <div class="project-modal-body">
+                    <div class="project-modal-description" id="nModalDescription"></div>
+                    <div class="project-modal-images" id="nModalImages">
+                        <div class="project-modal-slides" id="nModalSlides"></div>
+                        <button class="project-modal-slider-nav prev" id="nModalPrev"><i class="fas fa-chevron-left"></i></button>
+                        <button class="project-modal-slider-nav next" id="nModalNext"><i class="fas fa-chevron-right"></i></button>
+                        <div class="project-modal-indicators" id="nModalIndicators"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class="footer">
@@ -139,5 +186,170 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        // News detail data. 사진은 images/news/<id>/1.png, 2.png ... 로 추가.
+        document.addEventListener('DOMContentLoaded', function() {
+            var newsData = {
+                eesk2026: {
+                    tag: 'Conference',
+                    date: '2026. 09',
+                    title: 'Attendance at the 2026 EESK Conference',
+                    description: '<p>Members of the laboratory attended the 2026 conference of the <strong>Earthquake Engineering Society of Korea</strong> (한국지진공학회).</p>'
+                },
+                kgs2026: {
+                    tag: 'Conference',
+                    date: '2026. 09',
+                    title: 'Attendance at the 2026 KGS Conference',
+                    description: '<p>Members of the laboratory attended the 2026 conference of the <strong>Korean Geotechnical Society</strong> (한국지반공학회).</p>'
+                },
+                interns2026: {
+                    tag: 'Members',
+                    date: '2026. 07 – 08',
+                    title: 'Three intern researchers joined the laboratory',
+                    description: '<p>Kim Suhyun, Park Sung hwan, and Park Joonwoo joined the laboratory as intern researchers in July and August 2026.</p><p><a href="members.html#intern" style="color:#002b5c;font-weight:500;">Meet our members &rarr;</a></p>'
+                },
+                metaex: {
+                    tag: 'Project',
+                    date: '2026. 07',
+                    title: 'New NRF project MetaEX launched',
+                    description: '<p>The laboratory began <strong>MetaEX</strong> &mdash; Meta Cognitive AI Laboratory for Autonomous Design of Underground EXcavation (2026&ndash;2029), funded by the National Research Foundation of Korea.</p><p>The project develops an autonomous analysis and design platform for deep underground excavation, integrating open-source finite element analysis with physics-informed artificial intelligence and meta-cognitive decision-making toward a Level 4 digital twin.</p><p><a href="projects.html" style="color:#002b5c;font-weight:500;">See project details &rarr;</a></p>'
+                },
+                paper_eesd: {
+                    tag: 'Publication',
+                    date: '2026',
+                    title: 'Coherency model paper published in Earthquake Engineering & Structural Dynamics',
+                    description: '<p>D. Lee, Y. Lee, D. Kwak, D. Park (2026). Development of coherency models from finite element simulations at a hard rock site in Busan, Korea. <em>Earthquake Engineering &amp; Structural Dynamics</em>.</p><p><a href="publications.html" style="color:#002b5c;font-weight:500;">Full publication list &rarr;</a></p>'
+                },
+                paper_geomatics: {
+                    tag: 'Publication',
+                    date: '2026',
+                    title: 'Machine learning site amplification models for Japan published',
+                    description: '<p>L. A. N. Nguyen, Y. G. Lee, D. Park, C. C. Tsai (2026). Development of machine learning-based site amplification models for Japan from borehole recordings. <em>Geomatics, Natural Hazards and Risk</em>, 17(1).</p><p><a href="publications.html" style="color:#002b5c;font-weight:500;">Full publication list &rarr;</a></p>'
+                },
+                paper_gae: {
+                    tag: 'Publication',
+                    date: '2026',
+                    title: 'Pile foundation 3D finite element study published in Geomechanics and Engineering',
+                    description: '<p>Y. G. Lee, M. B. Adeel, D. Park (2026). Numerical simulations of seismic response of pile foundations in sand using 3D finite element methods. <em>Geomechanics and Engineering</em>, 44(4), 513&ndash;527.</p><p><a href="publications.html" style="color:#002b5c;font-weight:500;">Full publication list &rarr;</a></p>'
+                }
+            };
+
+            var modal = document.getElementById('newsModal');
+            var modalClose = document.getElementById('newsModalClose');
+
+            document.querySelectorAll('.news-item[data-news]').forEach(function(item) {
+                item.addEventListener('click', function() {
+                    var newsId = item.getAttribute('data-news');
+                    var data = newsData[newsId];
+                    if (!data) return;
+
+                    document.getElementById('nModalTag').textContent = data.tag;
+                    document.getElementById('nModalTitle').textContent = data.title;
+                    document.getElementById('nModalDate').innerHTML = '<i class="fas fa-calendar-alt"></i> ' + data.date;
+                    document.getElementById('nModalDescription').innerHTML = data.description;
+
+                    var modalImagesEl = document.getElementById('nModalImages');
+                    var slidesContainer = document.getElementById('nModalSlides');
+                    var indicatorsContainer = document.getElementById('nModalIndicators');
+                    slidesContainer.innerHTML = '';
+                    indicatorsContainer.innerHTML = '';
+                    modalImagesEl.style.display = 'none';
+                    window._nmSlides = [];
+                    window._nmCurrent = 0;
+
+                    var imgFolder = 'images/news/' + newsId + '/';
+                    var formats = ['.png', '.jpg', '.jpeg', '.webp'];
+                    var imgIndex = 1;
+                    var loadedCount = 0;
+
+                    function tryLoadNewsImage() {
+                        var basePath = imgFolder + imgIndex;
+                        var fmtIdx = 0;
+
+                        function tryFmt() {
+                            if (fmtIdx >= formats.length) {
+                                if (loadedCount === 0) {
+                                    modalImagesEl.style.display = 'none';
+                                } else if (loadedCount === 1) {
+                                    document.getElementById('nModalPrev').style.display = 'none';
+                                    document.getElementById('nModalNext').style.display = 'none';
+                                }
+                                return;
+                            }
+                            var img = new Image();
+                            img.onload = function() {
+                                var slide = document.createElement('div');
+                                slide.className = 'pm-slide' + (loadedCount === 0 ? ' active' : '');
+                                slide.appendChild(img);
+                                slidesContainer.appendChild(slide);
+
+                                var dot = document.createElement('span');
+                                dot.className = 'pm-indicator' + (loadedCount === 0 ? ' active' : '');
+                                dot.setAttribute('data-index', loadedCount);
+                                indicatorsContainer.appendChild(dot);
+
+                                loadedCount++;
+                                modalImagesEl.style.display = '';
+                                document.getElementById('nModalPrev').style.display = '';
+                                document.getElementById('nModalNext').style.display = '';
+                                imgIndex++;
+                                tryLoadNewsImage();
+                            };
+                            img.onerror = function() {
+                                fmtIdx++;
+                                tryFmt();
+                            };
+                            img.src = basePath + formats[fmtIdx];
+                        }
+                        tryFmt();
+                    }
+                    tryLoadNewsImage();
+
+                    modal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+
+            function goToSlide(index) {
+                var slides = document.querySelectorAll('#nModalSlides .pm-slide');
+                var dots = document.querySelectorAll('#nModalIndicators .pm-indicator');
+                if (slides.length === 0) return;
+                slides[window._nmCurrent].classList.remove('active');
+                if (dots[window._nmCurrent]) dots[window._nmCurrent].classList.remove('active');
+                window._nmCurrent = (index + slides.length) % slides.length;
+                slides[window._nmCurrent].classList.add('active');
+                if (dots[window._nmCurrent]) dots[window._nmCurrent].classList.add('active');
+            }
+
+            document.getElementById('nModalPrev').addEventListener('click', function(e) {
+                e.stopPropagation();
+                goToSlide(window._nmCurrent - 1);
+            });
+            document.getElementById('nModalNext').addEventListener('click', function(e) {
+                e.stopPropagation();
+                goToSlide(window._nmCurrent + 1);
+            });
+            document.getElementById('nModalIndicators').addEventListener('click', function(e) {
+                if (e.target.classList.contains('pm-indicator')) {
+                    goToSlide(parseInt(e.target.getAttribute('data-index')));
+                }
+            });
+
+            function closeModal() {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            modalClose.addEventListener('click', closeModal);
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) closeModal();
+            });
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && modal.classList.contains('active')) {
+                    closeModal();
+                }
+            });
+        });
+    </script>
 </body>
 </html>
