@@ -73,18 +73,27 @@
     <section class="section">
         <div class="container">
             <div class="news-list">
-                <div class="news-item clickable fade-in" data-news="eesk2026">
-                    <div class="news-date">2026. 09</div>
-                    <div class="news-text">
-                        Members attended the 2026 conference of the Earthquake Engineering
-                        Society of Korea.
-                    </div>
-                    <i class="fas fa-chevron-right news-arrow"></i>
-                </div>
                 <div class="news-item clickable fade-in" data-news="kgs2026">
                     <div class="news-date">2026. 09</div>
                     <div class="news-text">
-                        Members attended the 2026 conference of the Korean Geotechnical Society.
+                        Members attended the 2026 Fall Conference of the Korean Geotechnical
+                        Society (Seorak, September 17&ndash;18).
+                    </div>
+                    <i class="fas fa-chevron-right news-arrow"></i>
+                </div>
+                <div class="news-item clickable fade-in" data-news="kges2026">
+                    <div class="news-date">2026. 09</div>
+                    <div class="news-text">
+                        Members attended the 2026 Conference of the Korean Geo-Environmental
+                        Society.
+                    </div>
+                    <i class="fas fa-chevron-right news-arrow"></i>
+                </div>
+                <div class="news-item clickable fade-in" data-news="eesk2026">
+                    <div class="news-date">2026. 09</div>
+                    <div class="news-text">
+                        Members attended the 30th Anniversary Conference of the Earthquake
+                        Engineering Society of Korea (Seoul National University, September 9&ndash;11).
                     </div>
                     <i class="fas fa-chevron-right news-arrow"></i>
                 </div>
@@ -190,17 +199,23 @@
         // News detail data. 사진은 images/news/<id>/1.png, 2.png ... 로 추가.
         document.addEventListener('DOMContentLoaded', function() {
             var newsData = {
-                eesk2026: {
-                    tag: 'Conference',
-                    date: '2026. 09',
-                    title: 'Attendance at the 2026 EESK Conference',
-                    description: '<p>Members of the laboratory attended the 2026 conference of the <strong>Earthquake Engineering Society of Korea</strong> (한국지진공학회).</p>'
-                },
                 kgs2026: {
                     tag: 'Conference',
+                    date: '2026. 09. 17–18',
+                    title: 'Attendance at the 2026 KGS Fall Conference',
+                    description: '<p>Members of the laboratory attended the 2026 Fall Conference of the <strong>Korean Geotechnical Society</strong> (한국지반공학회 가을학술발표회), held at the Delpino Sono Calm resort in Seorak on September 17&ndash;18, 2026.</p>'
+                },
+                kges2026: {
+                    tag: 'Conference',
                     date: '2026. 09',
-                    title: 'Attendance at the 2026 KGS Conference',
-                    description: '<p>Members of the laboratory attended the 2026 conference of the <strong>Korean Geotechnical Society</strong> (한국지반공학회).</p>'
+                    title: 'Attendance at the 2026 KGES Conference',
+                    description: '<p>Members of the laboratory attended the 2026 Conference of the <strong>Korean Geo-Environmental Society</strong> (한국지반환경공학회 학술발표회).</p>'
+                },
+                eesk2026: {
+                    tag: 'Conference',
+                    date: '2026. 09. 09–11',
+                    title: 'Attendance at the EESK 30th Anniversary Conference',
+                    description: '<p>Members of the laboratory attended the 30th Anniversary Conference of the <strong>Earthquake Engineering Society of Korea</strong> (한국지진공학회 30주년 기념 학술발표회), held at the Global Engineering Education Center, Seoul National University, on September 9&ndash;11, 2026.</p>'
                 },
                 interns2026: {
                     tag: 'Members',
