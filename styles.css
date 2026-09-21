@@ -2179,6 +2179,11 @@ img {
     margin-top: 20px;
 }
 
+/* 사진을 넣지 않은 항목은 빈 공간이 생기지 않도록 영역 자체를 숨긴다 */
+.news-entry-photos:empty {
+    display: none;
+}
+
 .news-entry-photos img {
     width: 100%;
     height: auto;
