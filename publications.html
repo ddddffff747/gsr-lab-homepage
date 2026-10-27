@@ -79,7 +79,6 @@
 
             <!-- International Journal Papers -->
             <div class="pub-category" id="international-papers">
-                <div class="year-filter-container" id="international-year-filter"></div>
                 <div class="pub-list-container">
                     <p style="text-align:center;color:#9ca3af;">Loading publications...</p>
                 </div>
@@ -87,7 +86,6 @@
 
             <!-- Korean Journal Papers -->
             <div class="pub-category" id="korean-papers" style="display: none;">
-                <div class="year-filter-container" id="korean-year-filter"></div>
                 <div class="pub-list-container">
                     <p style="text-align:center;color:#9ca3af;">Loading publications...</p>
                 </div>
@@ -95,7 +93,6 @@
 
             <!-- International Conference Papers -->
             <div class="pub-category" id="conference-papers" style="display: none;">
-                <div class="year-filter-container" id="conference-year-filter"></div>
                 <div class="pub-list-container">
                     <p style="text-align:center;color:#9ca3af;">Loading publications...</p>
                 </div>
@@ -370,50 +367,10 @@
             var data = fallbackData;
             publicationData = data;
 
-            createYearFilter('international', data.international, 'international-year-filter');
-            createYearFilter('korean', data.korean, 'korean-year-filter');
-            createYearFilter('conference', data.conference, 'conference-year-filter');
 
             renderPublications('international', data.international, 'international-papers', 'all');
             renderPublications('korean', data.korean, 'korean-papers', 'all');
             renderPublications('conference', data.conference, 'conference-papers', 'all');
-        }
-
-        function createYearFilter(type, publications, filterContainerId) {
-            var filterContainer = document.getElementById(filterContainerId);
-            if (!filterContainer || !publications) return;
-
-            var yearCounts = {};
-            var totalCount = publications.length;
-
-            publications.forEach(function(pub) {
-                var year = parseInt(pub.year) || 0;
-                if (!yearCounts[year]) yearCounts[year] = 0;
-                yearCounts[year]++;
-            });
-
-            var allYears = Object.keys(yearCounts).sort(function(a, b) { return b - a; });
-
-            var html = '<div class="year-filter-buttons">';
-            html += '<button class="year-filter-btn active" data-type="' + type + '" data-year="all">All <span class="year-count">(' + totalCount + ')</span></button>';
-
-            allYears.forEach(function(year) {
-                var count = yearCounts[year] || 0;
-                html += '<button class="year-filter-btn" data-type="' + type + '" data-year="' + year + '">' + year + ' <span class="year-count">(' + count + ')</span></button>';
-            });
-
-            html += '</div>';
-            filterContainer.innerHTML = html;
-
-            filterContainer.querySelectorAll('.year-filter-btn').forEach(function(btn) {
-                btn.addEventListener('click', function() {
-                    filterContainer.querySelectorAll('.year-filter-btn').forEach(function(b) { b.classList.remove('active'); });
-                    btn.classList.add('active');
-                    var selectedYear = btn.getAttribute('data-year');
-                    var containerId = type + '-papers';
-                    renderPublications(type, publicationData[type], containerId, selectedYear);
-                });
-            });
         }
 
         function renderPublications(type, publications, containerId, yearFilter) {
