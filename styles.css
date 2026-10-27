@@ -2190,3 +2190,16 @@ img {
     border: 1px solid var(--border);
     border-radius: 4px;
 }
+
+/* 논문 제목 링크 (DOI 또는 Google Scholar 검색으로 이동) */
+.pub-content h4 .pub-link {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.15s;
+}
+
+.pub-content h4 .pub-link:hover {
+    color: var(--navy);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
