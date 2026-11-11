@@ -2176,7 +2176,7 @@ img {
    틀은 4:3 고정이고 object-fit: contain 이므로
    3:4 세로 사진은 좌우에 여백이 생길 뿐 잘리지 않는다. */
 .news-entry-photos {
-    margin-top: 20px;
+    margin: 20px auto 0;
     max-width: 600px;
 }
 
