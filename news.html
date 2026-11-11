@@ -324,7 +324,8 @@
     <script src="script.js"></script>
     <script>
         // 각 항목의 사진을 images/news/<항목id>/1.png, 2.png ... 에서 자동으로 불러와
-        // 항목 하단(news-entry-photos)에 표시한다. 사진이 없으면 영역이 비어 있음.
+        // 항목 하단에 슬라이더로 표시한다. 한 장씩 넘겨 볼 수 있고,
+        // 사진이 한 장이면 화살표와 점을 감춘다. 사진이 없으면 영역 자체가 비어 있다.
         document.addEventListener('DOMContentLoaded', function() {
             document.querySelectorAll('.news-entry[data-news]').forEach(function(entry) {
                 var newsId = entry.getAttribute('data-news');
@@ -334,15 +335,102 @@
                 var formats = ['.png', '.jpg', '.jpeg', '.webp'];
                 var imgIndex = 1;
 
+                var slider = null, slidesBox = null, dotsBox = null, countEl = null;
+                var slides = [], dots = [], current = 0;
+
+                function buildFrame() {
+                    slider = document.createElement('div');
+                    slider.className = 'news-slider';
+                    slidesBox = document.createElement('div');
+                    slidesBox.className = 'slides';
+                    slider.appendChild(slidesBox);
+                    photoBox.appendChild(slider);
+
+                    dotsBox = document.createElement('div');
+                    dotsBox.className = 'slider-indicators';
+                    photoBox.appendChild(dotsBox);
+                }
+
+                function show(i) {
+                    if (!slides.length) return;
+                    current = (i + slides.length) % slides.length;
+                    slides.forEach(function(sl, k) { sl.classList.toggle('active', k === current); });
+                    dots.forEach(function(d, k) { d.classList.toggle('active', k === current); });
+                    if (countEl) countEl.textContent = (current + 1) + ' / ' + slides.length;
+                }
+
+                function addControls() {
+                    var prev = document.createElement('button');
+                    prev.type = 'button';
+                    prev.className = 'news-slider-nav prev';
+                    prev.setAttribute('aria-label', 'Previous photo');
+                    prev.innerHTML = '&#8249;';
+                    prev.addEventListener('click', function() { show(current - 1); });
+
+                    var next = document.createElement('button');
+                    next.type = 'button';
+                    next.className = 'news-slider-nav next';
+                    next.setAttribute('aria-label', 'Next photo');
+                    next.innerHTML = '&#8250;';
+                    next.addEventListener('click', function() { show(current + 1); });
+
+                    countEl = document.createElement('div');
+                    countEl.className = 'news-slider-count';
+
+                    slider.appendChild(prev);
+                    slider.appendChild(next);
+                    slider.appendChild(countEl);
+
+                    // 휴대폰에서 좌우로 밀어 넘기기
+                    var startX = null;
+                    slider.addEventListener('touchstart', function(e) {
+                        startX = e.touches[0].clientX;
+                    }, { passive: true });
+                    slider.addEventListener('touchend', function(e) {
+                        if (startX === null) return;
+                        var dx = e.changedTouches[0].clientX - startX;
+                        if (Math.abs(dx) > 40) show(current + (dx < 0 ? 1 : -1));
+                        startX = null;
+                    });
+                }
+
+                function finish() {
+                    if (!slides.length) return;
+                    if (slides.length > 1) {
+                        addControls();
+                    } else if (dotsBox) {
+                        dotsBox.style.display = 'none';
+                    }
+                    show(0);
+                }
+
                 function tryLoadImage() {
                     var basePath = 'images/news/' + newsId + '/' + imgIndex;
                     var fmtIdx = 0;
 
                     function tryFmt() {
-                        if (fmtIdx >= formats.length) return;
+                        if (fmtIdx >= formats.length) { finish(); return; }
                         var img = new Image();
                         img.onload = function() {
-                            photoBox.appendChild(img);
+                            if (!slider) buildFrame();
+
+                            // 첫 장은 만들 때부터 active 로 두어서
+                            // 페이드 전환에 의존하지 않고 바로 보이게 한다.
+                            var isFirst = (slides.length === 0);
+
+                            var slide = document.createElement('div');
+                            slide.className = 'slide' + (isFirst ? ' active' : '');
+                            slide.appendChild(img);
+                            slidesBox.appendChild(slide);
+                            slides.push(slide);
+
+                            var dot = document.createElement('span');
+                            dot.className = 'indicator' + (isFirst ? ' active' : '');
+                            var myIndex = slides.length - 1;
+                            dot.addEventListener('click', function() { show(myIndex); });
+                            dotsBox.appendChild(dot);
+                            dots.push(dot);
+
                             imgIndex++;
                             tryLoadImage();
                         };
@@ -354,6 +442,7 @@
                     }
                     tryFmt();
                 }
+
                 tryLoadImage();
             });
         });

@@ -2172,11 +2172,12 @@ img {
     text-decoration: underline;
 }
 
+/* 뉴스 사진 슬라이더 — 항목마다 사진을 한 장씩 넘겨 본다.
+   틀은 4:3 고정이고 object-fit: contain 이므로
+   3:4 세로 사진은 좌우에 여백이 생길 뿐 잘리지 않는다. */
 .news-entry-photos {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 12px;
     margin-top: 20px;
+    max-width: 600px;
 }
 
 /* 사진을 넣지 않은 항목은 빈 공간이 생기지 않도록 영역 자체를 숨긴다 */
@@ -2184,11 +2185,84 @@ img {
     display: none;
 }
 
-.news-entry-photos img {
-    width: 100%;
-    height: auto;
+.news-slider {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    background: var(--light-gray);
     border: 1px solid var(--border);
     border-radius: 4px;
+    overflow: hidden;
+}
+
+.news-slider .slides {
+    position: absolute;
+    inset: 0;
+}
+
+.news-slider .slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
+}
+
+.news-slider .slide.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.news-slider .slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.news-slider-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: rgba(0, 43, 92, 0.55);
+    color: var(--white);
+    font-size: 22px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+
+.news-slider-nav:hover {
+    background: rgba(0, 43, 92, 0.9);
+}
+
+.news-slider-nav.prev { left: 10px; }
+.news-slider-nav.next { right: 10px; }
+
+.news-slider-count {
+    position: absolute;
+    right: 12px;
+    bottom: 10px;
+    padding: 2px 9px;
+    border-radius: 11px;
+    background: rgba(0, 43, 92, 0.65);
+    color: var(--white);
+    font-size: 12px;
+    letter-spacing: 0.02em;
+}
+
+.news-entry-photos .slider-indicators {
+    padding: 10px 0 0;
 }
 
 /* 논문 제목 링크 (DOI 또는 Google Scholar 검색으로 이동) */
